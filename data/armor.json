@@ -1,0 +1,32 @@
+[
+  {
+    "id": "sunrise",
+    "name": "Sunrise Suit",
+    "type": "suit",
+    "slots": 2,
+    "weight": 7.5,
+    "base_stats": {
+      "physical": 18,
+      "thermal": 12,
+      "electric": 15,
+      "chemical": 10,
+      "radiation": 8,
+      "psi": 5
+    }
+  },
+  {
+    "id": "seva",
+    "name": "SEVA Suit",
+    "type": "suit",
+    "slots": 3,
+    "weight": 9.0,
+    "base_stats": {
+      "physical": 20,
+      "thermal": 18,
+      "electric": 22,
+      "chemical": 25,
+      "radiation": 30,
+      "psi": 12
+    }
+  }
+]
