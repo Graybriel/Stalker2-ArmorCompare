@@ -1,0 +1,47 @@
+[
+  {
+    "id": "sunrise",
+    "name": "Sunrise Suit",
+    "type": "suit",
+    "slots": 2,
+    "weight": 4,
+    "base_stats": {
+      "physical": 2.1,
+      "thermal": 0.7,
+      "electric": 0.6,
+      "chemical": 0.7,
+      "radiation": 1.5,
+      "psi": 0
+    }
+  },
+  {
+    "id": "seva",
+    "name": "SEVA Suit",
+    "type": "suit",
+    "slots": 3,
+    "weight": 8.0,
+    "base_stats": {
+      "physical": 2.1,
+      "thermal": 1.2,
+      "electric": 1.6,
+      "chemical": 1.6,
+      "radiation": 3,
+      "psi": 1.5
+    }
+  },
+  {
+    "id": "PSZ-20W Convoy",
+    "name": "PSZ-20W Convoy",
+    "type": "suit",
+    "slots": 2,
+    "weight": 8.0,
+    "base_stats": {
+      "physical": 2.5,
+      "thermal": 0.6,
+      "electric": 0.7,
+      "chemical": 0.7,
+      "radiation": 2.1,
+      "psi": 0
+    }
+  }
+]

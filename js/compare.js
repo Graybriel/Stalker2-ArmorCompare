@@ -1,13 +1,16 @@
 function renderStats(container, armor) {
     container.innerHTML = "";
 
-    for (const stat in armor.base_stats) {
+    const skipKeys = new Set(["id", "name", "type", "slots", "weight"]);
+    const statKeys = Object.keys(armor).filter(k => !skipKeys.has(k));
+
+    for (const stat of statKeys) {
         const row = document.createElement("div");
         row.className = "stat-row";
 
         row.innerHTML = `
             <span>${stat}</span>
-            <span>${armor.base_stats[stat]}</span>
+            <span>${armor[stat]}</span>
         `;
 
         container.appendChild(row);
@@ -29,11 +32,17 @@ function updateComparison() {
     const comparisonDiv = document.getElementById("comparisonBars");
     comparisonDiv.innerHTML = "";
 
-    for (const stat in A.base_stats) {
-        const aVal = A.base_stats[stat];
-        const bVal = B.base_stats[stat];
+    const skipKeys = new Set(["id", "name", "type", "slots", "weight"]);
+    const statsA = Object.fromEntries(Object.entries(A).filter(([k]) => !skipKeys.has(k)));
+    const statsB = Object.fromEntries(Object.entries(B).filter(([k]) => !skipKeys.has(k)));
 
-        const max = Math.max(aVal, bVal);
+    const keys = new Set([...Object.keys(statsA), ...Object.keys(statsB)]);
+    const max = 5; // adjust if your stat scale differs
+
+    for (const stat of keys) {
+        const aVal = Number(statsA[stat] ?? 0) || 0;
+        const bVal = Number(statsB[stat] ?? 0) || 0;
+
         const aPct = (aVal / max) * 100;
         const bPct = (bVal / max) * 100;
 
