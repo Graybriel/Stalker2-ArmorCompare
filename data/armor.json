@@ -1,8 +1,8 @@
 [
   {
-    "id": "Aeroprotection Gas MaskAeroprotection Gas Mask",
-    "name": "Aeroprotection Gas MaskAeroprotection Gas Mask",
-    "type": "mask",
+    "id": "Aeroprotection Gas Mask",
+    "name": "Aeroprotection Gas Mask",
+    "type": "head",
     "slots": 0,
     "thermal": 0.6,
     "electric": 0.6,
@@ -13,9 +13,9 @@
     "weight": "3.0 kg"
   },
   {
-    "id": "Armored Bandit Jacket 1Armored Bandit Jacket",
-    "name": "Armored Bandit Jacket 1Armored Bandit Jacket",
-    "type": "suit",
+    "id": "Armored Bandit Jacket",
+    "name": "Armored Bandit Jacket",
+    "type": "chest",
     "slots": 1,
     "thermal": 0.5,
     "electric": 0.5,
@@ -26,8 +26,9 @@
     "weight": "5.0 kg"
   },
   {
-    "id": "Aurora Gas MaskAurora Gas Mask",
-    "name": "Aurora Gas MaskAurora Gas Mask",
+    "id": "Aurora Gas Mask",
+    "name": "Aurora Gas Mask",
+    "type": "head",
     "slots": 0,
     "thermal": 0.9,
     "electric": 1.1,
@@ -38,8 +39,9 @@
     "weight": "2.0 kg"
   },
   {
-    "id": "Ballistic HelmetBallistic Helmet",
-    "name": "Ballistic HelmetBallistic Helmet",
+    "id": "Ballistic Helmet",
+    "name": "Ballistic Helmet",
+    "type": "head",
     "slots": 0,
     "thermal": 0.6,
     "electric": 0.6,
@@ -50,8 +52,9 @@
     "weight": "3.0 kg"
   },
   {
-    "id": "Bandit Jacket 1Bandit Jacket",
-    "name": "Bandit Jacket 1Bandit Jacket",
+    "id": "Bandit Jacket",
+    "name": "Bandit Jacket",
+    "type": "chest",
     "slots": 1,
     "thermal": 0.3,
     "electric": 0.3,
@@ -62,8 +65,9 @@
     "weight": "3.0 kg"
   },
   { 
-    "id": "Berill-5M Armored Suit 2Berill-5M Armored Suit",    
-    "name": "Berill-5M Armored Suit 2Berill-5M Armored Suit",
+    "id": "Berill-5M Armored Suit",
+    "name": "Berill-5M Armored Suit",
+    "type": "full body",
     "slots": 2,
     "thermal": 0.5,
     "electric": 0.7,
@@ -74,8 +78,9 @@
     "weight": "9.0 kg"
   },
   {
-    "id": "Brummbar Exoskeleton 4Brummbar Exoskeleton",
-    "name": "Brummbar Exoskeleton 4Brummbar Exoskeleton",
+    "id": "Brummbar Exoskeleton",
+    "name": "Brummbar Exoskeleton",
+    "type": "full body",
     "slots": 4,
     "thermal": 1.55,
     "electric": 1.55,
@@ -86,8 +91,9 @@
     "weight": "9.5 kg"
   },
   {
-    "id": "Bulwark Exosuit 3Bulwark Exosuit",
-    "name": "Bulwark Exosuit 3Bulwark Exosuit",
+    "id": "Bulwark Exosuit",
+    "name": "Bulwark Exosuit",
+    "type": "full body",
     "slots": 3,
     "thermal": 1.4,
     "electric": 1.7,
@@ -98,8 +104,9 @@
     "weight": "20.0 kg"
   },
   {
-    "id": "Corundum Suit 3Corundum Suit",
-    "name": "Corundum Suit 3Corundum Suit",
+    "id": "Corundum Suit",
+    "name": "Corundum Suit",
+    "type": "full body",
     "slots": 3,
     "thermal": 1,
     "electric": 0.9,
@@ -110,8 +117,9 @@
     "weight": "10.0 kg"
   },
   {
-    "id": "Cuirass Exoskeleton 3Cuirass Exoskeleton",
-    "name": "Cuirass Exoskeleton 3Cuirass Exoskeleton",
+    "id": "Cuirass Exoskeleton",
+    "name": "Cuirass Exoskeleton",
+    "type": "full body",  
     "slots": 3,
     "thermal": 1.7,
     "electric": 1.7,
@@ -122,8 +130,9 @@
     "weight": "10.5 kg"
   },
   {
-    "id": "Debut Suit 1Debut Suit",
-    "name": "Debut Suit 1Debut Suit",
+    "id": "Debut Suit",
+    "name": "Debut Suit",
+    "type": "chest",
     "slots": 1,
     "thermal": 0.3,
     "electric": 0.2,
@@ -134,8 +143,9 @@
     "weight": "3.0 kg"
   },
   {
-    "id": "Diamond Exoskeleton 5Diamond Exoskeleton",
-    "name": "Diamond Exoskeleton 5Diamond Exoskeleton",
+    "id": "Diamond Exoskeleton",
+    "name": "Diamond Exoskeleton",
+    "type": "full body",
     "slots": 5,
     "thermal": 2,
     "electric": 2,
@@ -146,8 +156,9 @@
     "weight": "9.5 kg"
   },
   {
-    "id": "Exoskeleton 4Exoskeleton",
-    "name": "Exoskeleton 4Exoskeleton",
+    "id": "Exoskeleton",
+    "name": "Exoskeleton",
+    "type": "full body",
     "slots": 4,
     "thermal": 1.2,
     "electric": 1.6,
@@ -158,8 +169,9 @@
     "weight": "15.0 kg"
   },
   {
-    "id": "Leather Jacket 1Leather Jacket",
-    "name": "Leather Jacket 1Leather Jacket",
+    "id": "Leather Jacket",
+    "name": "Leather Jacket",
+    "type": "chest",
     "slots": 1,
     "thermal": 0.3,
     "electric": 0.3,
@@ -170,9 +182,9 @@
     "weight": "2.0 kg"
   },
   {
-    "id": "Liberty Exoskeleton 5Liberty Exoskeleton",
-    "name": "Liberty Exoskeleton 5Liberty Exoskeleton",
-    "slots": 5,
+    "id": "Liberty Exoskeleton",
+    "name": "Liberty Exoskeleton",
+    "type": "full body",
     "thermal": 1.8,
     "electric": 1.8,
     "chemical": 1.6,
@@ -182,8 +194,9 @@
     "weight": "10.5 kg"
   },
   {
-    "id": "Marauder Suit 1Marauder Suit",
-    "name": "Marauder Suit 1Marauder Suit",
+    "id": "Marauder Suit",
+    "name": "Marauder Suit",
+    "type": "chest",
     "slots": 1,
     "thermal": 0.4,
     "electric": 0.4,
@@ -194,8 +207,9 @@
     "weight": "5.0 kg"
   },
   {
-    "id": "Mask-1 HelmetMask-1 Helmet",
-    "name": "Mask-1 HelmetMask-1 Helmet",
+    "id": "Mask-1 Helmet",
+    "name": "Mask-1 Helmet",
+    "type": "head",
     "slots": 0,
     "thermal": 0.9,
     "electric": 0.8,
@@ -206,8 +220,9 @@
     "weight": "3.0 kg"
   },
   {
-    "id": "Mercenary Suit 1Mercenary Suit",
-    "name": "Mercenary Suit 1Mercenary Suit",
+    "id": "Mercenary Suit",
+    "name": "Mercenary Suit",
+    "type": "chest",
     "slots": 1,
     "thermal": 0.4,
     "electric": 0.5,
@@ -220,6 +235,7 @@
   {
     "id": "Mercenary's Light Suit",
     "name": "Mercenary's Light Suit",
+    "type": "chest",
     "slots": 1,
     "thermal": 0.4,
     "electric": 0.5,
@@ -230,8 +246,9 @@
     "weight": "2.0 kg"
   },
   {
-    "id": "Operator Exoskeleton 4Operator Exoskeleton",
-    "name": "Operator Exoskeleton 4Operator Exoskeleton",
+    "id": "Operator Exoskeleton",
+    "name": "Operator Exoskeleton",
+    "type": "full body",
     "slots": 4,
     "thermal": 1.7,
     "electric": 1.7,
@@ -242,8 +259,9 @@
     "weight": "9.5 kg"
   },
   {
-    "id": "Optician Gas MaskOptician Gas Mask",
-    "name": "Optician Gas MaskOptician Gas Mask",
+    "id": "Optician Gas Mask",
+    "name": "Optician Gas Mask",
+    "type": "head",
     "slots": 0,
     "thermal": 0.8,
     "electric": 0.8,
@@ -254,8 +272,9 @@
     "weight": "2.0 kg"
   },
   {
-    "id": "OZK ExplorerOZK Explorer's Suit",
-    "name": "OZK ExplorerOZK Explorer's Suit",
+    "id": "OZK Explorer's Suit",
+    "name": "OZK Explorer's Suit",
+    "type": "chest",
     "slots": 2,
     "thermal": 0.4,
     "electric": 0.7,
@@ -266,9 +285,10 @@
     "weight": "6.0 kg"
   },
   {
-    "id": "PA-10 Gas MaskPA-10 Gas Mask", 
-    "name": "PA-10 Gas MaskPA-10 Gas Mask",
-    "slots": 0,
+    "id": "PA-10 Gas Mask",
+    "name": "PA-10 Gas Mask",
+    "type": "head",
+    "slots": 0, 
     "thermal": 0.9,
     "electric": 1.1,
     "chemical": 1,
@@ -278,8 +298,9 @@
     "weight": "2.0 kg"
   },
   {
-    "id": "PA-7 Gas MaskPA-7 Gas Mask",
-    "name": "PA-7 Gas MaskPA-7 Gas Mask",
+    "id": "PA-7 Gas Mask",
+    "name": "PA-7 Gas Mask",
+    "type": "head",
     "slots": 0,
     "thermal": 0.9,
     "electric": 1.2,
@@ -290,8 +311,9 @@
     "weight": "2.0 kg"
   },
   {
-    "id": "PG-4 Facehugger Gas MaskPG-4 Facehugger Gas Mask",
-    "name": "PG-4 Facehugger Gas MaskPG-4 Facehugger Gas Mask",
+    "id": "PG-4 Facehugger Gas Mask",
+    "name": "PG-4 Facehugger Gas Mask",
+    "type": "head",
     "slots": 0,
     "thermal": 0.8,
     "electric": 1,
@@ -302,9 +324,10 @@
     "weight": "2.0 kg"
   },
   {
-    "id": "PSZ-12V Bulat 4PSZ-12V Bulat",
-    "name": "PSZ-12V Bulat 4PSZ-12V Bulat",
-    "slots": 4,
+    "id": "PSZ-12V Bulat",
+    "name": "PSZ-12V Bulat",
+    "type": "full body",
+    "slots": 2,
     "thermal": 1,
     "electric": 0.6,
     "chemical": 0.7,
@@ -314,8 +337,9 @@
     "weight": "9.0 kg"
   },
   {
-    "id": "PSZ-20W Convoy 2PSZ-20W Convoy",
-    "name": "PSZ-20W Convoy 2PSZ-20W Convoy",
+    "id": "PSZ-20W Convoy",
+    "name": "PSZ-20W Convoy",
+    "type": "chest",
     "slots": 2,
     "thermal": 0.6,
     "electric": 0.7,
@@ -326,8 +350,9 @@
     "weight": "8.0 kg"
   },
   {
-    "id": "PSZ-21W Shturm 4PSZ-21W Shturm",
-    "name": "PSZ-21W Shturm 4PSZ-21W Shturm",
+    "id": "PSZ-21W Shturm",
+    "name": "PSZ-21W Shturm",
+    "type": "full body",
     "slots": 4,
     "thermal": 1.6,
     "electric": 1.9,
@@ -338,8 +363,9 @@
     "weight": "13.0 kg"
   },
   {
-    "id": "PSZ-5D Universal Protection 3PSZ-5D Universal Protection",
-    "name": "PSZ-5D Universal Protection 3PSZ-5D Universal Protection",
+    "id": "PSZ-5D Universal Protection",
+    "name": "PSZ-5D Universal Protection",
+    "type": "chest",
     "slots": 3,
     "thermal": 0.5,
     "electric": 0.7,
@@ -350,8 +376,9 @@
     "weight": "7.0 kg"
   },
   {
-    "id": "PSZ-5I Hawk 2PSZ-5I Hawk",
-    "name": "PSZ-5I Hawk 2PSZ-5I Hawk",
+    "id": "PSZ-5I Hawk",
+    "name": "PSZ-5I Hawk",
+    "type": "chest",
     "slots": 2,
     "thermal": 0.8,
     "electric": 0.7,
@@ -362,8 +389,9 @@
     "weight": "7.0 kg"
   },
   {
-    "id": "PSZ-5V Guardian of Freedom Suit 2PSZ-5V Guardian of Freedom Suit",
-    "name": "PSZ-5V Guardian of Freedom Suit 2PSZ-5V Guardian of Freedom Suit",
+    "id": "PSZ-5V Guardian of Freedom Suit",
+    "name": "PSZ-5V Guardian of Freedom Suit",
+    "type": "chest",
     "slots": 2,
     "thermal": 0.8,
     "electric": 0.7,
@@ -374,8 +402,9 @@
     "weight": "7.0 kg"
   },
   {
-    "id": "PSZ-7 Military Body ArmorPSZ-7 Military Body Armor",
-    "name": "PSZ-7 Military Body ArmorPSZ-7 Military Body Armor",
+    "id": "PSZ-7 Military Body Armor",
+    "name": "PSZ-7 Military Body Armor",
+    "type": "chest",
     "slots": 0,
     "thermal": 0.3,
     "electric": 0.4,
@@ -386,8 +415,9 @@
     "weight": "7.0 kg"
   },
   {
-    "id": "PSZ-9D Duty Armor 2PSZ-9D Duty Armor",
-    "name": "PSZ-9D Duty Armor 2PSZ-9D Duty Armor",
+    "id": "PSZ-9D Duty Armor",
+    "name": "PSZ-9D Duty Armor",
+    "type": "full body",
     "slots": 2,
     "thermal": 1,
     "electric": 1.7,
@@ -398,8 +428,9 @@
     "weight": "9.0 kg"
   },
   {
-    "id": "PSZ-9I Falcon 3PSZ-9I Falcon",
-    "name": "PSZ-9I Falcon 3PSZ-9I Falcon",
+    "id": "PSZ-9I Falcon",
+    "name": "PSZ-9I Falcon",
+    "type": "full body",
     "slots": 3,
     "thermal": 1.2,
     "electric": 1.6,
@@ -410,8 +441,9 @@
     "weight": "9.0 kg"
   },
   {
-    "id": "PSZ-9N Wolfhound 3PSZ-9N Wolfhound",
-    "name": "PSZ-9N Wolfhound 3PSZ-9N Wolfhound",
+    "id": "PSZ-9N Wolfhound",
+    "name": "PSZ-9N Wolfhound",
+    "type": "full body",
     "slots": 3,
     "thermal": 1,
     "electric": 0.8,
@@ -422,8 +454,9 @@
     "weight": "8.0 kg"
   },
   {
-    "id": "Ruby Exosuit 5Ruby Exosuit", 
-    "name": "Ruby Exosuit 5Ruby Exosuit",
+    "id": "Ruby Exosuit",
+    "name": "Ruby Exosuit",
+    "type": "full body",
     "slots": 5,
     "thermal": 1.3,
     "electric": 1.8,
@@ -434,8 +467,9 @@
     "weight": "20.0 kg"
   },
   {
-    "id": "SEVA Suit 3SEVA Suit",
-    "name": "SEVA Suit 3SEVA Suit",
+    "id": "SEVA Suit",
+    "name": "SEVA Suit",
+    "type": "full body",
     "slots": 3,
     "thermal": 1.2,
     "electric": 1.6,
@@ -446,8 +480,9 @@
     "weight": "8.0 kg"
   },
   {
-    "id": "SEVA-D Suit 3SEVA-D Suit",
-    "name": "SEVA-D Suit 3SEVA-D Suit",
+    "id": "SEVA-D Suit",
+    "name": "SEVA-D Suit",
+    "type": "full body",
     "slots": 3,
     "thermal": 1.1,
     "electric": 1.45,
@@ -458,8 +493,9 @@
     "weight": "8.0 kg"
   },
   {
-    "id": "SEVA-I Suit 4SEVA-I Suit",
-    "name": "SEVA-I Suit 4SEVA-I Suit",
+    "id": "SEVA-I Suit",
+    "name": "SEVA-I Suit",
+    "type": "full body",
     "slots": 4,
     "thermal": 1.3,
     "electric": 1.5,
@@ -470,8 +506,9 @@
     "weight": "8.0 kg"
   },
   {
-    "id": "SEVA-V Suit 4SEVA-V Suit",
-    "name": "SEVA-V Suit 4SEVA-V Suit",
+    "id": "SEVA-V Suit",
+    "name": "SEVA-V Suit",
+    "type": "full body",
     "slots": 4,
     "thermal": 1.1,
     "electric": 1.3,
@@ -482,8 +519,9 @@
     "weight": "8.0 kg"
   },
   {
-    "id": "Sphere M20 HelmetSphere M20 Helmet",
-    "name": "Sphere M20 HelmetSphere M20 Helmet",
+    "id": "Sphere M20 Helmet",
+    "name": "Sphere M20 Helmet",
+    "type": "head",
     "slots": 0,
     "thermal": 0.7,
     "electric": 0.9,
@@ -494,8 +532,9 @@
     "weight": "3.0 kg"
   },
   {
-    "id": "SSP-100 Discovery 3SSP-100 Discovery",
-    "name": "SSP-100 Discovery 3SSP-100 Discovery",
+    "id": "SSP-100 Discovery",
+    "name": "SSP-100 Discovery",
+    "type": "full body",
     "slots": 3,
     "thermal": 2.2,
     "electric": 2.2,
@@ -506,8 +545,9 @@
     "weight": "8.0 kg"
   },
   {
-    "id": "SSP-100I Survey 4SSP-100I Survey",
-    "name": "SSP-100I Survey 4SSP-100I Survey",
+    "id": "SSP-100I Survey",
+    "name": "SSP-100I Survey",
+    "type": "full body",
     "slots": 4,
     "thermal": 2.3,
     "electric": 2.3,
@@ -518,8 +558,9 @@
     "weight": "10.0 kg"
   },
    {
-    "id": "SSP-100M SIRCAA 3SSP-100M SIRCAA",
-    "name": "SSP-100M SIRCAA 3SSP-100M SIRCAA",
+    "id": "SSP-100M SIRCAA",
+    "name": "SSP-100M SIRCAA",
+    "type": "full body",
     "slots": 3,
     "thermal": 2.8,
     "electric": 2.8,
@@ -530,8 +571,9 @@
     "weight": "8.0 kg"
   },
   {
-    "id": "SSP-99 Ecologist 2SSP-99 Ecologist",
-    "name": "SSP-99 Ecologist 2SSP-99 Ecologist",
+    "id": "SSP-99 Ecologist",
+    "name": "SSP-99 Ecologist",
+    "type": "full body",
     "slots": 2,
     "thermal": 1.2,
     "electric": 1.5,
@@ -542,8 +584,9 @@
     "weight": "3.0 kg"
   },
   {
-    "id": "Sunrise Suit 2Sunrise Suit",
-    "name": "Sunrise Suit 2Sunrise Suit",
+    "id": "Sunrise Suit",
+    "name": "Sunrise Suit",
+    "type": "chest",
     "slots": 2,
     "thermal": 0.7,
     "electric": 0.6,
@@ -554,8 +597,9 @@
     "weight": "4.0 kg"
   },
   {
-    "id": "Tactical Helmet 0Tactical Helmet",
-    "name": "Tactical Helmet 0Tactical Helmet",
+    "id": "Tactical Helmet",
+    "name": "Tactical Helmet",
+    "type": "head",
     "slots": 0,
     "thermal": 0.6,
     "electric": 0.6,
@@ -566,8 +610,9 @@
     "weight": "3.0 kg"
   },
   {
-    "id": "Tourist Suit 2Tourist Suit",
-    "name": "Tourist Suit 2Tourist Suit",
+    "id": "Tourist Suit",
+    "name": "Tourist Suit",
+    "type": "chest",
     "slots": 2,
     "thermal": 0.7,
     "electric": 0.6,
@@ -578,8 +623,9 @@
     "weight": "3.0 kg"
   },
     {
-    "id": "Wanderer Suit 3Wanderer Suit",
-    "name": "Wanderer Suit 3Wanderer Suit",
+    "id": "Wanderer Suit",
+    "name": "Wanderer Suit",
+    "type": "full body",
     "slots": 3,
     "thermal": 1.4,
     "electric": 2.3,
@@ -590,8 +636,9 @@
     "weight": "7.0 kg"
   },
   {
-    "id": "Wind of Freedom Suit 2Wind of Freedom Suit",
-    "name": "Wind of Freedom Suit 2Wind of Freedom Suit",
+    "id": "Wind of Freedom Suit",
+    "name": "Wind of Freedom Suit",
+    "type": "chest",
     "slots": 2,
     "thermal": 0.5,
     "electric": 0.5,
@@ -602,8 +649,9 @@
     "weight": "3.0 kg"
   },
   {
-    "id": "X7 Suit 5X7 Suit",
-    "name": "X7 Suit 5X7 Suit",
+    "id": "X7 Suit",
+    "name": "X7 Suit",
+    "type": "chest",
     "slots": 5,
     "thermal": 2.3,
     "electric": 2.3,
@@ -614,8 +662,9 @@
     "weight": "4.0 kg"
   },
   {
-    "id": "Zircon Suit 3Zircon Suit",
-    "name": "Zircon Suit 3Zircon Suit",
+    "id": "Zircon Suit",
+    "name": "Zircon Suit",
+    "type": "chest",
     "slots": 3,
     "thermal": 0.55,
     "electric": 0.6,
