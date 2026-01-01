@@ -1,7 +1,7 @@
 let armorData = [];
 
 async function loadArmorData() {
-    const response = await fetch("data/armor.json");
+    const response = await fetch("data/armor_full.json");
     armorData = await response.json();
 
     populateDropdown("armorSelectA");
