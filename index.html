@@ -16,9 +16,33 @@
     <section class="compare-columns">
 
         <!-- Column A -->
+        <!--
+            Column A controls:
+            - `armorTypeA` selects which layout to use: 'full body' shows a single `armorFullA` select;
+              other choices show the two-part `armorHeadA` and `armorChestA` selects.
+            - Labels are toggled together with their corresponding selects via JS.
+        -->
         <div class="armor-column" id="columnA">
             <h2>Armor A</h2>
-            <select id="armorSelectA"></select>
+            <label for="armorTypeA">Type:</label>
+            <select id="armorTypeA"></select>
+
+            <div class="item-selects">
+                <div class="select-full">
+                    <!-- Single full-body select (shown when Type === "full body") -->
+                    <label for="armorFullA">Full body:</label>
+                    <select id="armorFullA"></select>
+                </div>
+
+                <div class="select-parts">
+                    <!-- Head + Chest selects (shown when Type is not full body) -->
+                    <label for="armorHeadA">Head:</label>
+                    <select id="armorHeadA"></select>
+
+                    <label for="armorChestA">Chest:</label>
+                    <select id="armorChestA"></select>
+                </div>
+            </div>
 
             <div class="toggle-group">
                 <button data-mode="base" class="active">Base</button>
@@ -30,9 +54,28 @@
         </div>
 
         <!-- Column B -->
+        <!--
+            Column B controls mirror Column A: `armorTypeB` toggles `armorFullB` vs `armorHeadB` + `armorChestB`.
+        -->
         <div class="armor-column" id="columnB">
             <h2>Armor B</h2>
-            <select id="armorSelectB"></select>
+            <label for="armorTypeB">Type:</label>
+            <select id="armorTypeB"></select>
+
+            <div class="item-selects">
+                <div class="select-full">
+                    <label for="armorFullB">Full body:</label>
+                    <select id="armorFullB"></select>
+                </div>
+
+                <div class="select-parts">
+                    <label for="armorHeadB">Head:</label>
+                    <select id="armorHeadB"></select>
+
+                    <label for="armorChestB">Chest:</label>
+                    <select id="armorChestB"></select>
+                </div>
+            </div>
 
             <div class="toggle-group">
                 <button data-mode="base" class="active">Base</button>
