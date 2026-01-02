@@ -12,19 +12,30 @@ function roundTo(n, decimals = 1) {
 window.roundTo = roundTo;
 
 async function loadArmorData() {
-    const response = await fetch("data/armor_full.json");
-    armorData = await response.json();
+    try {
+        const response = await fetch("data/armor_full.json");
+        if (!response.ok) throw new Error(`Failed to load armor data: ${response.status}`);
+        armorData = await response.json();
+    } catch (err) {
+        console.error(err);
+        const main = document.querySelector('main');
+        const msg = document.createElement('div');
+        msg.style.color = 'salmon';
+        msg.style.padding = '12px';
+        msg.textContent = 'Error: failed to load armor data. Check network or file path.';
+        if (main) main.insertBefore(msg, main.firstChild);
+        // still populate type selects so user can see the UI structure
+        populateTypeSelects();
+        return;
+    }
 
+    // populate types and initialize columns according to the now-loaded data
     populateTypeSelects();
-    // initialize columns according to default type selection
     updateColumnForType("A", document.getElementById("armorTypeA")?.value ?? "head/chest");
     updateColumnForType("B", document.getElementById("armorTypeB")?.value ?? "head/chest");
 }
 
 function getTypes() {
-    //const types = Array.from(new Set(armorData.map(a => a.type).filter(Boolean)));
-    //types.sort();
-
     const types = ["full body", "head/chest", "chest", "head"];
     return types;
 }
@@ -45,6 +56,13 @@ function populateTypeSelects() {
             opt.textContent = t;
             sel.appendChild(opt);
         });
+
+        // ensure a default selection is present so subsequent code can read sel.value
+        if (sel.options.length > 0) sel.selectedIndex = 0;
+
+        // initialize the column display for this select immediately
+        const col = id === "armorTypeA" ? "A" : "B";
+        updateColumnForType(col, sel.value);
 
         sel.onchange = () => {
             const col = id === "armorTypeA" ? "A" : "B";
