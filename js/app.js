@@ -13,9 +13,23 @@ window.roundTo = roundTo;
 
 async function loadArmorData() {
     try {
-        const response = await fetch("data/armor_full.json");
+        const response = await fetch("data/armor.json");
         if (!response.ok) throw new Error(`Failed to load armor data: ${response.status}`);
-        armorData = await response.json();
+        const rawData = await response.json();
+        // Transform new format to old format
+        armorData = rawData.map(item => ({
+            id: item.Id,
+            name: item.Values.DisplayName,
+            type: item.Values.Type,
+            thermal: parseFloat(item.Values.thermal),
+            electric: parseFloat(item.Values.electric),
+            chemical: parseFloat(item.Values.chemical),
+            radiation: parseFloat(item.Values.radiation),
+            psi: parseFloat(item.Values.psi),
+            physical: parseFloat(item.Values.physical),
+            weight: parseFloat(item.Values.weight),
+            slots: parseInt(item.Values.slots)
+        }));
     } catch (err) {
         console.error(err);
         const main = document.querySelector('main');
@@ -87,9 +101,25 @@ function updateColumnForType(col, type) {
     function setDisplay(id, visible) {
         const el = document.getElementById(id);
         const lbl = document.querySelector(`label[for="${id}"]`);
-        const disp = visible ? "inline-block" : "none";
-        if (el) el.style.display = disp;
-        if (lbl) lbl.style.display = disp;
+        if (visible) {
+            if (el) {
+                el.style.display = "inline-block";
+                el.style.visibility = "visible";
+            }
+            if (lbl) {
+                lbl.style.display = "inline-block";
+                lbl.style.visibility = "visible";
+            }
+        } else {
+            if (el) {
+                el.style.display = "inline-block";
+                el.style.visibility = "hidden";
+            }
+            if (lbl) {
+                lbl.style.display = "inline-block";
+                lbl.style.visibility = "hidden";
+            }
+        }
     }
 
     if (type === "full body") {

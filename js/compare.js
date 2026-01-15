@@ -35,19 +35,6 @@ function renderStats(container, armor) {
 
         container.appendChild(row);
     }
-
-    // Slots + weight are displayed explicitly
-    const slotsRaw = armor.slots;
-    const slotsNum = typeof slotsRaw === 'number' ? slotsRaw : parseFloat(String(slotsRaw).replace(/[^0-9.-]+/g, ''));
-    const slotsVal = Number.isFinite(slotsNum) ? (window.roundTo ? window.roundTo(slotsNum, 1).toFixed(1) : roundTo(slotsNum, 1).toFixed(1)) : slotsRaw;
-
-    const weightRaw = armor.weight;
-    const weightNum = typeof weightRaw === 'number' ? weightRaw : parseFloat(String(weightRaw).replace(/[^0-9.-]+/g, ''));
-    const weightVal = Number.isFinite(weightNum) ? (window.roundTo ? window.roundTo(weightNum, 1).toFixed(1) : roundTo(weightNum, 1).toFixed(1)) : weightRaw;
-    container.innerHTML += `
-        <div class="stat-row"><span>Slots</span><span>${slotsVal}</span></div>
-        <div class="stat-row"><span>Weight</span><span>${weightVal}</span></div>
-    `;
 }
 
 /**
@@ -72,7 +59,7 @@ function updateComparison() {
 
     // compute max dynamically per-stat (handles 'weight' specially)
     for (const stat of keys) {
-        let max = 5.0;
+        let max = 100.0;
         if (stat === "weight") { max = 20; }
         const aVal = Number(statsA[stat] ?? 0) || 0;
         const bVal = Number(statsB[stat] ?? 0) || 0;
