@@ -40,23 +40,12 @@ select {
     border: 1px solid #444;
 }
 
-.toggle-group {
-    display: flex;
-    gap: 10px;
+.upgrades {
+    background: #1a1a1a;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #333;
     margin-bottom: 15px;
-}
-
-.toggle-group button {
-    flex: 1;
-    padding: 8px;
-    background: #333;
-    color: #eee;
-    border: 1px solid #444;
-    cursor: pointer;
-}
-
-.toggle-group button.active {
-    background: #555;
 }
 
 .stats {
