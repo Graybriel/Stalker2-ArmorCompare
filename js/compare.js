@@ -7,7 +7,7 @@ function renderStats(container, armor) {
     if (!container) return;
     container.innerHTML = "";
 
-    const skipKeys = new Set(["id", "name", "type"]);
+    const skipKeys = new Set(["id", "name", "type", "upgradeList", "upgrades"]);
     const statKeys = Object.keys(armor).filter(k => !skipKeys.has(k));
 
     for (const stat of statKeys) {
@@ -51,7 +51,7 @@ function updateComparison() {
     const comparisonDiv = document.getElementById("comparisonBars");
     comparisonDiv.innerHTML = "";
 
-    const skipKeys = new Set(["id", "name", "type"]);
+    const skipKeys = new Set(["id", "name", "type", "upgradeList", "upgrades"]);
     const statsA = Object.fromEntries(Object.entries(A).filter(([k]) => !skipKeys.has(k)));
     const statsB = Object.fromEntries(Object.entries(B).filter(([k]) => !skipKeys.has(k)));
 

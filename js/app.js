@@ -15,35 +15,67 @@ async function loadArmorData() {
     try {
         const response = await fetch("data/armor.json");
         if (!response.ok) throw new Error(`Failed to load armor data: ${response.status}`);
+
         const rawData = await response.json();
-        // Transform new format to old format
-        armorData = rawData.map(item => ({
-            id: item.Id,
-            name: item.Values.DisplayName,
-            type: item.Values.Type,
-            thermal: parseFloat(item.Values.thermal),
-            electric: parseFloat(item.Values.electric),
-            chemical: parseFloat(item.Values.chemical),
-            radiation: parseFloat(item.Values.radiation),
-            psi: parseFloat(item.Values.psi),
-            physical: parseFloat(item.Values.physical),
-            weight: parseFloat(item.Values.weight),
-            slots: parseInt(item.Values.slots)
-        }));
+
+        armorData = rawData.map(item => {
+            // Parse upgrades safely
+            const upgrades = (item.Upgrades || []).map(upg => {
+                // Convert Effects object → array
+                const effects = Object.values(upg.Effects || {})
+                    .filter(e => e && e.SID)   // ignore null or malformed entries
+                    .map(e => ({
+                        id: e.SID,
+                        type: e.Type,
+                        text: e.Text,
+                        max: parseFloat(e.Max)
+                    }));
+
+                return {
+                    id: upg.Id,
+                    values: upg.Values || {},
+                    effectSIDs: upg.EffectPrototypeSIDs || [],
+                    effects,
+                    blocking: upg.BlockingUpgradePrototypeSIDs || [],
+                    required: upg.RequiredUpgradePrototypeSIDs || []
+                };
+            });
+
+            return {
+                // Existing fields (your UI depends on these)
+                id: item.Id,
+                name: item.Values.DisplayName,
+                type: item.Values.Type,
+                thermal: parseFloat(item.Values.thermal),
+                electric: parseFloat(item.Values.electric),
+                chemical: parseFloat(item.Values.chemical),
+                radiation: parseFloat(item.Values.radiation),
+                psi: parseFloat(item.Values.psi),
+                physical: parseFloat(item.Values.physical),
+                weight: parseFloat(item.Values.weight),
+                slots: parseInt(item.Values.slots),
+
+                // NEW: upgrade data
+                upgradeList: item.UpgradeList || [],
+                upgrades
+            };
+        });
+
     } catch (err) {
         console.error(err);
+
         const main = document.querySelector('main');
         const msg = document.createElement('div');
         msg.style.color = 'salmon';
         msg.style.padding = '12px';
-        msg.textContent = 'Error: failed to load armor data. Check network or file path.';
+        msg.textContent = `Error: failed to load armor data. Check network or file path. ${err.message}`;
         if (main) main.insertBefore(msg, main.firstChild);
-        // still populate type selects so user can see the UI structure
+
         populateTypeSelects();
         return;
     }
 
-    // populate types and initialize columns according to the now-loaded data
+    // Rebuild UI
     populateTypeSelects();
     updateColumnForType("A", document.getElementById("armorTypeA")?.value ?? "head/chest");
     updateColumnForType("B", document.getElementById("armorTypeB")?.value ?? "head/chest");
@@ -85,13 +117,16 @@ function populateTypeSelects() {
     });
 }
 
-function updateColumnForType(col, type) {
-    const fullId = `armorFull${col}`;
-    const headId = `armorHead${col}`;
-    const chestId = `armorChest${col}`;
-// Array holding armor objects loaded from `data/armor_full.json`.
-// Each object typically contains: id, name, type (e.g. 'head', 'chest', 'full body'),
-// numeric stats (thermal, electric, chemical, radiation, psi, physical) and weight/slots.
+
+
+
+function updateColumnForType(armorCol, type) {
+    const fullId = `armorFull${armorCol}`;
+    const headId = `armorHead${armorCol}`;
+    const chestId = `armorChest${armorCol}`;
+    // Array holding armor objects loaded from `data/armor_full.json`.
+    // Each object typically contains: id, name, type (e.g. 'head', 'chest', 'full body'),
+    // numeric stats (thermal, electric, chemical, radiation, psi, physical) and weight/slots.
 
     const fullEl = document.getElementById(fullId);
     const headEl = document.getElementById(headId);
@@ -175,37 +210,33 @@ function populateArmorOptions(selectId, type = "head/chest") {
     if (select.options.length > 0) {
         select.selectedIndex = 0;
         updateStats(selectId);
-    } else {
-        const statsDiv = document.getElementById(selectId.endsWith("A") ? "statsA" : "statsB");
-        if (statsDiv) statsDiv.innerHTML = "<em>No items</em>";
-        updateComparison();
     }
 }
 
 function updateStats(selectId) {
     // determine column by last char (A or B)
-    const col = selectId.slice(-1);
-    const statsDiv = document.getElementById(col === "A" ? "statsA" : "statsB");
+    const armorCol = selectId.slice(-1);
+    const statsDiv = document.getElementById(armorCol === "A" ? "statsA" : "statsB");
 
-    const armor = getEffectiveArmor(col);
+    const armor = getEffectiveArmor(armorCol);
 
-    if (!armor) {
-        if (statsDiv) statsDiv.innerHTML = "<em>No selection</em>";
-        updateComparison();
-        return;
-    }
+    // update upgrade grids for this armor
+    renderUpgradesForArmor(armor, armorCol);
+
 
     renderStats(statsDiv, armor);
     updateComparison();
 }
 
-function getEffectiveArmor(column) {
+
+
+function getEffectiveArmor(armorCol) {
     // column: "A" or "B"
-    const typeSel = document.getElementById(`armorType${column}`);
+    const typeSel = document.getElementById(`armorType${armorCol}`);
     const selectedType = typeSel?.value ?? "all";
 
     if (selectedType === "full body") {
-        const id = document.getElementById(`armorFull${column}`)?.value;
+        const id = document.getElementById(`armorFull${armorCol}`)?.value;
         return armorData.find(a => a.id === id) ?? null;
     }
 
@@ -213,16 +244,16 @@ function getEffectiveArmor(column) {
     // If the selected type explicitly requests only head or only chest, return
     // that part only (ignore any hidden/previous selection in the other part).
     if (selectedType === "head") {
-        const headId = document.getElementById(`armorHead${column}`)?.value;
+        const headId = document.getElementById(`armorHead${armorCol}`)?.value;
         return armorData.find(a => a.id === headId) || null;
     }
     if (selectedType === "chest") {
-        const chestId = document.getElementById(`armorChest${column}`)?.value;
+        const chestId = document.getElementById(`armorChest${armorCol}`)?.value;
         return armorData.find(a => a.id === chestId) || null;
     }
 
-    const headId = document.getElementById(`armorHead${column}`)?.value;
-    const chestId = document.getElementById(`armorChest${column}`)?.value;
+    const headId = document.getElementById(`armorHead${armorCol}`)?.value;
+    const chestId = document.getElementById(`armorChest${armorCol}`)?.value;
 
     const head = armorData.find(a => a.id === headId) || null;
     const chest = armorData.find(a => a.id === chestId) || null;
