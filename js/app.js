@@ -216,14 +216,62 @@ function updateStats(selectId) {
     const statsDiv = document.getElementById(armorCol === "A" ? "statsA" : "statsB");
 
     const armor = getEffectiveArmor(armorCol);
+    const pieces = getArmorPieces(armorCol);
 
-    // update upgrade grids for this armor
-    renderUpgradesForArmor(armor, armorCol);
-    //renderUpgradesForArmorPieces([chestArmor, helmetArmor], armorCol);
-
+    // If we have multiple pieces (head + chest), render them separately
+    // Otherwise render a single piece
+    if (pieces && pieces.length > 1) {
+        renderUpgradesForMultiplePieces(pieces, armorCol);
+    } else {
+        renderUpgradesForArmor(armor, armorCol);
+    }
 
     renderStats(statsDiv, armor);
     updateComparison();
+}
+
+/**
+ * Get individual armor pieces for a column.
+ * Returns an array of armor pieces based on selection type.
+ * For "head/chest" type with both selected, returns [head, chest].
+ * For single piece types, returns [armor].
+ */
+function getArmorPieces(armorCol) {
+    const typeSel = document.getElementById(`armorType${armorCol}`);
+    const selectedType = typeSel?.value ?? "head/chest";
+
+    if (selectedType === "full body") {
+        const id = document.getElementById(`armorFull${armorCol}`)?.value;
+        const armor = armorData.find(a => a.id === id);
+        return armor ? [armor] : null;
+    }
+
+    if (selectedType === "head") {
+        const headId = document.getElementById(`armorHead${armorCol}`)?.value;
+        const armor = armorData.find(a => a.id === headId);
+        return armor ? [armor] : null;
+    }
+
+    if (selectedType === "chest") {
+        const chestId = document.getElementById(`armorChest${armorCol}`)?.value;
+        const armor = armorData.find(a => a.id === chestId);
+        return armor ? [armor] : null;
+    }
+
+    // "head/chest" type: return both pieces separately if both selected
+    const headId = document.getElementById(`armorHead${armorCol}`)?.value;
+    const chestId = document.getElementById(`armorChest${armorCol}`)?.value;
+
+    const head = armorData.find(a => a.id === headId) || null;
+    const chest = armorData.find(a => a.id === chestId) || null;
+
+    if (!head && !chest) return null;
+    
+    const pieces = [];
+    if (head) pieces.push(head);
+    if (chest) pieces.push(chest);
+    
+    return pieces.length > 0 ? pieces : null;
 }
 
 function getEffectiveArmor(armorCol) {

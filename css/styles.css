@@ -161,4 +161,37 @@ select {
     letter-spacing: 0.5px;
 }
 
+/* Styles for dynamic upgrade container with multiple armor pieces */
+.upgrade-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
+.armor-piece-section {
+    background: #222;
+    padding: 15px;
+    border-radius: 6px;
+    border-left: 3px solid #666;
+}
+
+.armor-piece-section .piece-title {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    color: #aaf;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.armor-piece-section .upgrade-section {
+    margin-bottom: 10px;
+}
+
+.armor-piece-section .upgrade-section .section-title {
+    margin: 8px 0 6px 0;
+    font-size: 13px;
+    color: #bbb;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}

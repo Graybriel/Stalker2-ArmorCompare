@@ -121,10 +121,8 @@ function buildUpgradeGrids(armor) {
 function renderUpgradesForArmor(armor, armorCol) {
     // Clear grids if no armor selected
     if (!armor) {
-        ["Head", "Neck", "Shoulder", "Chest", "Hip"].forEach(section => {
-            const el = document.getElementById(`grid${section}${armorCol}`);
-            if (el) el.innerHTML = "";
-        });
+        const container = document.getElementById(`upgradeContainer${armorCol}`);
+        if (container) container.innerHTML = "";
         return;
     }
 
@@ -144,6 +142,58 @@ function renderUpgradesForArmor(armor, armorCol) {
         if (container) {
             renderGrid(grids[section], container);
         }
+    });
+}
+
+/**
+ * Render upgrades for multiple armor pieces (head + chest) into a dynamic container.
+ * Called when user selects head/chest type to display both pieces with their independent upgrades.
+ */
+function renderUpgradesForMultiplePieces(pieces, armorCol) {
+    const container = document.getElementById(`upgradeContainer${armorCol}`);
+    if (!container || !pieces || pieces.length === 0) {
+        if (container) container.innerHTML = "";
+        return;
+    }
+
+    container.innerHTML = "";
+
+    // For each armor piece (head, chest, full-body), create a section
+    pieces.forEach(armor => {
+        if (!armor) return;
+
+        // Create a section for this piece
+        const pieceSection = document.createElement("div");
+        pieceSection.className = "armor-piece-section";
+
+        // Title with armor name and type
+        const title = document.createElement("h3");
+        title.className = "piece-title";
+        title.textContent = `${armor.name} (${armor.type})`;
+        pieceSection.appendChild(title);
+
+        // Build upgrade grids for this piece
+        const grids = buildUpgradeGrids(armor);
+
+        // Render each upgrade section
+        Object.entries(grids).forEach(([sectionName, grid]) => {
+            const sectionDiv = document.createElement("div");
+            sectionDiv.className = "upgrade-section";
+
+            const sectionTitle = document.createElement("h4");
+            sectionTitle.className = "section-title";
+            sectionTitle.textContent = sectionName;
+            sectionDiv.appendChild(sectionTitle);
+
+            const gridDiv = document.createElement("div");
+            gridDiv.className = "upgrade-grid";
+            renderGrid(grid, gridDiv);
+            sectionDiv.appendChild(gridDiv);
+
+            pieceSection.appendChild(sectionDiv);
+        });
+
+        container.appendChild(pieceSection);
     });
 }
 //function renderUpgradesForArmorPieces(pieces, armorCol) {
