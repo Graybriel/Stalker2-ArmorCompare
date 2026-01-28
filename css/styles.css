@@ -142,7 +142,21 @@ select {
     border-color: #888;
     font-weight: bold;
     font-size: 0.7rem;
-    display: flex
+    display: flex;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.upgrade-cell.has-upgrade:hover {
+    background: #444;
+    border-color: #aaa;
+}
+
+.upgrade-cell.has-upgrade.selected {
+    background: #4a7c2f;
+    border-color: #7fb069;
+    color: #fff;
+    box-shadow: 0 0 8px rgba(127, 176, 105, 0.4);
 }
 
 .upgrade-section {

@@ -5,13 +5,22 @@ put all the upgrade related javascript here;
 function renderGrid(grid, container) {
     container.innerHTML = ""; // clear previous content
 
-    grid.forEach(row => {
+    grid.forEach((row, rowIdx) => {
         const rowDiv = document.createElement("div");
         rowDiv.className = "upgrade-row";
 
-        row.forEach(cell => {
+        row.forEach((cell, colIdx) => {
             const cellDiv = document.createElement("div");
             cellDiv.className = "upgrade-cell";
+            
+            // Create unique ID for this cell to track selection
+            const cellId = `cell-${rowIdx}-${colIdx}`;
+            cellDiv.id = cellId;
+            
+            // Check if this cell is currently selected
+            if (window.selectedUpgrades && window.selectedUpgrades.has(cellId)) {
+                cellDiv.classList.add("selected");
+            }
 
             if (cell) {
                 // Build label from each effect: "Strike Protection 20%"
@@ -27,6 +36,22 @@ function renderGrid(grid, container) {
 
                 cellDiv.textContent = label;
                 cellDiv.classList.add("has-upgrade");
+                
+                // Add click handler to toggle selection
+                cellDiv.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    cellDiv.classList.toggle("selected");
+                    
+                    if (!window.selectedUpgrades) {
+                        window.selectedUpgrades = new Set();
+                    }
+                    
+                    if (cellDiv.classList.contains("selected")) {
+                        window.selectedUpgrades.add(cellId);
+                    } else {
+                        window.selectedUpgrades.delete(cellId);
+                    }
+                });
             }
 
             rowDiv.appendChild(cellDiv);
@@ -117,6 +142,9 @@ function buildUpgradeGrids(armor) {
 }
 
 function renderUpgradesForArmor(armor, armorCol) {
+    // Clear any previous selections when rendering new armor
+    window.selectedUpgrades = new Set();
+    
     // Clear grids if no armor selected
     if (!armor) {
         const container = document.getElementById(`upgradeContainer${armorCol}`);
@@ -155,6 +183,9 @@ function renderUpgradesForArmor(armor, armorCol) {
  * Called when user selects head/chest type to display both pieces with their independent upgrades.
  */
 function renderUpgradesForMultiplePieces(pieces, armorCol) {
+    // Clear any previous selections when rendering new armor
+    window.selectedUpgrades = new Set();
+    
     const container = document.getElementById(`upgradeContainer${armorCol}`);
     if (!container || !pieces || pieces.length === 0) {
         if (container) container.innerHTML = "";
