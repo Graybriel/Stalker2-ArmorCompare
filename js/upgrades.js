@@ -55,7 +55,7 @@ function buildUpgradeGrids(armor) {
         "EUpgradeTargetPartType::PistolGrip": "Cheek"
     };
 
-    const partMap = armor.type === "helmet"
+    const partMap = armor.type === "head"
         ? helmetPartMap
         : bodyPartMap;
 
