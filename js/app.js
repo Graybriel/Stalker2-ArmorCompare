@@ -117,9 +117,6 @@ function populateTypeSelects() {
     });
 }
 
-
-
-
 function updateColumnForType(armorCol, type) {
     const fullId = `armorFull${armorCol}`;
     const headId = `armorHead${armorCol}`;
@@ -222,13 +219,12 @@ function updateStats(selectId) {
 
     // update upgrade grids for this armor
     renderUpgradesForArmor(armor, armorCol);
+    //renderUpgradesForArmorPieces([chestArmor, helmetArmor], armorCol);
 
 
     renderStats(statsDiv, armor);
     updateComparison();
 }
-
-
 
 function getEffectiveArmor(armorCol) {
     // column: "A" or "B"

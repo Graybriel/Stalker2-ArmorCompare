@@ -39,13 +39,25 @@ function renderGrid(grid, container) {
 function buildUpgradeGrids(armor) {
     if (!armor || !armor.upgrades) return {};
 
-    const partMap = {
+    const bodyPartMap = {
         "EUpgradeTargetPartType::Stock": "Head",
         "EUpgradeTargetPartType::Barrel": "Neck",
         "EUpgradeTargetPartType::Handguard": "Shoulder",
         "EUpgradeTargetPartType::Body": "Chest",
         "EUpgradeTargetPartType::PistolGrip": "Hip"
     };
+
+    const helmetPartMap = {
+        "EUpgradeTargetPartType::Stock": "Crown",
+        "EUpgradeTargetPartType::Barrel": "Nose",
+        "EUpgradeTargetPartType::Handguard": "Forehead",
+        "EUpgradeTargetPartType::Body": "Eyebrow",
+        "EUpgradeTargetPartType::PistolGrip": "Cheek"
+    };
+
+    const partMap = armor.type === "helmet"
+        ? helmetPartMap
+        : bodyPartMap;
 
     const emptyGrid = () => [
         [null, null, null],
@@ -134,6 +146,30 @@ function renderUpgradesForArmor(armor, armorCol) {
         }
     });
 }
+//function renderUpgradesForArmorPieces(pieces, armorCol) {
+//    const container = document.getElementById(`upgradeSections${armorCol}`);
+//    container.innerHTML = "";
+//
+//    pieces.forEach(piece => {
+//        const sectionDiv = document.createElement("div");
+//        sectionDiv.className = "upgrade-section";
+//
+//        const title = document.createElement("h3");
+//        title.textContent = piece.displayName;
+//        sectionDiv.appendChild(title);
+//
+//        const grids = buildUpgradeGrids(piece);
+//
+//        Object.entries(grids).forEach(([sectionName, grid]) => {
+//            const gridDiv = document.createElement("div");
+//            gridDiv.className = "upgrade-grid";
+//            renderGrid(grid, gridDiv, armorCol);
+//            sectionDiv.appendChild(gridDiv);
+//        });
+//
+//        container.appendChild(sectionDiv);
+//    });
+//}
 
 function parsePositionFromId(id) {
     // Expect pattern ..._<col>_<vert> at the end
