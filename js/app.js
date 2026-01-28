@@ -222,8 +222,12 @@ function updateStats(selectId) {
     // Otherwise render a single piece
     if (pieces && pieces.length > 1) {
         renderUpgradesForMultiplePieces(pieces, armorCol);
-    } else {
+    } else if (armor) {
         renderUpgradesForArmor(armor, armorCol);
+    } else {
+        // No armor selected, clear upgrades
+        const container = document.getElementById(`upgradeContainer${armorCol}`);
+        if (container) container.innerHTML = "";
     }
 
     renderStats(statsDiv, armor);

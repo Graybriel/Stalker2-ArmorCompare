@@ -65,13 +65,11 @@ function buildUpgradeGrids(armor) {
         [null, null, null]
     ];
 
-    const grids = {
-        "Head": emptyGrid(),
-        "Neck": emptyGrid(),
-        "Shoulder": emptyGrid(),
-        "Chest": emptyGrid(),
-        "Hip": emptyGrid()
-    };
+    // Initialize grids with keys from partMap (not hardcoded)
+    const grids = {};
+    Object.values(partMap).forEach(partName => {
+        grids[partName] = emptyGrid();
+    });
 
     // Group upgrades by part + column, using ID to derive column/vertical
     const byPartAndCol = {};
@@ -127,21 +125,28 @@ function renderUpgradesForArmor(armor, armorCol) {
     }
 
     const grids = buildUpgradeGrids(armor);
+    if (Object.keys(grids).length === 0) return;
 
-    // Render each section into its corresponding DOM element
-    const map = {
-        "Head": `gridHead${armorCol}`,
-        "Neck": `gridNeck${armorCol}`,
-        "Shoulder": `gridShoulder${armorCol}`,
-        "Chest": `gridChest${armorCol}`,
-        "Hip": `gridHip${armorCol}`
-    };
+    const container = document.getElementById(`upgradeContainer${armorCol}`);
+    if (!container) return;
 
-    Object.entries(map).forEach(([section, elementId]) => {
-        const container = document.getElementById(elementId);
-        if (container) {
-            renderGrid(grids[section], container);
-        }
+    container.innerHTML = '';
+
+    Object.entries(grids).forEach(([section, grid]) => {
+        const sectionDiv = document.createElement('div');
+        sectionDiv.className = 'upgrade-section';
+        
+        const titleDiv = document.createElement('div');
+        titleDiv.className = 'section-title';
+        titleDiv.textContent = section;
+        sectionDiv.appendChild(titleDiv);
+
+        const gridDiv = document.createElement('div');
+        gridDiv.className = 'upgrade-grid';
+        renderGrid(grid, gridDiv);
+        sectionDiv.appendChild(gridDiv);
+
+        container.appendChild(sectionDiv);
     });
 }
 
