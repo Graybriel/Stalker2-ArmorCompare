@@ -28,7 +28,11 @@ async function loadArmorData() {
                         id: e.SID,
                         type: e.Type,
                         text: e.Text,
-                        max: parseFloat(e.Max)
+                        // support different casing in source data
+                        effectedStat: e.effectedStat || e.EffectedStat || e.Effectedstat || e.effectedstat || null,
+                        // record numeric value and whether it's a percent (e.g. "15%")
+                        max: parseFloat(String(e.Max).replace(/[^0-9.-]+/g, '')),
+                        isPercent: /%/.test(String(e.Max))
                     }));
 
                 return {
@@ -116,9 +120,6 @@ function populateTypeSelects() {
         };
     });
 }
-
-
-
 
 function updateColumnForType(armorCol, type) {
     const fullId = `armorFull${armorCol}`;
@@ -219,16 +220,84 @@ function updateStats(selectId) {
     const statsDiv = document.getElementById(armorCol === "A" ? "statsA" : "statsB");
 
     const armor = getEffectiveArmor(armorCol);
+    const pieces = getArmorPieces(armorCol);
 
-    // update upgrade grids for this armor
-    renderUpgradesForArmor(armor, armorCol);
-
+    // If we have multiple pieces (head + chest), render them separately
+    // Otherwise render a single piece
+    if (pieces && pieces.length > 1) {
+        renderUpgradesForMultiplePieces(pieces, armorCol);
+    } else if (armor) {
+        renderUpgradesForArmor(armor, armorCol);
+    } else {
+        // No armor selected, clear upgrades
+        const container = document.getElementById(`upgradeContainer${armorCol}`);
+        if (container) container.innerHTML = "";
+    }
 
     renderStats(statsDiv, armor);
     updateComparison();
 }
 
+/**
+ * Update stats display when upgrades are selected/deselected
+ */
+function updateStatsWithSelectedUpgrades() {
+    // Update column A stats
+    const statsDivA = document.getElementById("statsA");
+    const armorA = getEffectiveArmor("A");
+    renderStats(statsDivA, armorA, true, 'A');
 
+    // Update column B stats
+    const statsDivB = document.getElementById("statsB");
+    const armorB = getEffectiveArmor("B");
+    renderStats(statsDivB, armorB, true, 'B');
+
+    updateComparison();
+}
+
+/**
+ * Get individual armor pieces for a column.
+ * Returns an array of armor pieces based on selection type.
+ * For "head/chest" type with both selected, returns [head, chest].
+ * For single piece types, returns [armor].
+ */
+function getArmorPieces(armorCol) {
+    const typeSel = document.getElementById(`armorType${armorCol}`);
+    const selectedType = typeSel?.value ?? "head/chest";
+
+    if (selectedType === "full body") {
+        const id = document.getElementById(`armorFull${armorCol}`)?.value;
+        const armor = armorData.find(a => a.id === id);
+        return armor ? [armor] : null;
+    }
+
+    if (selectedType === "head") {
+        const headId = document.getElementById(`armorHead${armorCol}`)?.value;
+        const armor = armorData.find(a => a.id === headId);
+        return armor ? [armor] : null;
+    }
+
+    if (selectedType === "chest") {
+        const chestId = document.getElementById(`armorChest${armorCol}`)?.value;
+        const armor = armorData.find(a => a.id === chestId);
+        return armor ? [armor] : null;
+    }
+
+    // "head/chest" type: return both pieces separately if both selected
+    const headId = document.getElementById(`armorHead${armorCol}`)?.value;
+    const chestId = document.getElementById(`armorChest${armorCol}`)?.value;
+
+    const head = armorData.find(a => a.id === headId) || null;
+    const chest = armorData.find(a => a.id === chestId) || null;
+
+    if (!head && !chest) return null;
+    
+    const pieces = [];
+    if (head) pieces.push(head);
+    if (chest) pieces.push(chest);
+    
+    return pieces.length > 0 ? pieces : null;
+}
 
 function getEffectiveArmor(armorCol) {
     // column: "A" or "B"

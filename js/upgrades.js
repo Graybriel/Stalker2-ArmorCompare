@@ -5,15 +5,31 @@ put all the upgrade related javascript here;
 function renderGrid(grid, container) {
     container.innerHTML = ""; // clear previous content
 
-    grid.forEach(row => {
+    grid.forEach((row, rowIdx) => {
         const rowDiv = document.createElement("div");
         rowDiv.className = "upgrade-row";
 
-        row.forEach(cell => {
+        row.forEach((cell, colIdx) => {
             const cellDiv = document.createElement("div");
             cellDiv.className = "upgrade-cell";
+            
+            // Create unique ID for this cell to track selection
+            const cellId = `cell-${rowIdx}-${colIdx}`;
+            cellDiv.id = cellId;
 
             if (cell) {
+                // Use the upgrade's id as a stable selection key
+                const upgradeId = cell.id || `${cellId}-upg`;
+                cellDiv.dataset.upgradeId = upgradeId;
+
+                // Store the upgrade object data on the cell element
+                cellDiv.dataset.upgrade = JSON.stringify(cell);
+                
+                // If already selected (by upgrade id), mark state
+                if (window.selectedUpgrades && window.selectedUpgrades.has(upgradeId)) {
+                    cellDiv.classList.add("selected");
+                }
+
                 // Build label from each effect: "Strike Protection 20%"
                 const effectLabels = cell.effects?.map(e => {
                     const max = isNaN(e.max) ? "" : ` ${e.max}%`;
@@ -27,6 +43,40 @@ function renderGrid(grid, container) {
 
                 cellDiv.textContent = label;
                 cellDiv.classList.add("has-upgrade");
+                
+                // Add click handler to toggle selection (use upgradeId + column to disambiguate)
+                cellDiv.addEventListener("click", (e) => {
+                    e.stopPropagation();
+                    if (!window.selectedUpgrades) window.selectedUpgrades = new Set();
+
+                    // Determine which column this cell belongs to by walking up
+                    let ancestor = cellDiv;
+                    let col = null;
+                    while (ancestor && ancestor !== document) {
+                        if (ancestor.id === 'upgradeContainerA') { col = 'A'; break; }
+                        if (ancestor.id === 'upgradeContainerB') { col = 'B'; break; }
+                        ancestor = ancestor.parentNode;
+                    }
+                    if (!col) col = 'A'; // fallback
+
+                    const selectionKey = `${col}:${upgradeId}`;
+                    cellDiv.dataset.selectionKey = selectionKey;
+
+                    const selectedSet = window.selectedUpgrades;
+                    if (selectedSet.has(selectionKey)) {
+                        selectedSet.delete(selectionKey);
+                        cellDiv.classList.remove("selected");
+                    } else {
+                        selectedSet.add(selectionKey);
+                        cellDiv.classList.add("selected");
+                    }
+
+                    // Update stats to reflect selected upgrades
+                    updateStatsWithSelectedUpgrades();
+                });
+            } else {
+                // empty cell — ensure it doesn't look clickable
+                cellDiv.classList.add('blank');
             }
 
             rowDiv.appendChild(cellDiv);
@@ -39,7 +89,7 @@ function renderGrid(grid, container) {
 function buildUpgradeGrids(armor) {
     if (!armor || !armor.upgrades) return {};
 
-    const partMap = {
+    const bodyPartMap = {
         "EUpgradeTargetPartType::Stock": "Head",
         "EUpgradeTargetPartType::Barrel": "Neck",
         "EUpgradeTargetPartType::Handguard": "Shoulder",
@@ -47,19 +97,29 @@ function buildUpgradeGrids(armor) {
         "EUpgradeTargetPartType::PistolGrip": "Hip"
     };
 
+    const helmetPartMap = {
+        "EUpgradeTargetPartType::Stock": "Crown",
+        "EUpgradeTargetPartType::Barrel": "Nose",
+        "EUpgradeTargetPartType::Handguard": "Forehead",
+        "EUpgradeTargetPartType::Body": "Eyebrow",
+        "EUpgradeTargetPartType::PistolGrip": "Cheek"
+    };
+
+    const partMap = armor.type === "head"
+        ? helmetPartMap
+        : bodyPartMap;
+
     const emptyGrid = () => [
         [null, null, null],
         [null, null, null],
         [null, null, null]
     ];
 
-    const grids = {
-        "Head": emptyGrid(),
-        "Neck": emptyGrid(),
-        "Shoulder": emptyGrid(),
-        "Chest": emptyGrid(),
-        "Hip": emptyGrid()
-    };
+    // Initialize grids with keys from partMap (not hardcoded)
+    const grids = {};
+    Object.values(partMap).forEach(partName => {
+        grids[partName] = emptyGrid();
+    });
 
     // Group upgrades by part + column, using ID to derive column/vertical
     const byPartAndCol = {};
@@ -107,33 +167,120 @@ function buildUpgradeGrids(armor) {
 }
 
 function renderUpgradesForArmor(armor, armorCol) {
+    // Clear any previous selections when rendering new armor
+    window.selectedUpgrades = new Set();
+    
     // Clear grids if no armor selected
     if (!armor) {
-        ["Head", "Neck", "Shoulder", "Chest", "Hip"].forEach(section => {
-            const el = document.getElementById(`grid${section}${armorCol}`);
-            if (el) el.innerHTML = "";
-        });
+        const container = document.getElementById(`upgradeContainer${armorCol}`);
+        if (container) container.innerHTML = "";
         return;
     }
 
     const grids = buildUpgradeGrids(armor);
+    if (Object.keys(grids).length === 0) return;
 
-    // Render each section into its corresponding DOM element
-    const map = {
-        "Head": `gridHead${armorCol}`,
-        "Neck": `gridNeck${armorCol}`,
-        "Shoulder": `gridShoulder${armorCol}`,
-        "Chest": `gridChest${armorCol}`,
-        "Hip": `gridHip${armorCol}`
-    };
+    const container = document.getElementById(`upgradeContainer${armorCol}`);
+    if (!container) return;
 
-    Object.entries(map).forEach(([section, elementId]) => {
-        const container = document.getElementById(elementId);
-        if (container) {
-            renderGrid(grids[section], container);
-        }
+    container.innerHTML = '';
+
+    Object.entries(grids).forEach(([section, grid]) => {
+        const sectionDiv = document.createElement('div');
+        sectionDiv.className = 'upgrade-section';
+        
+        const titleDiv = document.createElement('div');
+        titleDiv.className = 'section-title';
+        titleDiv.textContent = section;
+        sectionDiv.appendChild(titleDiv);
+
+        const gridDiv = document.createElement('div');
+        gridDiv.className = 'upgrade-grid';
+        renderGrid(grid, gridDiv);
+        sectionDiv.appendChild(gridDiv);
+
+        container.appendChild(sectionDiv);
     });
 }
+
+/**
+ * Render upgrades for multiple armor pieces (head + chest) into a dynamic container.
+ * Called when user selects head/chest type to display both pieces with their independent upgrades.
+ */
+function renderUpgradesForMultiplePieces(pieces, armorCol) {
+    // Clear any previous selections when rendering new armor
+    window.selectedUpgrades = new Set();
+    
+    const container = document.getElementById(`upgradeContainer${armorCol}`);
+    if (!container || !pieces || pieces.length === 0) {
+        if (container) container.innerHTML = "";
+        return;
+    }
+
+    container.innerHTML = "";
+
+    // For each armor piece (head, chest, full-body), create a section
+    pieces.forEach(armor => {
+        if (!armor) return;
+
+        // Create a section for this piece
+        const pieceSection = document.createElement("div");
+        pieceSection.className = "armor-piece-section";
+
+        // Title with armor name and type
+        const title = document.createElement("h3");
+        title.className = "piece-title";
+        title.textContent = `${armor.name} (${armor.type})`;
+        pieceSection.appendChild(title);
+
+        // Build upgrade grids for this piece
+        const grids = buildUpgradeGrids(armor);
+
+        // Render each upgrade section
+        Object.entries(grids).forEach(([sectionName, grid]) => {
+            const sectionDiv = document.createElement("div");
+            sectionDiv.className = "upgrade-section";
+
+            const sectionTitle = document.createElement("h4");
+            sectionTitle.className = "section-title";
+            sectionTitle.textContent = sectionName;
+            sectionDiv.appendChild(sectionTitle);
+
+            const gridDiv = document.createElement("div");
+            gridDiv.className = "upgrade-grid";
+            renderGrid(grid, gridDiv);
+            sectionDiv.appendChild(gridDiv);
+
+            pieceSection.appendChild(sectionDiv);
+        });
+
+        container.appendChild(pieceSection);
+    });
+}
+//function renderUpgradesForArmorPieces(pieces, armorCol) {
+//    const container = document.getElementById(`upgradeSections${armorCol}`);
+//    container.innerHTML = "";
+//
+//    pieces.forEach(piece => {
+//        const sectionDiv = document.createElement("div");
+//        sectionDiv.className = "upgrade-section";
+//
+//        const title = document.createElement("h3");
+//        title.textContent = piece.displayName;
+//        sectionDiv.appendChild(title);
+//
+//        const grids = buildUpgradeGrids(piece);
+//
+//        Object.entries(grids).forEach(([sectionName, grid]) => {
+//            const gridDiv = document.createElement("div");
+//            gridDiv.className = "upgrade-grid";
+//            renderGrid(grid, gridDiv, armorCol);
+//            sectionDiv.appendChild(gridDiv);
+//        });
+//
+//        container.appendChild(sectionDiv);
+//    });
+//}
 
 function parsePositionFromId(id) {
     // Expect pattern ..._<col>_<vert> at the end
@@ -145,3 +292,126 @@ function parsePositionFromId(id) {
 
     return { col: isNaN(col) ? 0 : col - 1, vert: isNaN(vert) ? null : vert };
 }
+
+/**
+ * Get total effects from all selected upgrades
+ */
+function getSelectedUpgradeEffects() {
+    if (!window.selectedUpgrades || window.selectedUpgrades.size === 0) {
+        console.debug('getSelectedUpgradeEffects: no selected upgrades');
+        return {};
+    }
+
+    console.debug('getSelectedUpgradeEffects:selectedUpgrades', Array.from(window.selectedUpgrades));
+
+    const totalEffects = {};
+
+    // Iterate through all selection keys of the form "<col>:<upgradeId>"
+    window.selectedUpgrades.forEach(selectionKey => {
+        console.debug('checking selectionKey', selectionKey);
+        const parts = String(selectionKey).split(":");
+        const col = parts.length === 2 ? parts[0] : 'A';
+        const upgradeId = parts.length === 2 ? parts[1] : parts[0];
+
+        // Look for the matching element inside the appropriate column container
+        const container = document.getElementById(`upgradeContainer${col}`);
+        const cellElement = container ? container.querySelector(`[data-upgrade-id="${upgradeId}"]`) : null;
+
+        if (!cellElement) {
+            console.debug('no element for selectionKey', selectionKey);
+            // Clean up stale selection
+            window.selectedUpgrades.delete(selectionKey);
+            return;
+        }
+
+        if (!cellElement.dataset.upgrade) {
+            console.debug('no dataset.upgrade for', selectionKey, cellElement);
+            // Clean up stale selection
+            window.selectedUpgrades.delete(selectionKey);
+            return;
+        }
+
+        try {
+            const upgrade = JSON.parse(cellElement.dataset.upgrade);
+            console.debug('parsed upgrade', upgrade);
+            if (!upgrade.effects || upgrade.effects.length === 0) {
+                console.debug('no effects on upgrade', upgrade);
+                return;
+            }
+
+            // Add each effect to the total (separating percent vs absolute)
+            upgrade.effects.forEach(effect => {
+                console.debug('effect', effect);
+                const key = effect.effectedStat || effect.id;
+                if (!totalEffects[key]) {
+                    totalEffects[key] = { text: effect.text, id: effect.id, percent: 0, absolute: 0, max: effect.max };
+                }
+
+                const value = isNaN(effect.max) ? 0 : parseFloat(effect.max);
+                if (effect.isPercent) {
+                    totalEffects[key].percent += value;
+                } else {
+                    totalEffects[key].absolute += value;
+                }
+            });
+        } catch (e) {
+            console.error("Failed to parse upgrade data", e);
+        }
+    });
+
+    console.debug('totalEffects', totalEffects);
+    return totalEffects;
+}
+
+// Expose function globally
+window.getSelectedUpgradeEffects = getSelectedUpgradeEffects;
+
+/**
+ * Aggregate selected upgrade effects separately for Column A and Column B.
+ * Returns an object: { A: { statKey: { total, ... } }, B: { ... } }
+ */
+function getSelectedUpgradeEffectsByColumn() {
+    const result = { A: {}, B: {} };
+    if (!window.selectedUpgrades || window.selectedUpgrades.size === 0) return result;
+
+    window.selectedUpgrades.forEach(selectionKey => {
+        const parts = String(selectionKey).split(":");
+        const col = parts.length === 2 ? parts[0] : 'A';
+        const upgradeId = parts.length === 2 ? parts[1] : parts[0];
+
+        const container = document.getElementById(`upgradeContainer${col}`);
+        if (!container) {
+            // stale - remove
+            window.selectedUpgrades.delete(selectionKey);
+            return;
+        }
+
+        const el = container.querySelector(`[data-upgrade-id="${upgradeId}"]`);
+        if (!el || !el.dataset.upgrade) {
+            // stale - remove
+            window.selectedUpgrades.delete(selectionKey);
+            return;
+        }
+
+        try {
+            const upgrade = JSON.parse(el.dataset.upgrade);
+            if (!upgrade.effects) return;
+            upgrade.effects.forEach(effect => {
+                const key = effect.effectedStat || effect.id;
+                const value = isNaN(effect.max) ? 0 : parseFloat(effect.max);
+                if (!result[col][key]) result[col][key] = { text: effect.text, id: effect.id, percent: 0, absolute: 0, max: effect.max };
+                if (effect.isPercent) {
+                    result[col][key].percent += value;
+                } else {
+                    result[col][key].absolute += value;
+                }
+            });
+        } catch (e) {
+            console.error('Failed to parse upgrade for column aggregation', e);
+        }
+    });
+
+    return result;
+}
+
+window.getSelectedUpgradeEffectsByColumn = getSelectedUpgradeEffectsByColumn;

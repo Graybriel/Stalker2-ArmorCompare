@@ -142,7 +142,21 @@ select {
     border-color: #888;
     font-weight: bold;
     font-size: 0.7rem;
-    display: flex
+    display: flex;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.upgrade-cell.has-upgrade:hover {
+    background: #444;
+    border-color: #aaa;
+}
+
+.upgrade-cell.has-upgrade.selected {
+    background: #4a7c2f;
+    border-color: #7fb069;
+    color: #fff;
+    box-shadow: 0 0 8px rgba(127, 176, 105, 0.4);
 }
 
 .upgrade-section {
@@ -161,4 +175,37 @@ select {
     letter-spacing: 0.5px;
 }
 
+/* Styles for dynamic upgrade container with multiple armor pieces */
+.upgrade-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
 
+.armor-piece-section {
+    background: #222;
+    padding: 15px;
+    border-radius: 6px;
+    border-left: 3px solid #666;
+}
+
+.armor-piece-section .piece-title {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    color: #aaf;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.armor-piece-section .upgrade-section {
+    margin-bottom: 10px;
+}
+
+.armor-piece-section .upgrade-section .section-title {
+    margin: 8px 0 6px 0;
+    font-size: 13px;
+    color: #bbb;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
