@@ -28,7 +28,11 @@ async function loadArmorData() {
                         id: e.SID,
                         type: e.Type,
                         text: e.Text,
-                        max: parseFloat(e.Max)
+                        // support different casing in source data
+                        effectedStat: e.effectedStat || e.EffectedStat || e.Effectedstat || e.effectedstat || null,
+                        // record numeric value and whether it's a percent (e.g. "15%")
+                        max: parseFloat(String(e.Max).replace(/[^0-9.-]+/g, '')),
+                        isPercent: /%/.test(String(e.Max))
                     }));
 
                 return {
@@ -231,6 +235,23 @@ function updateStats(selectId) {
     }
 
     renderStats(statsDiv, armor);
+    updateComparison();
+}
+
+/**
+ * Update stats display when upgrades are selected/deselected
+ */
+function updateStatsWithSelectedUpgrades() {
+    // Update column A stats
+    const statsDivA = document.getElementById("statsA");
+    const armorA = getEffectiveArmor("A");
+    renderStats(statsDivA, armorA, true, 'A');
+
+    // Update column B stats
+    const statsDivB = document.getElementById("statsB");
+    const armorB = getEffectiveArmor("B");
+    renderStats(statsDivB, armorB, true, 'B');
+
     updateComparison();
 }
 

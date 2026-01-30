@@ -2,19 +2,53 @@
  * Render the stats for a single armor object into the provided container.
  * If the armor parameter is a combined object (head+chest), numeric stats
  * will already be summed by `getEffectiveArmor`.
+ * If includeUpgrades is true, also adds effects from selected upgrade cells.
  */
-function renderStats(container, armor) {
+function renderStats(container, armor, includeUpgrades = false, col = null) {
     if (!container) return;
     container.innerHTML = "";
 
     const skipKeys = new Set(["id", "name", "type", "upgradeList", "upgrades"]);
     const statKeys = Object.keys(armor).filter(k => !skipKeys.has(k));
 
+    // Create a copy of armor stats to potentially modify with upgrade effects
+    const displayStats = { ...armor };
+
+    // If we should include selected upgrades, add their effects
+    if (includeUpgrades) {
+        // Prefer per-column effects if available and a column is specified
+        let selectedEffects = {};
+        if (col && window.getSelectedUpgradeEffectsByColumn) {
+            const byCol = window.getSelectedUpgradeEffectsByColumn();
+            selectedEffects = byCol[col] || {};
+        } else if (window.getSelectedUpgradeEffects) {
+            selectedEffects = window.getSelectedUpgradeEffects();
+        }
+
+        // Add upgrade effects to display stats
+        // The selectedEffects object uses effectedStat as the key and separates percent vs absolute
+        for (const [statKey, effect] of Object.entries(selectedEffects)) {
+            const abs = effect.absolute || 0;
+            const pct = effect.percent || 0;
+
+            if (abs === 0 && pct === 0) continue;
+
+            // read numeric base value (fallback to 0)
+            const currentVal = parseFloat(String(displayStats[statKey] ?? 0).replace(/[^0-9.-]+/g, '')) || 0;
+
+            // apply absolute additions then percent multipliers
+            let newVal = currentVal + abs;
+            if (pct) newVal = newVal * (1 + pct / 100);
+
+            displayStats[statKey] = newVal;
+        }
+    }
+
     for (const stat of statKeys) {
         const row = document.createElement("div");
         row.className = "stat-row";
 
-        const rawVal = armor[stat];
+        const rawVal = displayStats[stat];
         let displayVal;
         if (typeof rawVal === 'number' && Number.isFinite(rawVal)) {
             displayVal = window.roundTo ? window.roundTo(rawVal, 1).toFixed(1) : roundTo(rawVal, 1).toFixed(1);
@@ -55,14 +89,39 @@ function updateComparison() {
     const statsA = Object.fromEntries(Object.entries(A).filter(([k]) => !skipKeys.has(k)));
     const statsB = Object.fromEntries(Object.entries(B).filter(([k]) => !skipKeys.has(k)));
 
-    const keys = new Set([...Object.keys(statsA), ...Object.keys(statsB)]);
+    // include selected upgrade effects per-column when computing comparison bars
+    const effectsByCol = window.getSelectedUpgradeEffectsByColumn ? window.getSelectedUpgradeEffectsByColumn() : { A: {}, B: {} };
 
-    // compute max dynamically per-stat (handles 'weight' specially)
+    // create adjusted stats copies so we don't mutate original objects
+    const statsAAdjusted = { ...statsA };
+    const statsBAdjusted = { ...statsB };
+
+    for (const [k, eff] of Object.entries(effectsByCol.A || {})) {
+        const cur = parseFloat(String(statsAAdjusted[k] ?? 0).replace(/[^0-9.-]+/g, '')) || 0;
+        const abs = eff.absolute || 0;
+        const pct = eff.percent || 0;
+        let newVal = cur + abs;
+        if (pct) newVal = newVal * (1 + pct / 100);
+        statsAAdjusted[k] = newVal;
+    }
+    for (const [k, eff] of Object.entries(effectsByCol.B || {})) {
+        const cur = parseFloat(String(statsBAdjusted[k] ?? 0).replace(/[^0-9.-]+/g, '')) || 0;
+        const abs = eff.absolute || 0;
+        const pct = eff.percent || 0;
+        let newVal = cur + abs;
+        if (pct) newVal = newVal * (1 + pct / 100);
+        statsBAdjusted[k] = newVal;
+    }
+
+    const keys = new Set([...Object.keys(statsAAdjusted), ...Object.keys(statsBAdjusted)]);
+
+    // compute max dynamically per-stat (handles 'weight' and 'slots' specially)
     for (const stat of keys) {
         let max = 100.0;
         if (stat === "weight") { max = 20; }
-        const aVal = Number(statsA[stat] ?? 0) || 0;
-        const bVal = Number(statsB[stat] ?? 0) || 0;
+        if (stat === "slots") { max = 5; }
+        const aVal = Number(statsAAdjusted[stat] ?? 0) || 0;
+        const bVal = Number(statsBAdjusted[stat] ?? 0) || 0;
 
         const aPct = (aVal / max) * 100;
         const bPct = (bVal / max) * 100;

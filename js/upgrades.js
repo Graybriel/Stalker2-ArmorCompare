@@ -16,13 +16,20 @@ function renderGrid(grid, container) {
             // Create unique ID for this cell to track selection
             const cellId = `cell-${rowIdx}-${colIdx}`;
             cellDiv.id = cellId;
-            
-            // Check if this cell is currently selected
-            if (window.selectedUpgrades && window.selectedUpgrades.has(cellId)) {
-                cellDiv.classList.add("selected");
-            }
 
             if (cell) {
+                // Use the upgrade's id as a stable selection key
+                const upgradeId = cell.id || `${cellId}-upg`;
+                cellDiv.dataset.upgradeId = upgradeId;
+
+                // Store the upgrade object data on the cell element
+                cellDiv.dataset.upgrade = JSON.stringify(cell);
+                
+                // If already selected (by upgrade id), mark state
+                if (window.selectedUpgrades && window.selectedUpgrades.has(upgradeId)) {
+                    cellDiv.classList.add("selected");
+                }
+
                 // Build label from each effect: "Strike Protection 20%"
                 const effectLabels = cell.effects?.map(e => {
                     const max = isNaN(e.max) ? "" : ` ${e.max}%`;
@@ -37,21 +44,39 @@ function renderGrid(grid, container) {
                 cellDiv.textContent = label;
                 cellDiv.classList.add("has-upgrade");
                 
-                // Add click handler to toggle selection
+                // Add click handler to toggle selection (use upgradeId + column to disambiguate)
                 cellDiv.addEventListener("click", (e) => {
                     e.stopPropagation();
-                    cellDiv.classList.toggle("selected");
-                    
-                    if (!window.selectedUpgrades) {
-                        window.selectedUpgrades = new Set();
+                    if (!window.selectedUpgrades) window.selectedUpgrades = new Set();
+
+                    // Determine which column this cell belongs to by walking up
+                    let ancestor = cellDiv;
+                    let col = null;
+                    while (ancestor && ancestor !== document) {
+                        if (ancestor.id === 'upgradeContainerA') { col = 'A'; break; }
+                        if (ancestor.id === 'upgradeContainerB') { col = 'B'; break; }
+                        ancestor = ancestor.parentNode;
                     }
-                    
-                    if (cellDiv.classList.contains("selected")) {
-                        window.selectedUpgrades.add(cellId);
+                    if (!col) col = 'A'; // fallback
+
+                    const selectionKey = `${col}:${upgradeId}`;
+                    cellDiv.dataset.selectionKey = selectionKey;
+
+                    const selectedSet = window.selectedUpgrades;
+                    if (selectedSet.has(selectionKey)) {
+                        selectedSet.delete(selectionKey);
+                        cellDiv.classList.remove("selected");
                     } else {
-                        window.selectedUpgrades.delete(cellId);
+                        selectedSet.add(selectionKey);
+                        cellDiv.classList.add("selected");
                     }
+
+                    // Update stats to reflect selected upgrades
+                    updateStatsWithSelectedUpgrades();
                 });
+            } else {
+                // empty cell — ensure it doesn't look clickable
+                cellDiv.classList.add('blank');
             }
 
             rowDiv.appendChild(cellDiv);
@@ -267,3 +292,126 @@ function parsePositionFromId(id) {
 
     return { col: isNaN(col) ? 0 : col - 1, vert: isNaN(vert) ? null : vert };
 }
+
+/**
+ * Get total effects from all selected upgrades
+ */
+function getSelectedUpgradeEffects() {
+    if (!window.selectedUpgrades || window.selectedUpgrades.size === 0) {
+        console.debug('getSelectedUpgradeEffects: no selected upgrades');
+        return {};
+    }
+
+    console.debug('getSelectedUpgradeEffects:selectedUpgrades', Array.from(window.selectedUpgrades));
+
+    const totalEffects = {};
+
+    // Iterate through all selection keys of the form "<col>:<upgradeId>"
+    window.selectedUpgrades.forEach(selectionKey => {
+        console.debug('checking selectionKey', selectionKey);
+        const parts = String(selectionKey).split(":");
+        const col = parts.length === 2 ? parts[0] : 'A';
+        const upgradeId = parts.length === 2 ? parts[1] : parts[0];
+
+        // Look for the matching element inside the appropriate column container
+        const container = document.getElementById(`upgradeContainer${col}`);
+        const cellElement = container ? container.querySelector(`[data-upgrade-id="${upgradeId}"]`) : null;
+
+        if (!cellElement) {
+            console.debug('no element for selectionKey', selectionKey);
+            // Clean up stale selection
+            window.selectedUpgrades.delete(selectionKey);
+            return;
+        }
+
+        if (!cellElement.dataset.upgrade) {
+            console.debug('no dataset.upgrade for', selectionKey, cellElement);
+            // Clean up stale selection
+            window.selectedUpgrades.delete(selectionKey);
+            return;
+        }
+
+        try {
+            const upgrade = JSON.parse(cellElement.dataset.upgrade);
+            console.debug('parsed upgrade', upgrade);
+            if (!upgrade.effects || upgrade.effects.length === 0) {
+                console.debug('no effects on upgrade', upgrade);
+                return;
+            }
+
+            // Add each effect to the total (separating percent vs absolute)
+            upgrade.effects.forEach(effect => {
+                console.debug('effect', effect);
+                const key = effect.effectedStat || effect.id;
+                if (!totalEffects[key]) {
+                    totalEffects[key] = { text: effect.text, id: effect.id, percent: 0, absolute: 0, max: effect.max };
+                }
+
+                const value = isNaN(effect.max) ? 0 : parseFloat(effect.max);
+                if (effect.isPercent) {
+                    totalEffects[key].percent += value;
+                } else {
+                    totalEffects[key].absolute += value;
+                }
+            });
+        } catch (e) {
+            console.error("Failed to parse upgrade data", e);
+        }
+    });
+
+    console.debug('totalEffects', totalEffects);
+    return totalEffects;
+}
+
+// Expose function globally
+window.getSelectedUpgradeEffects = getSelectedUpgradeEffects;
+
+/**
+ * Aggregate selected upgrade effects separately for Column A and Column B.
+ * Returns an object: { A: { statKey: { total, ... } }, B: { ... } }
+ */
+function getSelectedUpgradeEffectsByColumn() {
+    const result = { A: {}, B: {} };
+    if (!window.selectedUpgrades || window.selectedUpgrades.size === 0) return result;
+
+    window.selectedUpgrades.forEach(selectionKey => {
+        const parts = String(selectionKey).split(":");
+        const col = parts.length === 2 ? parts[0] : 'A';
+        const upgradeId = parts.length === 2 ? parts[1] : parts[0];
+
+        const container = document.getElementById(`upgradeContainer${col}`);
+        if (!container) {
+            // stale - remove
+            window.selectedUpgrades.delete(selectionKey);
+            return;
+        }
+
+        const el = container.querySelector(`[data-upgrade-id="${upgradeId}"]`);
+        if (!el || !el.dataset.upgrade) {
+            // stale - remove
+            window.selectedUpgrades.delete(selectionKey);
+            return;
+        }
+
+        try {
+            const upgrade = JSON.parse(el.dataset.upgrade);
+            if (!upgrade.effects) return;
+            upgrade.effects.forEach(effect => {
+                const key = effect.effectedStat || effect.id;
+                const value = isNaN(effect.max) ? 0 : parseFloat(effect.max);
+                if (!result[col][key]) result[col][key] = { text: effect.text, id: effect.id, percent: 0, absolute: 0, max: effect.max };
+                if (effect.isPercent) {
+                    result[col][key].percent += value;
+                } else {
+                    result[col][key].absolute += value;
+                }
+            });
+        } catch (e) {
+            console.error('Failed to parse upgrade for column aggregation', e);
+        }
+    });
+
+    return result;
+}
+
+window.getSelectedUpgradeEffectsByColumn = getSelectedUpgradeEffectsByColumn;
