@@ -4,12 +4,20 @@
  * will already be summed by `getEffectiveArmor`.
  * If includeUpgrades is true, also adds effects from selected upgrade cells.
  */
-function renderStats(container, armor, includeUpgrades = false, col = null) {
+function renderStats(container, armor, includeUpgrades = false, col = null, orderedKeys = null) {
     if (!container) return;
     container.innerHTML = "";
 
+    if (!armor) return;
+
     const skipKeys = new Set(["id", "name", "type", "upgradeList", "upgrades"]);
-    const statKeys = Object.keys(armor).filter(k => !skipKeys.has(k));
+    let statKeys;
+    if (orderedKeys && Array.isArray(orderedKeys)) {
+        // Respect caller-provided ordering but filter out any skipped keys
+        statKeys = orderedKeys.filter(k => !skipKeys.has(k));
+    } else {
+        statKeys = Object.keys(armor).filter(k => !skipKeys.has(k));
+    }
 
     // Create a copy of armor stats to potentially modify with upgrade effects
     const displayStats = { ...armor };
@@ -115,8 +123,22 @@ function updateComparison() {
 
     const keys = new Set([...Object.keys(statsAAdjusted), ...Object.keys(statsBAdjusted)]);
 
+    // Build a deterministic ordering so stats line up across A and B
+    const knownOrder = ['physical','thermal','chemical','electric','radiation','durability','weight','slots'];
+    const allKeys = Array.from(keys);
+    const orderedKeys = [
+        ...knownOrder.filter(k => allKeys.includes(k)),
+        ...allKeys.filter(k => !knownOrder.includes(k)).sort()
+    ];
+
+    // Re-render stats panes using the same ordered keys so rows line up visually
+    const statsDivA = document.getElementById('statsA');
+    const statsDivB = document.getElementById('statsB');
+    renderStats(statsDivA, A, true, 'A', orderedKeys);
+    renderStats(statsDivB, B, true, 'B', orderedKeys);
+
     // compute max dynamically per-stat (handles 'weight' and 'slots' specially)
-    for (const stat of keys) {
+    for (const stat of orderedKeys) {
         let max = 100.0;
         if (stat === "weight") { max = 20; }
         if (stat === "slots") { max = 5; }

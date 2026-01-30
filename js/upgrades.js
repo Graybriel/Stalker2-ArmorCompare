@@ -109,16 +109,37 @@ function buildUpgradeGrids(armor) {
         ? helmetPartMap
         : bodyPartMap;
 
-    const emptyGrid = () => [
-        [null, null, null],
-        [null, null, null],
-        [null, null, null]
-    ];
+    const emptyGrid = (partName) => {
+        // Head armor "Crown" has only a single upgrade slot → 1x1 grid
+        if (armor.type === "head") {
+            if (partName === "Crown") return [[null]];
+            // other head sections use full 3x3 grid
+            return [
+                [null, null, null],
+                [null, null, null],
+                [null, null, null]
+            ];
+        }
+
+        // Full body: the "Head" category only has one upgrade slot
+        if (armor.type === "full body" && partName === "Head") return [[null]];
+
+        // Chest armor has no "Head" category at all
+        if (armor.type === "chest" && partName === "Head") return null;
+
+        // Default body grids are 3x3
+        return [
+            [null, null, null],
+            [null, null, null],
+            [null, null, null]
+        ];
+    };
 
     // Initialize grids with keys from partMap (not hardcoded)
     const grids = {};
     Object.values(partMap).forEach(partName => {
-        grids[partName] = emptyGrid();
+        const g = emptyGrid(partName);
+        if (g) grids[partName] = g; // skip sections that shouldn't exist for this armor type
     });
 
     // Group upgrades by part + column, using ID to derive column/vertical
@@ -159,7 +180,14 @@ function buildUpgradeGrids(armor) {
                 row = 1;
             }
 
-            grids[part][row][col] = upg;
+            // Clamp row to available grid rows (handles head single-row grids)
+            row = Math.max(0, Math.min(row, grids[part].length - 1));
+
+            // Clamp column to available columns for the chosen row (handles 1-col sections)
+            const maxCols = grids[part][row].length;
+            const colClamped = Math.max(0, Math.min(col, maxCols - 1));
+
+            grids[part][row][colClamped] = upg;
         });
     });
 
@@ -174,6 +202,7 @@ function renderUpgradesForArmor(armor, armorCol) {
     if (!armor) {
         const container = document.getElementById(`upgradeContainer${armorCol}`);
         if (container) container.innerHTML = "";
+        if (window.syncUpgradeContainerHeights) window.syncUpgradeContainerHeights();
         return;
     }
 
@@ -201,6 +230,8 @@ function renderUpgradesForArmor(armor, armorCol) {
 
         container.appendChild(sectionDiv);
     });
+
+    if (window.syncUpgradeContainerHeights) window.syncUpgradeContainerHeights();
 }
 
 /**
@@ -214,6 +245,7 @@ function renderUpgradesForMultiplePieces(pieces, armorCol) {
     const container = document.getElementById(`upgradeContainer${armorCol}`);
     if (!container || !pieces || pieces.length === 0) {
         if (container) container.innerHTML = "";
+        if (window.syncUpgradeContainerHeights) window.syncUpgradeContainerHeights();
         return;
     }
 
@@ -256,6 +288,8 @@ function renderUpgradesForMultiplePieces(pieces, armorCol) {
 
         container.appendChild(pieceSection);
     });
+
+    if (window.syncUpgradeContainerHeights) window.syncUpgradeContainerHeights();
 }
 //function renderUpgradesForArmorPieces(pieces, armorCol) {
 //    const container = document.getElementById(`upgradeSections${armorCol}`);
@@ -342,7 +376,13 @@ function getSelectedUpgradeEffects() {
             // Add each effect to the total (separating percent vs absolute)
             upgrade.effects.forEach(effect => {
                 console.debug('effect', effect);
-                const key = effect.effectedStat || effect.id;
+                // Only aggregate effects that target a known stat name
+                const key = effect.effectedStat;
+                if (!key) {
+                    console.debug('skipping effect without effectedStat', effect);
+                    return;
+                }
+
                 if (!totalEffects[key]) {
                     totalEffects[key] = { text: effect.text, id: effect.id, percent: 0, absolute: 0, max: effect.max };
                 }
@@ -397,7 +437,10 @@ function getSelectedUpgradeEffectsByColumn() {
             const upgrade = JSON.parse(el.dataset.upgrade);
             if (!upgrade.effects) return;
             upgrade.effects.forEach(effect => {
-                const key = effect.effectedStat || effect.id;
+                // Only aggregate effects that target a known stat name
+                const key = effect.effectedStat;
+                if (!key) return;
+
                 const value = isNaN(effect.max) ? 0 : parseFloat(effect.max);
                 if (!result[col][key]) result[col][key] = { text: effect.text, id: effect.id, percent: 0, absolute: 0, max: effect.max };
                 if (effect.isPercent) {
@@ -415,3 +458,23 @@ function getSelectedUpgradeEffectsByColumn() {
 }
 
 window.getSelectedUpgradeEffectsByColumn = getSelectedUpgradeEffectsByColumn;
+
+// Ensure both upgrade containers have the same min-height so stats align across columns
+function syncUpgradeContainerHeights() {
+    const a = document.getElementById('upgradeContainerA');
+    const b = document.getElementById('upgradeContainerB');
+    if (!a || !b) return;
+
+    // reset any previous min-height to measure true content height
+    a.style.minHeight = '';
+    b.style.minHeight = '';
+
+    const aH = a.scrollHeight || 0;
+    const bH = b.scrollHeight || 0;
+    const maxH = Math.max(aH, bH, 120); // ensure a reasonable minimum
+
+    a.style.minHeight = `${maxH}px`;
+    b.style.minHeight = `${maxH}px`;
+}
+
+window.syncUpgradeContainerHeights = syncUpgradeContainerHeights;

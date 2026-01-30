@@ -61,7 +61,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Jemmy_Neutral_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "Jemmy_Neutral_Armor_ProtectionStrike_Left_1_1"
         ],
@@ -101,7 +109,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Jemmy_Neutral_Armor_wearing2",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Jemmy_Neutral_Armor_MaxDurability_Left_1_2"
@@ -342,7 +358,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Newbie_Neutral_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "Newbie_Neutral_Armor_ProtectionStrike_Left_1_1"
         ],
@@ -538,7 +562,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Nasos_Neutral_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "Nasos_Neutral_Armor_reductionWeight_Left_1_2"
         ],
@@ -601,7 +633,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Nasos_Neutral_Armor_wearing2",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Nasos_Neutral_Armor_reductionWeight_Left_1_2"
@@ -621,7 +661,7 @@
           "[0]": {
             "SID": "Nasos_Neutral_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           },
@@ -905,7 +945,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Zorya_Neutral_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -967,7 +1015,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Zorya_Neutral_Armor_wearing2",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "Zorya_Neutral_Armor_protectionPhysical_Left_2_2"
         ],
@@ -1213,7 +1269,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Zorya_Neutral_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Zorya_Neutral_Armor_protectionRadiation_Left_2_1"
@@ -1250,7 +1314,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Zorya_Neutral_Armor_container_Left_1_1"
@@ -1354,7 +1426,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Seva_Neutral_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Seva_Neutral_Armor_protectionPhysical_Left_1_1"
@@ -1424,7 +1504,7 @@
           "[0]": {
             "SID": "Seva_Neutral_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           }
@@ -1644,7 +1724,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Seva_Neutral_Armor_wearing1",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "10.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "Seva_Neutral_Armor_regenerationStamina_Left_2_1"
         ],
@@ -1662,7 +1750,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Seva_Neutral_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "Seva_Neutral_Armor_MaxDurability_Left_2_2"
         ],
@@ -1747,7 +1843,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Seva_Neutral_Armor_container_Left_1_1"
@@ -1763,7 +1867,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Seva_Neutral_Armor_container_Left_1_2"
@@ -1779,12 +1891,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -1851,6 +1977,13 @@
             "Text": "Strike Protection",
             "effectedStat": "physical",
             "Max": "15.0%"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Neutral_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -1873,6 +2006,13 @@
             "Text": "Item Weight",
             "effectedStat": "weight",
             "Max": "-1"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Neutral_Armor_wearing4",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [
@@ -1925,6 +2065,13 @@
             "Text": "Strike Protection",
             "effectedStat": "physical",
             "Max": "15.0%"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Neutral_Armor_wearing1",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [
@@ -1948,7 +2095,7 @@
           "[0]": {
             "SID": "Exoskeleton_Neutral_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           }
@@ -1976,6 +2123,13 @@
             "Text": "Item Weight",
             "effectedStat": "weight",
             "Max": "-1"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Neutral_Armor_wearing3",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -2078,6 +2232,13 @@
             "Text": "Item Weight",
             "effectedStat": "weight",
             "Max": "-1"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Neutral_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -2092,7 +2253,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "AddSprintEffect",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "Add Sprint",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Exoskeleton_Neutral_Armor_EXOregenerationStamina_Right_1_1"
@@ -2204,7 +2373,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -2218,7 +2395,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Exoskeleton_Neutral_Armor_rad_container_Left_1_1"
@@ -2258,7 +2443,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot3",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Exoskeleton_Neutral_Armor_rad_container_Left_2_1"
@@ -2274,7 +2467,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot4",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Exoskeleton_Neutral_Armor_container_Left_2_2"
@@ -2290,12 +2491,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -2361,7 +2576,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Skin_Jacket_Bandit_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -2541,7 +2764,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Jacket_Bandit_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "30.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "Jacket_Bandit_Armor_ProtectionStrike_Left_1_1"
         ],
@@ -2734,7 +2965,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Middle_Bandit_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "30.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "Middle_Bandit_Armor_protectionPhysical_Left_1_2"
         ],
@@ -2803,7 +3042,7 @@
           "[0]": {
             "SID": "Middle_Bandit_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           }
@@ -2877,7 +3116,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Middle_Bandit_Armor_wearing1",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "10.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -2966,7 +3213,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Middle_Bandit_Armor_container_Left_1_1"
@@ -3015,7 +3270,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Light_Mercenaries_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "Light_Mercenaries_Armor_reductionWeight_Left_1_2"
         ],
@@ -3106,7 +3369,7 @@
           "[0]": {
             "SID": "Light_Mercenaries_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           },
@@ -3306,6 +3569,13 @@
             "Text": "Item Weight",
             "effectedStat": "weight",
             "Max": "-1"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Mercenaries_Armor_wearing3",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -3354,6 +3624,13 @@
             "Text": "Strike Protection",
             "effectedStat": "physical",
             "Max": "10.0%"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Mercenaries_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [
@@ -3380,6 +3657,13 @@
             "Text": "Strike Protection",
             "effectedStat": "physical",
             "Max": "15.0%"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Mercenaries_Armor_wearing2",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [
@@ -3403,7 +3687,7 @@
           "[0]": {
             "SID": "Exoskeleton_Mercenaries_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           }
@@ -3563,7 +3847,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "AddSprintEffect",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "Add Sprint",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -3650,7 +3942,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Exoskeleton_Mercenaries_Armor_rad_container_Left_1_1"
@@ -3690,7 +3990,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot4",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Exoskeleton_Mercenaries_Armor_rad_container_Left_2_2"
@@ -3706,7 +4014,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot5",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Exoskeleton_Mercenaries_Armor_rad_container_Left_2_1"
@@ -3721,7 +4037,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -3735,12 +4059,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -3815,7 +4153,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Heavy_Mercenaries_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -3857,7 +4203,7 @@
           "[0]": {
             "SID": "Heavy_Mercenaries_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           },
@@ -4043,7 +4389,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Heavy_Mercenaries_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Heavy_Mercenaries_Armor_protectionRadiation_Left_1_1"
@@ -4102,7 +4456,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Heavy_Mercenaries_Armor_container_Left_1_1"
@@ -4117,7 +4479,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Heavy_Mercenaries_Armor_radiationAbsorption_Left_2_1"
@@ -4133,12 +4503,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -4187,7 +4571,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Default_Military_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -4248,7 +4640,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Default_Military_Armor_wearing2",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "Default_Military_Armor_protectionPhysical_Left_2_1"
         ],
@@ -4270,7 +4670,7 @@
           "[0]": {
             "SID": "Default_Military_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           }
@@ -4402,7 +4802,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Default_Military_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -4478,7 +4886,7 @@
           "[0]": {
             "SID": "Heavy2_Military_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           }
@@ -4496,7 +4904,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Heavy2_Military_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Heavy2_Military_Armor_carryingCapacity_Left_1_1"
@@ -4673,7 +5089,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Heavy2_Military_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Heavy2_Military_Armor_protectionRadiation_Left_1_1"
@@ -4731,7 +5155,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Heavy2_Military_Armor_container_Left_1_1",
@@ -4747,7 +5179,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Heavy2_Military_Armor_rad_container_Left_2_1"
@@ -4763,12 +5203,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -4823,7 +5277,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Anomaly_Scientific_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -4837,7 +5299,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Anomaly_Scientific_Armor_wearing2",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "Anomaly_Scientific_Armor_reductionWeight_Left_2_1"
         ],
@@ -4881,7 +5351,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Anomaly_Scientific_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Anomaly_Scientific_Armor_reductionWeight_Left_2_1"
@@ -5118,7 +5596,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Anomaly_Scientific_Armor_container_Left_1_1",
@@ -5181,12 +5667,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -5240,7 +5740,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyAnomaly_Scientific_Armor_wearing1",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -5481,7 +5989,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "HeavyAnomaly_Scientific_Armor_protectionChemical_protectionTherma_Left_2_2"
@@ -5542,7 +6058,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "HeavyAnomaly_Scientific_Armor_container_Left_1_1"
@@ -5558,7 +6082,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot3",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "HeavyAnomaly_Scientific_Armor_container_Left_2_1",
@@ -5575,12 +6107,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -5675,7 +6221,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Heavy_Dolg_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Rook_Svoboda_Armor_protectionPhysical_Left_1_1"
@@ -5825,7 +6379,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Rook_Svoboda_Armor_container_Left_1_1"
@@ -5876,7 +6438,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Battle_Svoboda_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -6143,7 +6713,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "Battle_Svoboda_Armor_protectionRadiation_Left_2_1"
         ],
@@ -6161,7 +6739,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Battle_Svoboda_Armor_protectionRadiation_Left_2_1",
@@ -6221,7 +6807,7 @@
           "[0]": {
             "SID": "SEVA_Svoboda_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           }
@@ -6239,7 +6825,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Svoboda_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "SEVA_Svoboda_Armor_carryingCapacity_Left_1_1"
@@ -6503,7 +7097,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Svoboda_Armor_wearing1",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "10.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "SEVA_Svoboda_Armor_protectionRadiation_Left_1_1"
@@ -6564,7 +7166,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "SEVA_Svoboda_Armor_container_Left_1_1"
@@ -6579,7 +7189,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "SEVA_Svoboda_Armor_radiationAbsorption_Left_2_1"
@@ -6595,12 +7213,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -6675,7 +7307,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Heavy_Svoboda_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -6745,7 +7385,7 @@
           "[0]": {
             "SID": "Heavy_Svoboda_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           }
@@ -6765,7 +7405,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Heavy_Svoboda_Armor_wearing1",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -6916,7 +7564,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Heavy_Svoboda_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Heavy_Svoboda_Armor_protectionRadiation_Left_2_1"
@@ -6952,7 +7608,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -6966,7 +7630,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Heavy_Svoboda_Armor_container_Left_1_1"
@@ -6982,12 +7654,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -7051,6 +7737,13 @@
             "Text": "Strike Protection",
             "effectedStat": "physical",
             "Max": "15.0%"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Svoboda_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -7096,6 +7789,13 @@
             "Text": "Strike Protection",
             "effectedStat": "physical",
             "Max": "15.0%"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Svoboda_Armor_wearing2",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [
@@ -7119,7 +7819,7 @@
           "[0]": {
             "SID": "HeavyExoskeleton_Svoboda_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           }
@@ -7255,6 +7955,13 @@
             "Text": "Item Weight",
             "effectedStat": "weight",
             "Max": "-1"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Svoboda_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -7276,6 +7983,13 @@
             "Text": "Item Weight",
             "effectedStat": "weight",
             "Max": "-1"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Svoboda_Armor_wearing3",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -7414,7 +8128,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "HeavyExoskeleton_Svoboda_Armor_container_Left_1_1"
@@ -7430,7 +8152,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "HeavyExoskeleton_Svoboda_Armor_container_Left_2_1",
@@ -7473,12 +8203,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -7545,6 +8289,13 @@
             "Text": "Strike Protection",
             "effectedStat": "physical",
             "Max": "10.0%"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Svoboda_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -7567,6 +8318,13 @@
             "Text": "Item Weight",
             "effectedStat": "weight",
             "Max": "-1"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Svoboda_Armor_wearing3",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [
@@ -7619,6 +8377,13 @@
             "Text": "Strike Protection",
             "effectedStat": "physical",
             "Max": "15.0%"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Svoboda_Armor_wearing2",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [
@@ -7642,7 +8407,7 @@
           "[0]": {
             "SID": "Exoskeleton_Svoboda_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           },
@@ -7785,6 +8550,13 @@
             "Text": "Item Weight",
             "effectedStat": "weight",
             "Max": "-1"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Svoboda_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -7799,7 +8571,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "AddSprintEffect",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "Add Sprint",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Exoskeleton_Svoboda_Armor_EXOregenerationStamina_Right_1_1"
@@ -7938,7 +8718,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -7952,7 +8740,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Exoskeleton_Svoboda_Armor_rad_container_Left_1_1"
@@ -7968,7 +8764,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot3",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Exoskeleton_Svoboda_Armor_rad_container_Left_1_1"
@@ -7984,7 +8788,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot4",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Exoskeleton_Svoboda_Armor_rad_container_Left_2_1",
@@ -8022,12 +8834,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -8079,7 +8905,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Battle_Dolg_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -8141,7 +8975,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Battle_Dolg_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Battle_Dolg_Armor_protectionPhysical_Left_2_1",
@@ -8357,7 +9199,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Battle_Dolg_Armor_protectionRadiation_Left_1_1",
@@ -8373,7 +9223,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Battle_Dolg_Armor_regenerationStamina1",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Battle_Dolg_Armor_radiationAbsorption_Left_2_1"
@@ -8451,7 +9309,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Dolg_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "SEVA_Dolg_Armor_protectionPhysical_Left_1_1"
@@ -8635,7 +9501,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Dolg_Armor_wearing1",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "SEVA_Dolg_Armor_PSY_Left_1_1"
         ],
@@ -8651,7 +9525,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Dolg_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "SEVA_Dolg_Armor_Backpack_Left_2_2"
         ],
@@ -8673,7 +9555,7 @@
           "[0]": {
             "SID": "SEVA_Dolg_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           },
@@ -8722,7 +9604,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "SEVA_Dolg_Armor_container_Left_1_1"
@@ -8785,12 +9675,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -8845,7 +9749,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Heavy_Dolg_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -8935,7 +9847,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Heavy_Dolg_Armor_wearing1",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "Heavy_Dolg_Armor_ProtectionChemical_Left_1_1"
         ],
@@ -9098,7 +10018,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Heavy_Dolg_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "Heavy_Dolg_Armor_backpack_Left_3_2"
         ],
@@ -9120,7 +10048,7 @@
           "[0]": {
             "SID": "Heavy_Dolg_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           },
@@ -9169,7 +10097,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Heavy_Dolg_Armor_container_Left_1_1"
@@ -9208,12 +10144,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -9277,6 +10227,13 @@
             "Text": "Strike Protection",
             "effectedStat": "physical",
             "Max": "10.0%"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Dolg_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -9299,6 +10256,13 @@
             "Text": "Item Weight",
             "effectedStat": "weight",
             "Max": "-1"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Dolg_Armor_wearing1",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -9347,6 +10311,13 @@
             "Text": "Strike Protection",
             "effectedStat": "physical",
             "Max": "15.0%"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Dolg_Armor_wearing2",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -9413,6 +10384,13 @@
             "Text": "Item Weight",
             "effectedStat": "weight",
             "Max": "-1"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Dolg_Armor_wearing4",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -9503,6 +10481,13 @@
             "Text": "Item Weight",
             "effectedStat": "weight",
             "Max": "-1"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Dolg_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -9542,7 +10527,7 @@
           "[0]": {
             "SID": "Exoskeleton_Dolg_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           },
@@ -9660,7 +10645,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Exoskeleton_Dolg_Armor_container_Left_1_1"
@@ -9676,7 +10669,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Exoskeleton_Dolg_Armor_container_Left_2_1",
@@ -9693,12 +10694,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -9803,7 +10818,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Battle_Monolith_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "Battle_Monolith_Armor_reductionWeight_Left_2_1"
         ],
@@ -9849,7 +10872,7 @@
           "[0]": {
             "SID": "Battle_Monolith_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           },
@@ -10052,7 +11075,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Battle_Monolith_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Battle_Monolith_Armor_reductionWeight_Left_2_2"
@@ -10135,7 +11166,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Battle_Monolith_Armor_protectionRadiation_Left_2_1"
@@ -10151,7 +11190,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Battle_Monolith_Armor_protectionRadiation_Left_2_1"
@@ -10228,7 +11275,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyAnomaly_Monolith_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "HeavyAnomaly_Monolith_Armor_protectionPhysical_Left_1_1"
@@ -10425,7 +11480,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyAnomaly_Monolith_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "HeavyAnomaly_Monolith_Armor_carryingCapacity_Left_2_2"
         ],
@@ -10447,7 +11510,7 @@
           "[0]": {
             "SID": "HeavyAnomaly_Monolith_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           }
@@ -10536,7 +11599,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "HeavyAnomaly_Monolith_Armor_container_Left_1_1"
@@ -10552,7 +11623,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "HeavyAnomaly_Monolith_Armor_container_Left_1_2"
@@ -10568,12 +11647,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -10638,7 +11731,7 @@
           "[0]": {
             "SID": "HeavyExoskeleton_Monolith_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           }
@@ -10663,6 +11756,13 @@
             "Text": "Strike Protection",
             "effectedStat": "physical",
             "Max": "10.0%"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Monolith_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -10711,6 +11811,13 @@
             "Text": "Strike Protection",
             "effectedStat": "physical",
             "Max": "15.0%"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Monolith_Armor_wearing1",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -10735,6 +11842,13 @@
             "Text": "Item Weight",
             "effectedStat": "weight",
             "Max": "-1"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Monolith_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -10889,6 +12003,13 @@
             "Text": "Item Weight",
             "effectedStat": "weight",
             "Max": "-1"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Monolith_Armor_wearing3",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -10924,7 +12045,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "AddSprintEffect",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "Add Sprint",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "HeavyExoskeleton_Monolith_Armor_EXOMaxDurability_Right_1_1"
@@ -11035,7 +12164,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -11048,7 +12185,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "HeavyExoskeleton_Monolith_Armor_rad_container_Left_1_1"
@@ -11064,7 +12209,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot3",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "HeavyExoskeleton_Monolith_Armor_rad_container_Left_2_1"
@@ -11080,7 +12233,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot4",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "HeavyExoskeleton_Monolith_Armor_rad_container_Left_2_1"
@@ -11096,12 +12257,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -11167,6 +12342,13 @@
             "Text": "Item Weight",
             "effectedStat": "weight",
             "Max": "-1"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Monolith_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -11189,6 +12371,13 @@
             "Text": "Strike Protection",
             "effectedStat": "physical",
             "Max": "10.0%"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Monolith_Armor_wearing1",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -11237,6 +12426,13 @@
             "Text": "Strike Protection",
             "effectedStat": "physical",
             "Max": "15.0%"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Monolith_Armor_wearing2",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [
@@ -11263,6 +12459,13 @@
             "Text": "Item Weight",
             "effectedStat": "weight",
             "Max": "-1"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Monolith_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [
@@ -11420,7 +12623,7 @@
           "[0]": {
             "SID": "Exoskeleton_Monolith_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           }
@@ -11437,7 +12640,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "AddSprintEffect",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "Add Sprint",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Exoskeleton_Monolith_Armor_carryingCapacity_Right_1_1"
@@ -11546,7 +12757,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -11559,7 +12778,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Exoskeleton_Monolith_Armor_rad_container_Left_1_1"
@@ -11575,7 +12802,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot3",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Exoskeleton_Monolith_Armor_rad_container_Left_2_1"
@@ -11591,7 +12826,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot4",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Exoskeleton_Monolith_Armor_rad_container_Left_2_1"
@@ -11607,12 +12850,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -11663,7 +12920,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Battle_Varta_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -11724,7 +12989,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Battle_Varta_Armor_wearing2",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "Battle_Varta_Armor_protectionPhysical_Left_2_1"
         ],
@@ -11742,7 +13015,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Battle_Varta_Armor_wearing3",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "Battle_Varta_Armor_protectionPhysical2_Left_3_2"
         ],
@@ -11889,7 +13170,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Battle_Varta_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -12023,6 +13312,13 @@
             "Text": "Strike Protection",
             "effectedStat": "physical",
             "Max": "10.0%"
+          },
+          "[1]": {
+            "SID": "BattleExoskeleton_Varta_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -12047,6 +13343,13 @@
             "Text": "Item Weight",
             "effectedStat": "weight",
             "Max": "-1"
+          },
+          "[1]": {
+            "SID": "BattleExoskeleton_Varta_Armor_wearing3",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -12071,6 +13374,13 @@
             "Text": "Strike Protection",
             "effectedStat": "physical",
             "Max": "15.0%"
+          },
+          "[1]": {
+            "SID": "BattleExoskeleton_Varta_Armor_wearing2",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [
@@ -12094,7 +13404,7 @@
           "[0]": {
             "SID": "BattleExoskeleton_Varta_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           }
@@ -12243,7 +13553,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "AddSprintEffect",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "Add Sprint",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -12264,6 +13582,13 @@
             "Text": "Item Weight",
             "effectedStat": "weight",
             "Max": "-1"
+          },
+          "[1]": {
+            "SID": "BattleExoskeleton_Varta_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -12288,6 +13613,13 @@
             "Text": "Item Weight",
             "effectedStat": "weight",
             "Max": "-1"
+          },
+          "[1]": {
+            "SID": "BattleExoskeleton_Varta_Armor_wearing4",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -12373,7 +13705,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -12386,7 +13726,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -12400,7 +13748,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot3",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "BattleExoskeleton_Varta_Armor_rad_container_Left_1_2"
@@ -12416,7 +13772,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot4",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "BattleExoskeleton_Varta_Armor_rad_container_Left_1_1"
@@ -12456,12 +13820,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -12514,7 +13892,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Battle_Spark_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "10.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -12792,7 +14178,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "Battle_Spark_Armor_container_Left_1_2"
         ],
@@ -12832,7 +14226,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Battle_Spark_Armor_container_Left_1_2"
@@ -12848,7 +14250,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Battle_Spark_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Battle_Spark_Armor_container_Left_2_1",
@@ -12905,7 +14315,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyAnomaly_Spark_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -12923,7 +14341,7 @@
           "[0]": {
             "SID": "HeavyAnomaly_Spark_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           }
@@ -13103,7 +14521,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyAnomaly_Spark_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "HeavyAnomaly_Spark_Armor_protectionThermal_protectionElectrical_Left_3_1"
         ],
@@ -13249,7 +14675,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "HeavyAnomaly_Spark_Armor_container_Left_1_1"
@@ -13265,7 +14699,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "HeavyAnomaly_Spark_Armor_container_Left_1_1"
@@ -13281,7 +14723,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot3",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "HeavyAnomaly_Spark_Armor_container_Left_1_1"
@@ -13297,12 +14747,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -13380,7 +14844,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Spark_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "SEVA_Spark_Armor_protectionPhysical_Left_1_1"
@@ -13424,7 +14896,7 @@
           "[0]": {
             "SID": "SEVA_Spark_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           }
@@ -13722,7 +15194,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "SEVA_Spark_Armor_container_Left_1_1"
@@ -13762,7 +15242,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "SEVA_Spark_Armor_radiationAbsorption_Left_2_1",
@@ -13779,12 +15267,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -13863,7 +15365,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyBattle_Spark_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -13933,7 +15443,7 @@
           "[0]": {
             "SID": "HeavyBattle_Spark_Armor_carryingCapacity",
             "Type": "EEffectType::Composite",
-            "Text": null,
+            "Text": "carryingCapacity",
             "effectedStat": "",
             "Max": "10.0%"
           }
@@ -13953,7 +15463,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyBattle_Spark_Armor_wearing1",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "HeavyBattle_Spark_Armor_protectionThermal_Left_1_2"
         ],
@@ -14262,7 +15780,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "HeavyBattle_Spark_Armor_container_Left_2_1"
         ],
@@ -14280,7 +15806,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "HeavyBattle_Spark_Armor_container_Left_2_1",
@@ -14297,12 +15831,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -14386,7 +15934,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Light_Duty_Helmet_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -14452,12 +16008,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -14552,7 +16122,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Heavy_Duty_Helmet_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Heavy_Duty_Helmet_protectionPhysical_Left_1_1"
@@ -14669,7 +16247,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Heavy_Duty_Helmet_wearing1",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Heavy_Duty_Helmet_protectionChemical_protectionElectrical_Left_2_1"
@@ -14730,12 +16316,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -14833,7 +16433,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Heavy_Svoboda_Helmet_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "Heavy_Svoboda_Helmet_protectionPhysical_Left_2_2"
         ],
@@ -15112,12 +16720,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -15375,12 +16997,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -15479,7 +17115,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Heavy_Military_Helmet_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Heavy_Military_Helmet_protectionPhysical_Left_1_1"
@@ -15519,7 +17163,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Heavy_Military_Helmet_wearing1",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Heavy_Military_Helmet_MaxDurability_Left_2_1",
@@ -15767,12 +17419,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -15836,7 +17502,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Light_Mercenaries_Helmet_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -15919,12 +17593,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -15988,7 +17676,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Light_Military_Helmet_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
       },
@@ -16071,12 +17767,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -16167,7 +17877,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Battle_Military_Helmet_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [
           "Battle_Military_Helmet_protectionPhysical_Left_2_2"
         ],
@@ -16373,12 +18091,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -16441,7 +18173,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Light_Bandit_Helmet_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Light_Bandit_Helmet_Armor_protectionRadiation_Left_1_1"
@@ -16481,12 +18221,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
@@ -16602,7 +18356,15 @@
           "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
         },
         "EffectPrototypeSIDs": [],
-        "Effects": {},
+        "Effects": {
+          "[0]": {
+            "SID": "Light_Neutral_Helmet_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
+          }
+        },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Light_Neutral_Helmet_Armor_protectionElectrical_Left_2_2",
@@ -16619,12 +18381,26 @@
         },
         "EffectPrototypeSIDs": [],
         "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
           "[1]": {
             "SID": "Supressor_protectionPsiPerc",
             "Type": "EEffectType::ProtectionPSY",
             "Text": "Psy defence",
             "effectedStat": "psi",
             "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
           }
         },
         "BlockingUpgradePrototypeSIDs": [],
