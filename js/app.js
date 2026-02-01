@@ -199,6 +199,8 @@ function populateArmorOptions(selectId, type = "head/chest") {
         filtered = armorData.filter(a => a.type === type);
     }
 
+    // Sort options alphabetically by display name for predictable ordering
+    filtered.sort((x, y) => String(x.name || '').localeCompare(String(y.name || '')));
     filtered.forEach(armor => {
         const option = document.createElement("option");
         option.value = armor.id;

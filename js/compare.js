@@ -41,12 +41,13 @@ function renderStats(container, armor, includeUpgrades = false, col = null, orde
 
             if (abs === 0 && pct === 0) continue;
 
-            // read numeric base value (fallback to 0)
-            const currentVal = parseFloat(String(displayStats[statKey] ?? 0).replace(/[^0-9.-]+/g, '')) || 0;
+            // Use the armor's base numeric value for percent calculations (fallback to 0)
+            const baseVal = parseFloat(String(armor[statKey] ?? displayStats[statKey] ?? 0).replace(/[^0-9.-]+/g, '')) || 0;
 
-            // apply absolute additions then percent multipliers
-            let newVal = currentVal + abs;
-            if (pct) newVal = newVal * (1 + pct / 100);
+            // percent modifiers apply to the base stat; absolute additions are additive afterwards
+            let newVal = baseVal;
+            if (pct) newVal = baseVal * (1 + pct / 100);
+            newVal = newVal + abs;
 
             displayStats[statKey] = newVal;
         }
@@ -105,19 +106,23 @@ function updateComparison() {
     const statsBAdjusted = { ...statsB };
 
     for (const [k, eff] of Object.entries(effectsByCol.A || {})) {
-        const cur = parseFloat(String(statsAAdjusted[k] ?? 0).replace(/[^0-9.-]+/g, '')) || 0;
+        // Use the original base stat when applying percent effects
+        const base = parseFloat(String(statsA[k] ?? 0).replace(/[^0-9.-]+/g, '')) || 0;
         const abs = eff.absolute || 0;
         const pct = eff.percent || 0;
-        let newVal = cur + abs;
-        if (pct) newVal = newVal * (1 + pct / 100);
+        let newVal = base;
+        if (pct) newVal = base * (1 + pct / 100);
+        newVal = newVal + abs;
         statsAAdjusted[k] = newVal;
     }
     for (const [k, eff] of Object.entries(effectsByCol.B || {})) {
-        const cur = parseFloat(String(statsBAdjusted[k] ?? 0).replace(/[^0-9.-]+/g, '')) || 0;
+        // Use the original base stat when applying percent effects
+        const base = parseFloat(String(statsB[k] ?? 0).replace(/[^0-9.-]+/g, '')) || 0;
         const abs = eff.absolute || 0;
         const pct = eff.percent || 0;
-        let newVal = cur + abs;
-        if (pct) newVal = newVal * (1 + pct / 100);
+        let newVal = base;
+        if (pct) newVal = base * (1 + pct / 100);
+        newVal = newVal + abs;
         statsBAdjusted[k] = newVal;
     }
 
