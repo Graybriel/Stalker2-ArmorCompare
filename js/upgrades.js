@@ -149,11 +149,37 @@ function buildUpgradeGrids(armor) {
         const part = partMap[upg.values.UpgradeTargetPart];
         if (!part) return;
 
-        const { col, vert: row } = parsePositionFromId(upg.id || (upg.effects?.[0]?.id ?? ""));
+        // Prefer explicit position fields when present; fall back to parsing id suffix
+        const vals = upg.values || upg.Values || {};
+
+        let col = null;
+        if (vals.HorizontalPosition !== undefined && vals.HorizontalPosition !== null) {
+            const parsed = parseInt(vals.HorizontalPosition, 10);
+            if (!Number.isNaN(parsed)) col = parsed; // HorizontalPosition is usually 0-based
+        }
+
+        let vert = null;
+        if (vals.VerticalPosition) {
+            const vp = String(vals.VerticalPosition);
+            if (vp.includes('Top')) vert = 1;
+            else if (vp.includes('Down') || vp.includes('Bottom')) vert = 2;
+        }
+
+        // Fallback to id-based parsing (id uses 1-based column/row in suffix)
+        if (col === null || vert === null) {
+            const parsed = parsePositionFromId(upg.id || (upg.effects?.[0]?.id ?? ""));
+            if (col === null) col = parsed.col;
+            if (vert === null) vert = parsed.vert;
+        }
+
+        // Ensure we have numeric defaults
+        if (col === null || Number.isNaN(col)) col = 0;
+        if (vert === null || Number.isNaN(vert)) vert = null;
+
         const key = `${part}|${col}`;
 
         if (!byPartAndCol[key]) byPartAndCol[key] = [];
-        byPartAndCol[key].push({ upg, vert: row });
+        byPartAndCol[key].push({ upg, vert });
     });
 
     // For each part+column, assign rows with your rule:

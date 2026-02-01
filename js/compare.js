@@ -146,7 +146,7 @@ function updateComparison() {
     for (const stat of orderedKeys) {
         let max = 100.0;
         if (stat === "weight") { max = 20; }
-        if (stat === "slots") { max = 5; }
+        if (stat === "slots" || stat === "physical") { max = 5; }
         const aVal = Number(statsAAdjusted[stat] ?? 0) || 0;
         const bVal = Number(statsBAdjusted[stat] ?? 0) || 0;
 
