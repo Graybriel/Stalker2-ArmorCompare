@@ -59,9 +59,14 @@ function renderGrid(grid, container, pieceId = null) {
                 }).filter(Boolean) || [];
 
                 // Fallback if no effects exist
-                const label = effectLabels.length > 0
+                let label = effectLabels.length > 0
                     ? effectLabels.join(" / ")
                     : cell.id;
+
+                // Override label for common quest upgrade
+                if (upgradeId === 'FaustPsyResist_Quest_1_1') {
+                    label = 'Psy defence 5%';
+                }
 
                 cellDiv.textContent = label;
                 cellDiv.classList.add("has-upgrade");
@@ -308,8 +313,10 @@ function renderUpgradesForArmor(armor, armorCol) {
     costDiv.textContent = 'Upgrade Cost: 0';
     container.appendChild(costDiv);
 
-    // Each section gets a title + grid
+    // Each section gets a title + grid (skip empty sections)
     Object.entries(grids).forEach(([section, grid]) => {
+        const hasUpgrades = grid.some(row => row.some(cell => !!cell));
+        if (!hasUpgrades) return;
         const sectionDiv = document.createElement('div');
         sectionDiv.className = 'upgrade-section';
         
@@ -372,8 +379,10 @@ function renderUpgradesForMultiplePieces(pieces, armorCol) {
         // Build upgrade grids for this piece
         const grids = buildUpgradeGrids(armor);
 
-        // Render each upgrade section
+        // Render each upgrade section (skip empty sections)
         Object.entries(grids).forEach(([sectionName, grid]) => {
+            const hasUpgrades = grid.some(row => row.some(cell => !!cell));
+            if (!hasUpgrades) return;
             const sectionDiv = document.createElement("div");
             sectionDiv.className = "upgrade-section";
 
@@ -588,6 +597,7 @@ function flashCell(el, type) {
 // Helper: return a human-friendly label for an upgrade id (falls back to id)
 function getUpgradeDisplayLabel(upgradeId) {
     if (!upgradeId) return String(upgradeId);
+    if (upgradeId === 'FaustPsyResist_Quest_1_1') return 'Psy defence 5%';
     // Look for any cell that has this id
     const el = document.querySelector(`[data-upgrade-id="${upgradeId}"]`);
     if (!el) return upgradeId;

@@ -237,7 +237,7 @@
           "[0]": {
             "SID": "Jemmy_Neutral_Armor_container",
             "Type": "EEffectType::ArtifactSlots",
-            "Text": "container",
+            "Text": "Increase artifact slots",
             "effectedStat": "slots",
             "Max": "1"
           }
@@ -508,7 +508,7 @@
           "[0]": {
             "SID": "Newbie_Neutral_Armor_container",
             "Type": "EEffectType::ArtifactSlots",
-            "Text": "container",
+            "Text": "Increase artifact slots",
             "effectedStat": "slots",
             "Max": "1"
           }
@@ -2217,6 +2217,39 @@
         ]
       },
       {
+        "Id": "Exoskeleton_Neutral_Armor_protectionChemical_protectionTherma_Left_3_2",
+        "Values": {
+          "SID": "Exoskeleton_Neutral_Armor_protectionChemical_protectionTherma_Left_3_2",
+          "BaseCost": "30000",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Exoskeleton_Neutral_Armor_protectionChemical2",
+            "Type": "EEffectType::ProtectionChemical",
+            "Text": "Chemical protection",
+            "effectedStat": "chemical",
+            "Max": "20.0%"
+          },
+          "[1]": {
+            "SID": "Exoskeleton_Neutral_Armor_protectionElectrical1",
+            "Type": "EEffectType::ProtectionShock",
+            "Text": "Electro Defence",
+            "effectedStat": "electric",
+            "Max": "20.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "Exoskeleton_Neutral_Armor_protectionChemical_protectionTherma_Left_3_1"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "Exoskeleton_Neutral_Armor_protectionElectrical_Left_2_2"
+        ]
+      },
+      {
         "Id": "Exoskeleton_Neutral_Armor_EXOregenerationStamina_Right_1_1",
         "Values": {
           "SID": "Exoskeleton_Neutral_Armor_EXOregenerationStamina_Right_1_1",
@@ -2693,7 +2726,7 @@
           "[0]": {
             "SID": "Skin_Jacket_Bandit_Armor_container",
             "Type": "EEffectType::ArtifactSlots",
-            "Text": "container",
+            "Text": "Increase artifact slots",
             "effectedStat": "slots",
             "Max": "1"
           }
@@ -2914,7 +2947,7 @@
           "[0]": {
             "SID": "Jacket_Bandit_Armor_container",
             "Type": "EEffectType::ArtifactSlots",
-            "Text": "container",
+            "Text": "Increase artifact slots",
             "effectedStat": "slots",
             "Max": "1"
           }
@@ -3414,6 +3447,37 @@
         },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "Light_Mercenaries_Armor_protectionThermal_protectionElectrical_Left_2_1",
+        "Values": {
+          "SID": "Light_Mercenaries_Armor_protectionThermal_protectionElectrical_Left_2_1",
+          "BaseCost": "7300",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Light_Mercenaries_Armor_protectionChemical1",
+            "Type": "EEffectType::ProtectionChemical",
+            "Text": "Chemical protection",
+            "effectedStat": "chemical",
+            "Max": "15.0%"
+          },
+          "[1]": {
+            "SID": "Light_Mercenaries_Armor_protectionElectrical",
+            "Type": "EEffectType::ProtectionShock",
+            "Text": "Electro Defence",
+            "effectedStat": "electric",
+            "Max": "20.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "Light_Mercenaries_Armor_protectionThermal_protectionElectrical_Left_1_1"
+        ]
       },
       {
         "Id": "Light_Mercenaries_Armor_protectionChemical_protectionTherma_Left_3_1",
@@ -4827,7 +4891,7 @@
           "[0]": {
             "SID": "Default_Military_Armor_container",
             "Type": "EEffectType::ArtifactSlots",
-            "Text": "container",
+            "Text": "Increase artifact slots",
             "effectedStat": "slots",
             "Max": "1"
           }
@@ -6131,6 +6195,455 @@
         },
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": []
+      }
+    ]
+  },
+  {
+    "Id": "SciSEVA_Scientific_Armor",
+    "Values": {
+      "SID": "SciSEVA_Scientific_Armor",
+      "Icon": "Texture2D\u0027/Game/GameLite/FPS_Game/UIRemaster/UITextures/Inventory/Armor/T_IFI_SciSeva_Scientific_Armor.T_IFI_SciSeva_Scientific_Armor\u0027",
+      "weight": "7.0",
+      "Cost": "54000.0",
+      "slots": "4",
+      "thermal": "60.0",
+      "electric": "60.0",
+      "chemical": "60.0",
+      "radiation": "60",
+      "psi": "40.0",
+      "physical": "3.0",
+      "Fall": "0.0",
+      "DisplayName": "EMS Sciseva",
+      "Type": "full body"
+    },
+    "UpgradeList": [
+      "SciSEVA_Scientific_Armor_MaxDurability_Left_1_1",
+      "SciSEVA_Scientific_Armor_MaxDurability_Left_2_1",
+      "SciSEVA_Scientific_Armor_reductionWeight_Left_2_2",
+      "SciSEVA_Scientific_Armor_carryingCapacity_Left_3_1",
+      "SciSEVA_Scientific_Armor_protectionThermal_protectionElectrical_protectionChemical_Left_1_1",
+      "SciSEVA_Scientific_Armor_protectionThermal_protectionElectrical_Left_2_1",
+      "SciSEVA_Scientific_Armor_protectionChemical_protectionElectrical_Left_3_1",
+      "SciSEVA_Scientific_Armor_protectionThermal_protectionElectrical_Left_3_2",
+      "SciSEVA_Scientific_Armor_PSY_Left_1_1",
+      "SciSEVA_Scientific_Armor_protectionRadiation_Left_1_2",
+      "SciSEVA_Scientific_Armor_protectionRadiation_Left_2_1",
+      "SciSEVA_Scientific_Armor_PSY_Left_2_2",
+      "SciSEVA_Scientific_Armor_container_Left_1_1",
+      "SciSEVA_Scientific_Armor_radiationAbsorption_Left_2_1",
+      "SciSEVA_Scientific_Armor_radiationAbsorption_Left_2_2",
+      "SciSEVA_Scientific_Armor_radiationAbsorption_Left_3_1"
+    ],
+    "Upgrades": [
+      {
+        "Id": "SciSEVA_Scientific_Armor_MaxDurability_Left_1_1",
+        "Values": {
+          "SID": "SciSEVA_Scientific_Armor_MaxDurability_Left_1_1",
+          "BaseCost": "5400",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SciSEVA_Scientific_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "10.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "SciSEVA_Scientific_Armor_MaxDurability_Left_2_1",
+        "Values": {
+          "SID": "SciSEVA_Scientific_Armor_MaxDurability_Left_2_1",
+          "BaseCost": "10800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SciSEVA_Scientific_Armor_wearing1",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "10.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "SciSEVA_Scientific_Armor_reductionWeight_Left_2_2"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "SciSEVA_Scientific_Armor_MaxDurability_Left_1_1"
+        ]
+      },
+      {
+        "Id": "SciSEVA_Scientific_Armor_reductionWeight_Left_2_2",
+        "Values": {
+          "SID": "SciSEVA_Scientific_Armor_reductionWeight_Left_2_2",
+          "BaseCost": "10800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SciSEVA_Scientific_Armor_reductionWeight",
+            "Type": "EEffectType::ArmorItemWeight",
+            "Text": "Item Weight",
+            "effectedStat": "weight",
+            "Max": "-1"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "SciSEVA_Scientific_Armor_MaxDurability_Left_2_1"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "SciSEVA_Scientific_Armor_MaxDurability_Left_1_1"
+        ]
+      },
+      {
+        "Id": "SciSEVA_Scientific_Armor_carryingCapacity_Left_3_1",
+        "Values": {
+          "SID": "SciSEVA_Scientific_Armor_carryingCapacity_Left_3_1",
+          "BaseCost": "21700",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SciSEVA_Scientific_Armor_carryingCapacity",
+            "Type": "EEffectType::Composite",
+            "Text": "carryingCapacity",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "SciSEVA_Scientific_Armor_MaxDurability_Left_2_1",
+          "SciSEVA_Scientific_Armor_reductionWeight_Left_2_2"
+        ]
+      },
+      {
+        "Id": "SciSEVA_Scientific_Armor_protectionThermal_protectionElectrical_protectionChemical_Left_1_1",
+        "Values": {
+          "SID": "SciSEVA_Scientific_Armor_protectionThermal_protectionElectrical_protectionChemical_Left_1_1",
+          "BaseCost": "5400",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SciSEVA_Scientific_Armor_protectionThermal",
+            "Type": "EEffectType::ProtectionBurn",
+            "Text": "Thermal protection",
+            "effectedStat": "thermal",
+            "Max": "5.0%"
+          },
+          "[1]": {
+            "SID": "SciSEVA_Scientific_Armor_protectionElectrical",
+            "Type": "EEffectType::ProtectionShock",
+            "Text": "Electro Defence",
+            "effectedStat": "electric",
+            "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "SciSEVA_Scientific_Armor_protectionChemical",
+            "Type": "EEffectType::ProtectionChemical",
+            "Text": "Chemical protection",
+            "effectedStat": "chemical",
+            "Max": "5.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "SciSEVA_Scientific_Armor_protectionThermal_protectionElectrical_Left_2_1",
+        "Values": {
+          "SID": "SciSEVA_Scientific_Armor_protectionThermal_protectionElectrical_Left_2_1",
+          "BaseCost": "10800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SciSEVA_Scientific_Armor_protectionThermal1",
+            "Type": "EEffectType::ProtectionBurn",
+            "Text": "Thermal protection",
+            "effectedStat": "thermal",
+            "Max": "5.0%"
+          },
+          "[1]": {
+            "SID": "SciSEVA_Scientific_Armor_protectionElectrical1",
+            "Type": "EEffectType::ProtectionShock",
+            "Text": "Electro Defence",
+            "effectedStat": "electric",
+            "Max": "5.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "SciSEVA_Scientific_Armor_protectionThermal_protectionElectrical_protectionChemical_Left_1_1"
+        ]
+      },
+      {
+        "Id": "SciSEVA_Scientific_Armor_protectionChemical_protectionElectrical_Left_3_1",
+        "Values": {
+          "SID": "SciSEVA_Scientific_Armor_protectionChemical_protectionElectrical_Left_3_1",
+          "BaseCost": "21700",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SciSEVA_Scientific_Armor_protectionElectrical3",
+            "Type": "EEffectType::ProtectionShock",
+            "Text": "Electro Defence",
+            "effectedStat": "electric",
+            "Max": "5.0%"
+          },
+          "[1]": {
+            "SID": "SciSEVA_Scientific_Armor_protectionChemical1",
+            "Type": "EEffectType::ProtectionChemical",
+            "Text": "Chemical protection",
+            "effectedStat": "chemical",
+            "Max": "5.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "SciSEVA_Scientific_Armor_protectionThermal_protectionElectrical_Left_2_1"
+        ]
+      },
+      {
+        "Id": "SciSEVA_Scientific_Armor_protectionThermal_protectionElectrical_Left_3_2",
+        "Values": {
+          "SID": "SciSEVA_Scientific_Armor_protectionThermal_protectionElectrical_Left_3_2",
+          "BaseCost": "21700",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SciSEVA_Scientific_Armor_protectionThermal2",
+            "Type": "EEffectType::ProtectionBurn",
+            "Text": "Thermal protection",
+            "effectedStat": "thermal",
+            "Max": "5.0%"
+          },
+          "[1]": {
+            "SID": "SciSEVA_Scientific_Armor_protectionElectrical2",
+            "Type": "EEffectType::ProtectionShock",
+            "Text": "Electro Defence",
+            "effectedStat": "electric",
+            "Max": "5.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "SciSEVA_Scientific_Armor_protectionThermal_protectionElectrical_Left_2_1"
+        ]
+      },
+      {
+        "Id": "SciSEVA_Scientific_Armor_PSY_Left_1_1",
+        "Values": {
+          "SID": "SciSEVA_Scientific_Armor_PSY_Left_1_1",
+          "BaseCost": "10800",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SciSEVA_Scientific_Armor_ProtectionPSY",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Protection PSY",
+            "effectedStat": "psi",
+            "Max": "10.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "SciSEVA_Scientific_Armor_protectionRadiation_Left_1_2",
+        "Values": {
+          "SID": "SciSEVA_Scientific_Armor_protectionRadiation_Left_1_2",
+          "BaseCost": "5400",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SciSEVA_Scientific_Armor_protectionRadiation",
+            "Type": "EEffectType::ProtectionRadiation",
+            "Text": "protection Radiation",
+            "effectedStat": "radiation",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "SciSEVA_Scientific_Armor_protectionRadiation_Left_2_1",
+        "Values": {
+          "SID": "SciSEVA_Scientific_Armor_protectionRadiation_Left_2_1",
+          "BaseCost": "10800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SciSEVA_Scientific_Armor_protectionRadiation1",
+            "Type": "EEffectType::ProtectionRadiation",
+            "Text": "protection Radiation",
+            "effectedStat": "radiation",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "SciSEVA_Scientific_Armor_PSY_Left_1_1"
+        ]
+      },
+      {
+        "Id": "SciSEVA_Scientific_Armor_PSY_Left_2_2",
+        "Values": {
+          "SID": "SciSEVA_Scientific_Armor_PSY_Left_2_2",
+          "BaseCost": "10800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SciSEVA_Scientific_Armor_ProtectionPSY1",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Protection PSY",
+            "effectedStat": "psi",
+            "Max": "10.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "SciSEVA_Scientific_Armor_protectionRadiation_Left_1_2"
+        ]
+      },
+      {
+        "Id": "SciSEVA_Scientific_Armor_container_Left_1_1",
+        "Values": {
+          "SID": "SciSEVA_Scientific_Armor_container_Left_1_1",
+          "BaseCost": "21700",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SciSEVA_Scientific_Armor_container",
+            "Type": "EEffectType::ArtifactSlots",
+            "Text": "Increase artifact slots",
+            "effectedStat": "slots",
+            "Max": "1"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "SciSEVA_Scientific_Armor_radiationAbsorption_Left_2_1",
+        "Values": {
+          "SID": "SciSEVA_Scientific_Armor_radiationAbsorption_Left_2_1",
+          "BaseCost": "10800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "SciSEVA_Scientific_Armor_container_Left_1_1"
+        ]
+      },
+      {
+        "Id": "SciSEVA_Scientific_Armor_radiationAbsorption_Left_2_2",
+        "Values": {
+          "SID": "SciSEVA_Scientific_Armor_radiationAbsorption_Left_2_2",
+          "BaseCost": "10800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "SciSEVA_Scientific_Armor_container_Left_1_1"
+        ]
+      },
+      {
+        "Id": "SciSEVA_Scientific_Armor_radiationAbsorption_Left_3_1",
+        "Values": {
+          "SID": "SciSEVA_Scientific_Armor_radiationAbsorption_Left_3_1",
+          "BaseCost": "21700",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot3",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "SciSEVA_Scientific_Armor_radiationAbsorption_Left_2_1",
+          "SciSEVA_Scientific_Armor_radiationAbsorption_Left_2_2"
+        ]
       }
     ]
   },
@@ -7591,7 +8104,7 @@
           "[0]": {
             "SID": "Heavy_Svoboda_Armor_container",
             "Type": "EEffectType::ArtifactSlots",
-            "Text": "container",
+            "Text": "Increase artifact slots",
             "effectedStat": "slots",
             "Max": "1"
           }
@@ -8862,6 +9375,275 @@
     ]
   },
   {
+    "Id": "Rook_Dolg_Armor",
+    "Values": {
+      "SID": "Rook_Dolg_Armor",
+      "Icon": "Texture2D\u0027/Game/GameLite/FPS_Game/UIRemaster/UITextures/Inventory/Armor/T_IFI_Rook_Dolg_Armor.T_IFI_Rook_Dolg_Armor\u0027",
+      "weight": "3.0",
+      "Cost": "19100.0",
+      "slots": "2",
+      "thermal": "8.5",
+      "electric": "8.5",
+      "chemical": "8.5",
+      "radiation": "20.0",
+      "psi": "0.0",
+      "physical": "1.2",
+      "Fall": "0.0",
+      "DisplayName": "Recruit Suit",
+      "Type": "chest"
+    },
+    "UpgradeList": [
+      "Rook_Dolg_Armor_protectionPhysical_Left_1_1",
+      "Rook_Dolg_Armor_protectionPhysical_Left_2_2",
+      "Rook_Dolg_Armor_reductionWeight_Left_1_2",
+      "Rook_Dolg_Armor_MaxDurability_Left_2_1",
+      "Rook_Dolg_Armor_protectionThermal_Left_1_1",
+      "Rook_Dolg_Armor_protectionRadiation_Left_1_2",
+      "Rook_Dolg_Armor_protectionElectrical_Left_2_1",
+      "Rook_Dolg_Armor_protectionChemical_Left_2_2",
+      "Rook_Dolg_Armor_regenerationStamina_Left_1_1",
+      "Rook_Dolg_Armor_container_Left_2_1"
+    ],
+    "Upgrades": [
+      {
+        "Id": "Rook_Dolg_Armor_protectionPhysical_Left_1_1",
+        "Values": {
+          "SID": "Rook_Dolg_Armor_protectionPhysical_Left_1_1",
+          "BaseCost": "2400",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Rook_Dolg_Armor_protectionPhysical",
+            "Type": "EEffectType::ProtectionStrike",
+            "Text": "Strike Protection",
+            "effectedStat": "physical",
+            "Max": "20.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "Rook_Dolg_Armor_protectionPhysical_Left_2_2",
+        "Values": {
+          "SID": "Rook_Dolg_Armor_protectionPhysical_Left_2_2",
+          "BaseCost": "4800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Rook_Dolg_Armor_protectionPhysical1",
+            "Type": "EEffectType::ProtectionStrike",
+            "Text": "Strike Protection",
+            "effectedStat": "physical",
+            "Max": "20.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "Rook_Dolg_Armor_MaxDurability_Left_2_1"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "Rook_Dolg_Armor_protectionPhysical_Left_1_1"
+        ]
+      },
+      {
+        "Id": "Rook_Dolg_Armor_reductionWeight_Left_1_2",
+        "Values": {
+          "SID": "Rook_Dolg_Armor_reductionWeight_Left_1_2",
+          "BaseCost": "2400",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Rook_Dolg_Armor_reductionWeight",
+            "Type": "EEffectType::ArmorItemWeight",
+            "Text": "Item Weight",
+            "effectedStat": "weight",
+            "Max": "-1"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "Rook_Dolg_Armor_MaxDurability_Left_2_1",
+        "Values": {
+          "SID": "Rook_Dolg_Armor_MaxDurability_Left_2_1",
+          "BaseCost": "4800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Rook_Dolg_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "Rook_Dolg_Armor_protectionPhysical_Left_2_2"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "Rook_Dolg_Armor_reductionWeight_Left_1_2"
+        ]
+      },
+      {
+        "Id": "Rook_Dolg_Armor_protectionThermal_Left_1_1",
+        "Values": {
+          "SID": "Rook_Dolg_Armor_protectionThermal_Left_1_1",
+          "BaseCost": "2400",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Rook_Dolg_Armor_protectionThermal",
+            "Type": "EEffectType::ProtectionBurn",
+            "Text": "Thermal protection",
+            "effectedStat": "thermal",
+            "Max": "30.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "Rook_Dolg_Armor_protectionRadiation_Left_1_2"
+        ],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "Rook_Dolg_Armor_protectionRadiation_Left_1_2",
+        "Values": {
+          "SID": "Rook_Dolg_Armor_protectionRadiation_Left_1_2",
+          "BaseCost": "2400",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Rook_Dolg_Armor_protectionRadiation",
+            "Type": "EEffectType::ProtectionRadiation",
+            "Text": "protection Radiation",
+            "effectedStat": "radiation",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "Rook_Dolg_Armor_protectionThermal_Left_1_1"
+        ],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "Rook_Dolg_Armor_protectionElectrical_Left_2_1",
+        "Values": {
+          "SID": "Rook_Dolg_Armor_protectionElectrical_Left_2_1",
+          "BaseCost": "4800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Rook_Dolg_Armor_protectionElectrical",
+            "Type": "EEffectType::ProtectionShock",
+            "Text": "Electro Defence",
+            "effectedStat": "electric",
+            "Max": "30.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "Rook_Dolg_Armor_protectionChemical_Left_2_2"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "Rook_Dolg_Armor_protectionThermal_Left_1_1"
+        ]
+      },
+      {
+        "Id": "Rook_Dolg_Armor_protectionChemical_Left_2_2",
+        "Values": {
+          "SID": "Rook_Dolg_Armor_protectionChemical_Left_2_2",
+          "BaseCost": "4800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Rook_Dolg_Armor_protectionChemical",
+            "Type": "EEffectType::ProtectionChemical",
+            "Text": "Chemical protection",
+            "effectedStat": "chemical",
+            "Max": "30.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "Rook_Dolg_Armor_protectionElectrical_Left_2_1"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "Rook_Dolg_Armor_protectionRadiation_Left_1_2"
+        ]
+      },
+      {
+        "Id": "Rook_Dolg_Armor_regenerationStamina_Left_1_1",
+        "Values": {
+          "SID": "Rook_Dolg_Armor_regenerationStamina_Left_1_1",
+          "BaseCost": "2400",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Rook_Dolg_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "Rook_Dolg_Armor_container_Left_2_1",
+        "Values": {
+          "SID": "Rook_Dolg_Armor_container_Left_2_1",
+          "BaseCost": "9600",
+          "HorizontalPosition": "1",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Rook_Dolg_Armor_container",
+            "Type": "EEffectType::ArtifactSlots",
+            "Text": "Increase artifact slots",
+            "effectedStat": "slots",
+            "Max": "1"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "Rook_Dolg_Armor_regenerationStamina_Left_1_1"
+        ]
+      }
+    ]
+  },
+  {
     "Id": "Battle_Dolg_Armor",
     "Values": {
       "SID": "Battle_Dolg_Armor",
@@ -10080,7 +10862,7 @@
           "[0]": {
             "SID": "Heavy_Dolg_Armor_container",
             "Type": "EEffectType::ArtifactSlots",
-            "Text": "container",
+            "Text": "Increase artifact slots",
             "effectedStat": "slots",
             "Max": "1"
           }
@@ -10132,6 +10914,560 @@
         "BlockingUpgradePrototypeSIDs": [],
         "RequiredUpgradePrototypeSIDs": [
           "Heavy_Dolg_Armor_radiationAbsorption_Left_2_1"
+        ]
+      },
+      {
+        "Id": "FaustPsyResist_Quest_1_1",
+        "Values": {
+          "SID": "FaustPsyResist_Quest_1_1",
+          "BaseCost": "100",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Stock"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
+          "[1]": {
+            "SID": "Supressor_protectionPsiPerc",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      }
+    ]
+  },
+  {
+    "Id": "HeavyExoskeleton_Dolg_Armor",
+    "Values": {
+      "SID": "HeavyExoskeleton_Dolg_Armor",
+      "Icon": "Texture2D\u0027/Game/GameLite/FPS_Game/UIRemaster/UITextures/Inventory/Armor/T_IFI_HeavyExoskeleton_Dolg_Armor.T_IFI_HeavyExoskeleton_Dolg_Armor\u0027",
+      "weight": "20.0",
+      "Cost": "63000.0",
+      "slots": "3",
+      "thermal": "25.0",
+      "electric": "22.0",
+      "chemical": "23.0",
+      "radiation": "60.0",
+      "psi": "20.0",
+      "physical": "3.75",
+      "Fall": "0.0",
+      "DisplayName": "Shield of Duty Exosuit",
+      "Type": "full body"
+    },
+    "UpgradeList": [
+      "HeavyExoskeleton_Dolg_Armor_EXOprotectionPhysical_Left_1_1",
+      "HeavyExoskeleton_Dolg_Armor_reductionWeight_Left_2_1",
+      "HeavyExoskeleton_Dolg_Armor_EXOMaxDurability_Left_3_1",
+      "HeavyExoskeleton_Dolg_Armor_Backpack_Left_3_2",
+      "HeavyExoskeleton_Dolg_Armor_protectionChemical_Left_1_1",
+      "HeavyExoskeleton_Dolg_Armor_protectionThermal_Left_1_2",
+      "HeavyExoskeleton_Dolg_Armor_protectionElectrical_Left_2_1",
+      "HeavyExoskeleton_Dolg_Armor_protectionThermal_protectionChemica_Left_3_1",
+      "HeavyExoskeleton_Dolg_Armor_protectionChemical_protectionElectrical_Left_3_2",
+      "HeavyExoskeleton_Dolg_Armor_EXOregenerationStamina_Left_1_1",
+      "HeavyExoskeleton_Dolg_Armor_protectionRadiation_Left_1_2",
+      "HeavyExoskeleton_Dolg_Armor_EXOMaxDurability_Left_2_1",
+      "HeavyExoskeleton_Dolg_Armor_protectionRadiation_Left_2_2",
+      "HeavyExoskeleton_Dolg_Armor_PSY_Left_3_2",
+      "HeavyExoskeleton_Dolg_Armor_container_Left_1_1",
+      "HeavyExoskeleton_Dolg_Armor_rad_container_Left_2_1",
+      "HeavyExoskeleton_Dolg_Armor_rad_container_Left_2_2",
+      "HeavyExoskeleton_Dolg_Armor_container_Left_3_1",
+      "FaustPsyResist_Quest_1_1"
+    ],
+    "Upgrades": [
+      {
+        "Id": "HeavyExoskeleton_Dolg_Armor_EXOprotectionPhysical_Left_1_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Dolg_Armor_EXOprotectionPhysical_Left_1_1",
+          "BaseCost": "7500",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_protectionPhysical",
+            "Type": "EEffectType::ProtectionStrike",
+            "Text": "Strike Protection",
+            "effectedStat": "physical",
+            "Max": "20.0%"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_wearing1",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "HeavyExoskeleton_Dolg_Armor_reductionWeight_Left_2_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Dolg_Armor_reductionWeight_Left_2_1",
+          "BaseCost": "15000",
+          "HorizontalPosition": "1",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_reductionWeight",
+            "Type": "EEffectType::ArmorItemWeight",
+            "Text": "Item Weight",
+            "effectedStat": "weight",
+            "Max": "-1"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Dolg_Armor_EXOprotectionPhysical_Left_1_1"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Dolg_Armor_EXOMaxDurability_Left_3_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Dolg_Armor_EXOMaxDurability_Left_3_1",
+          "BaseCost": "30000",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_reductionWeight1",
+            "Type": "EEffectType::ArmorItemWeight",
+            "Text": "Item Weight",
+            "effectedStat": "weight",
+            "Max": "-1"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Dolg_Armor_reductionWeight_Left_2_1"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Dolg_Armor_Backpack_Left_3_2",
+        "Values": {
+          "SID": "HeavyExoskeleton_Dolg_Armor_Backpack_Left_3_2",
+          "BaseCost": "30000",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_carryingCapacity",
+            "Type": "EEffectType::Composite",
+            "Text": "carryingCapacity",
+            "effectedStat": "",
+            "Max": "10.0%"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_reductionWeight2",
+            "Type": "EEffectType::ArmorItemWeight",
+            "Text": "Item Weight",
+            "effectedStat": "weight",
+            "Max": "-1"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Dolg_Armor_reductionWeight_Left_2_1"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Dolg_Armor_protectionChemical_Left_1_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Dolg_Armor_protectionChemical_Left_1_1",
+          "BaseCost": "7500",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_protectionChemical1",
+            "Type": "EEffectType::ProtectionChemical",
+            "Text": "Chemical protection",
+            "effectedStat": "chemical",
+            "Max": "20.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Dolg_Armor_protectionThermal_Left_1_2"
+        ],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "HeavyExoskeleton_Dolg_Armor_protectionThermal_Left_1_2",
+        "Values": {
+          "SID": "HeavyExoskeleton_Dolg_Armor_protectionThermal_Left_1_2",
+          "BaseCost": "7500",
+          "VerticalPosition": "EUpgradeVerticalPosition::top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_protectionThermal",
+            "Type": "EEffectType::ProtectionBurn",
+            "Text": "Thermal protection",
+            "effectedStat": "thermal",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Dolg_Armor_protectionChemical_Left_1_1"
+        ],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "HeavyExoskeleton_Dolg_Armor_protectionElectrical_Left_2_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Dolg_Armor_protectionElectrical_Left_2_1",
+          "BaseCost": "15000",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_protectionElectrical",
+            "Type": "EEffectType::ProtectionShock",
+            "Text": "Electro Defence",
+            "effectedStat": "electric",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Dolg_Armor_protectionChemical_Left_1_1",
+          "HeavyExoskeleton_Dolg_Armor_protectionThermal_Left_1_2"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Dolg_Armor_protectionThermal_protectionChemica_Left_3_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Dolg_Armor_protectionThermal_protectionChemica_Left_3_1",
+          "BaseCost": "30000",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_protectionThermal2",
+            "Type": "EEffectType::ProtectionBurn",
+            "Text": "Thermal protection",
+            "effectedStat": "thermal",
+            "Max": "20.0%"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_protectionChemical1",
+            "Type": "EEffectType::ProtectionChemical",
+            "Text": "Chemical protection",
+            "effectedStat": "chemical",
+            "Max": "20.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Dolg_Armor_protectionChemical_protectionElectrical_Left_3_2"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Dolg_Armor_protectionElectrical_Left_2_1"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Dolg_Armor_protectionChemical_protectionElectrical_Left_3_2",
+        "Values": {
+          "SID": "HeavyExoskeleton_Dolg_Armor_protectionChemical_protectionElectrical_Left_3_2",
+          "BaseCost": "30000",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_protectionElectrical1",
+            "Type": "EEffectType::ProtectionShock",
+            "Text": "Electro Defence",
+            "effectedStat": "electric",
+            "Max": "20.0%"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_protectionChemical2",
+            "Type": "EEffectType::ProtectionChemical",
+            "Text": "Chemical protection",
+            "effectedStat": "chemical",
+            "Max": "20.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Dolg_Armor_protectionThermal_protectionChemica_Left_3_1"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Dolg_Armor_protectionElectrical_Left_2_1"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Dolg_Armor_EXOregenerationStamina_Left_1_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Dolg_Armor_EXOregenerationStamina_Left_1_1",
+          "BaseCost": "7500",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_reductionWeight3",
+            "Type": "EEffectType::ArmorItemWeight",
+            "Text": "Item Weight",
+            "effectedStat": "weight",
+            "Max": "-1"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "HeavyExoskeleton_Dolg_Armor_protectionRadiation_Left_1_2",
+        "Values": {
+          "SID": "HeavyExoskeleton_Dolg_Armor_protectionRadiation_Left_1_2",
+          "BaseCost": "7500",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_protectionRadiation",
+            "Type": "EEffectType::ProtectionRadiation",
+            "Text": "protection Radiation",
+            "effectedStat": "radiation",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "HeavyExoskeleton_Dolg_Armor_EXOMaxDurability_Left_2_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Dolg_Armor_EXOMaxDurability_Left_2_1",
+          "BaseCost": "15000",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_reductionWeight4",
+            "Type": "EEffectType::ArmorItemWeight",
+            "Text": "Item Weight",
+            "effectedStat": "weight",
+            "Max": "-1"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_wearing2",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Dolg_Armor_protectionRadiation_Left_2_2"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Dolg_Armor_EXOregenerationStamina_Left_1_1"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Dolg_Armor_protectionRadiation_Left_2_2",
+        "Values": {
+          "SID": "HeavyExoskeleton_Dolg_Armor_protectionRadiation_Left_2_2",
+          "BaseCost": "15000",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_protectionRadiation1",
+            "Type": "EEffectType::ProtectionRadiation",
+            "Text": "protection Radiation",
+            "effectedStat": "radiation",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Dolg_Armor_EXOMaxDurability_Left_2_1"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Dolg_Armor_protectionRadiation_Left_1_2"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Dolg_Armor_PSY_Left_3_2",
+        "Values": {
+          "SID": "HeavyExoskeleton_Dolg_Armor_PSY_Left_3_2",
+          "BaseCost": "30000",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_ProtectionPSY",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Protection PSY",
+            "effectedStat": "psi",
+            "Max": "10.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Dolg_Armor_EXOMaxDurability_Left_2_1",
+          "HeavyExoskeleton_Dolg_Armor_protectionRadiation_Left_2_2"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Dolg_Armor_container_Left_1_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Dolg_Armor_container_Left_1_1",
+          "BaseCost": "7500",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_container",
+            "Type": "EEffectType::ArtifactSlots",
+            "Text": "Increase artifact slots",
+            "effectedStat": "slots",
+            "Max": "1"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "HeavyExoskeleton_Dolg_Armor_rad_container_Left_2_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Dolg_Armor_rad_container_Left_2_1",
+          "BaseCost": "15000",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Dolg_Armor_container_Left_1_1"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Dolg_Armor_rad_container_Left_2_2",
+        "Values": {
+          "SID": "HeavyExoskeleton_Dolg_Armor_rad_container_Left_2_2",
+          "BaseCost": "15000",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Dolg_Armor_container_Left_1_1"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Dolg_Armor_container_Left_3_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Dolg_Armor_container_Left_3_1",
+          "BaseCost": "30000",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Dolg_Armor_container1",
+            "Type": "EEffectType::ArtifactSlots",
+            "Text": "Increase artifact slots",
+            "effectedStat": "slots",
+            "Max": "1"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Dolg_Armor_rad_container_Left_2_1",
+          "HeavyExoskeleton_Dolg_Armor_rad_container_Left_2_2"
         ]
       },
       {
@@ -13195,7 +14531,7 @@
           "[0]": {
             "SID": "Battle_Varta_Armor_container",
             "Type": "EEffectType::ArtifactSlots",
-            "Text": "container",
+            "Text": "Increase artifact slots",
             "effectedStat": "slots",
             "Max": "1"
           }
@@ -13246,7 +14582,7 @@
       "psi": "30.0",
       "physical": "4.0",
       "Fall": "0.0",
-      "DisplayName": "PSZ-21W Shturm",
+      "DisplayName": "Operator Exoskeleton",
       "Type": "full body"
     },
     "UpgradeList": [
@@ -14658,7 +15994,7 @@
           "[0]": {
             "SID": "HeavyAnomaly_Spark_Armor_container",
             "Type": "EEffectType::ArtifactSlots",
-            "Text": "container",
+            "Text": "Increase artifact slots",
             "effectedStat": "slots",
             "Max": "1"
           }
@@ -15736,7 +17072,7 @@
           "[0]": {
             "SID": "HeavyBattle_Spark_Armor_container",
             "Type": "EEffectType::ArtifactSlots",
-            "Text": "container",
+            "Text": "Increase artifact slots",
             "effectedStat": "slots",
             "Max": "1"
           }
@@ -15758,7 +17094,7 @@
           "[0]": {
             "SID": "HeavyBattle_Spark_Armor_container1",
             "Type": "EEffectType::ArtifactSlots",
-            "Text": "container",
+            "Text": "Increase artifact slots",
             "effectedStat": "slots",
             "Max": "1"
           }
@@ -18417,5 +19753,1921 @@
     },
     "UpgradeList": [],
     "Upgrades": []
+  },
+  {
+    "Id": "HeavyAnomaly_SIRCA_Armor",
+    "Values": {
+      "SID": "HeavyAnomaly_SIRCA_Armor",
+      "Icon": "Texture2D\u0027/Game/GameLite/FPS_Game/UIRemaster/UITextures/Inventory/Armor/T_IFI_FOL_SCI_18.T_IFI_FOL_SCI_18\u0027",
+      "weight": "8.0",
+      "Cost": "95300.0",
+      "slots": "3",
+      "thermal": "62",
+      "electric": "62",
+      "chemical": "62",
+      "radiation": "60",
+      "psi": "55.0",
+      "physical": "2.0",
+      "Fall": "0.0",
+      "DisplayName": "SSP-100M SIRCAA",
+      "Type": "full body"
+    },
+    "UpgradeList": [
+      "HeavyAnomaly_SIRCA_Armor_MaxDurability_Left_1_1",
+      "HeavyAnomaly_SIRCA_Armor_protectionPhysical_Left_2_1",
+      "HeavyAnomaly_SIRCA_Armor_reductionWeight_Left_2_2",
+      "HeavyAnomaly_SIRCA_Armor_protectionPhysical_Left_3_1",
+      "HeavyAnomaly_SIRCA_Armor_ProtectionChemical_Left_1_1",
+      "HeavyAnomaly_SIRCA_Armor_protectionElectrical_Left_1_2",
+      "HeavyAnomaly_SIRCA_Armor_protectionChemical_protectionTherma_Left_2_1",
+      "HeavyAnomaly_SIRCA_Armor_protectionThermal_protectionElectrical_Left_3_1",
+      "HeavyAnomaly_SIRCA_Armor_protectionRadiation_Left_1_1",
+      "HeavyAnomaly_SIRCA_Armor_protectionChemical_protectionTherma_Left_2_2",
+      "HeavyAnomaly_SIRCA_Armor_radiationAbsorption_Left_3_2",
+      "HeavyAnomaly_SIRCA_Armor_container_Left_1_1",
+      "HeavyAnomaly_SIRCA_Armor_container_Left_2_1",
+      "HeavyAnomaly_SIRCA_Armor_radiationAbsorption_Left_2_2",
+      "HeavyAnomaly_SIRCA_Armor_radiationAbsorption_Left_3_1",
+      "FaustPsyResist_Quest_1_1"
+    ],
+    "Upgrades": [
+      {
+        "Id": "HeavyAnomaly_SIRCA_Armor_MaxDurability_Left_1_1",
+        "Values": {
+          "SID": "HeavyAnomaly_SIRCA_Armor_MaxDurability_Left_1_1",
+          "BaseCost": "5400",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyAnomaly_SIRCA_Armor_wearing1",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "HeavyAnomaly_SIRCA_Armor_protectionPhysical_Left_2_1",
+        "Values": {
+          "SID": "HeavyAnomaly_SIRCA_Armor_protectionPhysical_Left_2_1",
+          "BaseCost": "10800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyAnomaly_SIRCA_Armor_protectionPhysical",
+            "Type": "EEffectType::ProtectionStrike",
+            "Text": "Strike Protection",
+            "effectedStat": "physical",
+            "Max": "40.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyAnomaly_SIRCA_Armor_MaxDurability_Left_1_1"
+        ]
+      },
+      {
+        "Id": "HeavyAnomaly_SIRCA_Armor_reductionWeight_Left_2_2",
+        "Values": {
+          "SID": "HeavyAnomaly_SIRCA_Armor_reductionWeight_Left_2_2",
+          "BaseCost": "10800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyAnomaly_SIRCA_Armor_reductionWeight",
+            "Type": "EEffectType::ArmorItemWeight",
+            "Text": "Item Weight",
+            "effectedStat": "weight",
+            "Max": "-1"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyAnomaly_SIRCA_Armor_MaxDurability_Left_1_1"
+        ]
+      },
+      {
+        "Id": "HeavyAnomaly_SIRCA_Armor_protectionPhysical_Left_3_1",
+        "Values": {
+          "SID": "HeavyAnomaly_SIRCA_Armor_protectionPhysical_Left_3_1",
+          "BaseCost": "21700",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyAnomaly_SIRCA_Armor_protectionPhysical",
+            "Type": "EEffectType::ProtectionStrike",
+            "Text": "Strike Protection",
+            "effectedStat": "physical",
+            "Max": "40.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyAnomaly_SIRCA_Armor_protectionPhysical_Left_2_1",
+          "HeavyAnomaly_SIRCA_Armor_reductionWeight_Left_2_2"
+        ]
+      },
+      {
+        "Id": "HeavyAnomaly_SIRCA_Armor_ProtectionChemical_Left_1_1",
+        "Values": {
+          "SID": "HeavyAnomaly_SIRCA_Armor_ProtectionChemical_Left_1_1",
+          "BaseCost": "5400",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyAnomaly_SIRCA_Armor_protectionChemical",
+            "Type": "EEffectType::ProtectionChemical",
+            "Text": "Chemical protection",
+            "effectedStat": "chemical",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "HeavyAnomaly_SIRCA_Armor_protectionElectrical_Left_1_2",
+        "Values": {
+          "SID": "HeavyAnomaly_SIRCA_Armor_protectionElectrical_Left_1_2",
+          "BaseCost": "5400",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyAnomaly_SIRCA_Armor_protectionElectrical",
+            "Type": "EEffectType::ProtectionShock",
+            "Text": "Electro Defence",
+            "effectedStat": "electric",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "HeavyAnomaly_SIRCA_Armor_protectionChemical_protectionTherma_Left_2_1",
+        "Values": {
+          "SID": "HeavyAnomaly_SIRCA_Armor_protectionChemical_protectionTherma_Left_2_1",
+          "BaseCost": "10800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyAnomaly_SIRCA_Armor_protectionThermal",
+            "Type": "EEffectType::ProtectionBurn",
+            "Text": "Thermal protection",
+            "effectedStat": "thermal",
+            "Max": "15.0%"
+          },
+          "[1]": {
+            "SID": "HeavyAnomaly_SIRCA_Armor_protectionChemical1",
+            "Type": "EEffectType::ProtectionChemical",
+            "Text": "Chemical protection",
+            "effectedStat": "chemical",
+            "Max": "20.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyAnomaly_SIRCA_Armor_ProtectionChemical_Left_1_1",
+          "HeavyAnomaly_SIRCA_Armor_protectionElectrical_Left_1_2"
+        ]
+      },
+      {
+        "Id": "HeavyAnomaly_SIRCA_Armor_protectionThermal_protectionElectrical_Left_3_1",
+        "Values": {
+          "SID": "HeavyAnomaly_SIRCA_Armor_protectionThermal_protectionElectrical_Left_3_1",
+          "BaseCost": "21700",
+          "HorizontalPosition": "2",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyAnomaly_SIRCA_Armor_protectionThermal1",
+            "Type": "EEffectType::ProtectionBurn",
+            "Text": "Thermal protection",
+            "effectedStat": "thermal",
+            "Max": "20.0%"
+          },
+          "[1]": {
+            "SID": "HeavyAnomaly_SIRCA_Armor_protectionElectrical1",
+            "Type": "EEffectType::ProtectionShock",
+            "Text": "Electro Defence",
+            "effectedStat": "electric",
+            "Max": "20.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyAnomaly_SIRCA_Armor_protectionChemical_protectionTherma_Left_2_1"
+        ]
+      },
+      {
+        "Id": "HeavyAnomaly_SIRCA_Armor_protectionRadiation_Left_1_1",
+        "Values": {
+          "SID": "HeavyAnomaly_SIRCA_Armor_protectionRadiation_Left_1_1",
+          "BaseCost": "5400",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyAnomaly_SIRCA_Armor_protectionRadiation",
+            "Type": "EEffectType::ProtectionRadiation",
+            "Text": "protection Radiation",
+            "effectedStat": "radiation",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "HeavyAnomaly_SIRCA_Armor_protectionChemical_protectionTherma_Left_2_2",
+        "Values": {
+          "SID": "HeavyAnomaly_SIRCA_Armor_protectionChemical_protectionTherma_Left_2_2",
+          "BaseCost": "10800",
+          "HorizontalPosition": "1",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyAnomaly_SIRCA_Armor_protectionThermal2",
+            "Type": "EEffectType::ProtectionBurn",
+            "Text": "Thermal protection",
+            "effectedStat": "thermal",
+            "Max": "20.0%"
+          },
+          "[1]": {
+            "SID": "HeavyAnomaly_SIRCA_Armor_protectionChemical2",
+            "Type": "EEffectType::ProtectionChemical",
+            "Text": "Chemical protection",
+            "effectedStat": "chemical",
+            "Max": "20.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyAnomaly_SIRCA_Armor_protectionRadiation_Left_1_1"
+        ]
+      },
+      {
+        "Id": "HeavyAnomaly_SIRCA_Armor_radiationAbsorption_Left_3_2",
+        "Values": {
+          "SID": "HeavyAnomaly_SIRCA_Armor_radiationAbsorption_Left_3_2",
+          "BaseCost": "21700",
+          "HorizontalPosition": "2",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyAnomaly_SIRCA_Armor_protectionChemical_protectionTherma_Left_2_2"
+        ]
+      },
+      {
+        "Id": "HeavyAnomaly_SIRCA_Armor_container_Left_1_1",
+        "Values": {
+          "SID": "HeavyAnomaly_SIRCA_Armor_container_Left_1_1",
+          "BaseCost": "10800",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyAnomaly_SIRCA_Armor_container",
+            "Type": "EEffectType::ArtifactSlots",
+            "Text": "Increase artifact slots",
+            "effectedStat": "slots",
+            "Max": "1"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "HeavyAnomaly_SIRCA_Armor_container_Left_2_1",
+        "Values": {
+          "SID": "HeavyAnomaly_SIRCA_Armor_container_Left_2_1",
+          "BaseCost": "21700",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyAnomaly_SIRCA_Armor_container1",
+            "Type": "EEffectType::ArtifactSlots",
+            "Text": "Increase artifact slots",
+            "effectedStat": "slots",
+            "Max": "1"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyAnomaly_SIRCA_Armor_container_Left_1_1"
+        ]
+      },
+      {
+        "Id": "HeavyAnomaly_SIRCA_Armor_radiationAbsorption_Left_2_2",
+        "Values": {
+          "SID": "HeavyAnomaly_SIRCA_Armor_radiationAbsorption_Left_2_2",
+          "BaseCost": "10800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyAnomaly_SIRCA_Armor_container_Left_1_1"
+        ]
+      },
+      {
+        "Id": "HeavyAnomaly_SIRCA_Armor_radiationAbsorption_Left_3_1",
+        "Values": {
+          "SID": "HeavyAnomaly_SIRCA_Armor_radiationAbsorption_Left_3_1",
+          "BaseCost": "21700",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot3",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyAnomaly_SIRCA_Armor_container_Left_2_1",
+          "HeavyAnomaly_SIRCA_Armor_radiationAbsorption_Left_2_2"
+        ]
+      },
+      {
+        "Id": "FaustPsyResist_Quest_1_1",
+        "Values": {
+          "SID": "FaustPsyResist_Quest_1_1",
+          "BaseCost": "100",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Stock"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
+          "[1]": {
+            "SID": "Supressor_protectionPsiPerc",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      }
+    ]
+  },
+  {
+    "Id": "HeavyExoskeleton_Varta_Armor",
+    "Values": {
+      "SID": "HeavyExoskeleton_Varta_Armor",
+      "Icon": "Texture2D\u0027/Game/GameLite/FPS_Game/UIRemaster/UITextures/Inventory/Armor/T_IFI_HeavyExoskeleton_Varta_Armor.T_IFI_HeavyExoskeleton_Varta_Armor\u0027",
+      "weight": "14.0",
+      "Cost": "131500.0",
+      "slots": "4",
+      "thermal": "23.0",
+      "electric": "42",
+      "chemical": "40",
+      "radiation": "64.0",
+      "psi": "50.0",
+      "physical": "3.25",
+      "Fall": "0.0",
+      "DisplayName": "PSZ-21W Shturm",
+      "Type": "full body"
+    },
+    "UpgradeList": [
+      "HeavyExoskeleton_Varta_Armor_EXOprotectionPhysical_Left_1_1",
+      "HeavyExoskeleton_Varta_Armor_EXOMaxDurability_Left_2_1",
+      "HeavyExoskeleton_Varta_Armor_reductionWeight_Left_2_2",
+      "HeavyExoskeleton_Varta_Armor_EXOprotectionPhysical_Left_3_1",
+      "HeavyExoskeleton_Varta_Armor_carryingCapacity_Left_3_2",
+      "HeavyExoskeleton_Varta_Armor_EXOMaxDurability_Left_1_1",
+      "HeavyExoskeleton_Varta_Armor_protectionThermal_Left_2_1",
+      "HeavyExoskeleton_Varta_Armor_protectionElectrical_Left_2_2",
+      "HeavyExoskeleton_Varta_Armor_protectionChemical_protectionTherma_Left_3_1",
+      "HeavyExoskeleton_Varta_Armor_protectionChemical_protectionTherma_Left_3_2",
+      "HeavyExoskeleton_Varta_Armor_EXOregenerationStamina_Right_1_1",
+      "HeavyExoskeleton_Varta_Armor_AddRunEffect_Right_2_1",
+      "HeavyExoskeleton_Varta_Armor_protectionRadiation_Left_1_2",
+      "HeavyExoskeleton_Varta_Armor_protectionRadiation_Left_2_2",
+      "HeavyExoskeleton_Varta_Armor_PSY_Left_2_3",
+      "HeavyExoskeleton_Varta_Armor_PSY_Left_3_1",
+      "HeavyExoskeleton_Varta_Armor_rad_container_Left_1_1",
+      "HeavyExoskeleton_Varta_Armor_rad_container_Left_2_1",
+      "HeavyExoskeleton_Varta_Armor_container_Left_2_2",
+      "HeavyExoskeleton_Varta_Armor_rad_container_Left_3_1",
+      "HeavyExoskeleton_Varta_Armor_rad_container_Left_3_2",
+      "FaustPsyResist_Quest_1_1"
+    ],
+    "Upgrades": [
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_EXOprotectionPhysical_Left_1_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_EXOprotectionPhysical_Left_1_1",
+          "BaseCost": "7500",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_protectionPhysical",
+            "Type": "EEffectType::ProtectionStrike",
+            "Text": "Strike Protection",
+            "effectedStat": "physical",
+            "Max": "15.0%"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_EXOMaxDurability_Left_2_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_EXOMaxDurability_Left_2_1",
+          "BaseCost": "15000",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_reductionWeight",
+            "Type": "EEffectType::ArmorItemWeight",
+            "Text": "Item Weight",
+            "effectedStat": "weight",
+            "Max": "-1"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_wearing4",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_reductionWeight_Left_2_2"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_EXOprotectionPhysical_Left_1_1"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_reductionWeight_Left_2_2",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_reductionWeight_Left_2_2",
+          "BaseCost": "15000",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_reductionWeight",
+            "Type": "EEffectType::ArmorItemWeight",
+            "Text": "Item Weight",
+            "effectedStat": "weight",
+            "Max": "-1"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_EXOMaxDurability_Left_2_1"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_EXOprotectionPhysical_Left_1_1"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_EXOprotectionPhysical_Left_3_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_EXOprotectionPhysical_Left_3_1",
+          "BaseCost": "30000",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_protectionPhysical1",
+            "Type": "EEffectType::ProtectionStrike",
+            "Text": "Strike Protection",
+            "effectedStat": "physical",
+            "Max": "15.0%"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_wearing1",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_carryingCapacity_Left_3_2"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_EXOMaxDurability_Left_2_1"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_carryingCapacity_Left_3_2",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_carryingCapacity_Left_3_2",
+          "BaseCost": "30000",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_carryingCapacity",
+            "Type": "EEffectType::Composite",
+            "Text": "carryingCapacity",
+            "effectedStat": "",
+            "Max": "10.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_EXOprotectionPhysical_Left_3_1"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_reductionWeight_Left_2_2"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_EXOMaxDurability_Right_1_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_EXOMaxDurability_Right_1_1",
+          "BaseCost": "7500",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_reductionWeight2",
+            "Type": "EEffectType::ArmorItemWeight",
+            "Text": "Item Weight",
+            "effectedStat": "weight",
+            "Max": "-1"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_wearing3",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "20.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_protectionThermal_Left_2_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_protectionThermal_Left_2_1",
+          "BaseCost": "15000",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_protectionThermal",
+            "Type": "EEffectType::ProtectionBurn",
+            "Text": "Thermal protection",
+            "effectedStat": "thermal",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_EXOMaxDurability_Right_1_1"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_protectionElectrical_Left_2_2",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_protectionElectrical_Left_2_2",
+          "BaseCost": "15000",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_protectionElectrical",
+            "Type": "EEffectType::ProtectionShock",
+            "Text": "Electro Defence",
+            "effectedStat": "electric",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_EXOMaxDurability_Right_1_1"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_protectionChemical_protectionTherma_Left_3_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_protectionChemical_protectionTherma_Left_3_1",
+          "BaseCost": "30000",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_protectionChemical1",
+            "Type": "EEffectType::ProtectionChemical",
+            "Text": "Chemical protection",
+            "effectedStat": "chemical",
+            "Max": "15.0%"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_protectionThermal1",
+            "Type": "EEffectType::ProtectionBurn",
+            "Text": "Thermal protection",
+            "effectedStat": "thermal",
+            "Max": "20.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_protectionThermal_Left_2_1"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_protectionChemical_protectionElectrical_Left_3_2",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_protectionChemical_protectionElectrical_Left_3_2",
+          "BaseCost": "30000",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_protectionChemical2",
+            "Type": "EEffectType::ProtectionChemical",
+            "Text": "Chemical protection",
+            "effectedStat": "chemical",
+            "Max": "20.0%"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_protectionElectrical1",
+            "Type": "EEffectType::ProtectionShock",
+            "Text": "Electro Defence",
+            "effectedStat": "electric",
+            "Max": "20.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_protectionElectrical_Left_2_2"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_EXOregenerationStamina_Right_1_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_EXOregenerationStamina_Right_1_1",
+          "BaseCost": "7500",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_reductionWeight2",
+            "Type": "EEffectType::ArmorItemWeight",
+            "Text": "Item Weight",
+            "effectedStat": "weight",
+            "Max": "-1"
+          },
+          "[1]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_AddRunEffect_Right_2_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_AddRunEffect_Right_2_1",
+          "BaseCost": "15000",
+          "HorizontalPosition": "1",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "AddSprintEffect",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "Add Sprint",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_EXOregenerationStamina_Right_1_1"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_protectionRadiation_Left_1_2",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_protectionRadiation_Left_1_2",
+          "BaseCost": "7500",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_protectionRadiation",
+            "Type": "EEffectType::ProtectionRadiation",
+            "Text": "protection Radiation",
+            "effectedStat": "radiation",
+            "Max": "10.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_protectionRadiation_Left_2_2",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_protectionRadiation_Left_2_2",
+          "BaseCost": "15000",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_protectionRadiation2",
+            "Type": "EEffectType::ProtectionRadiation",
+            "Text": "protection Radiation",
+            "effectedStat": "radiation",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_PSY_Left_2_3"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_protectionRadiation_Left_1_2"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_PSY_Left_2_3",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_PSY_Left_2_3",
+          "BaseCost": "15000",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_ProtectionPSY",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Protection PSY",
+            "effectedStat": "psi",
+            "Max": "5.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_protectionRadiation_Left_2_2"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_protectionRadiation_Left_1_2"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_PSY_Left_3_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_PSY_Left_3_1",
+          "BaseCost": "30000",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_ProtectionPSY2",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Protection PSY",
+            "effectedStat": "psi",
+            "Max": "10.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_protectionRadiation_Left_1_2",
+          "HeavyExoskeleton_Varta_Armor_PSY_Left_2_3"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_rad_container_Left_1_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_rad_container_Left_1_1",
+          "BaseCost": "7500",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_rad_container_Left_2_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_rad_container_Left_2_1",
+          "BaseCost": "15000",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_rad_container_Left_1_1"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_container_Left_2_2",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_container_Left_2_2",
+          "BaseCost": "15000",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "HeavyExoskeleton_Varta_Armor_container4",
+            "Type": "EEffectType::ArtifactSlots",
+            "Text": "Increase artifact slots",
+            "effectedStat": "slots",
+            "Max": "1"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_rad_container_Left_1_1"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_rad_container_Left_3_1",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_rad_container_Left_3_1",
+          "BaseCost": "30000",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot3",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_rad_container_Left_2_1"
+        ]
+      },
+      {
+        "Id": "HeavyExoskeleton_Varta_Armor_rad_container_Left_3_2",
+        "Values": {
+          "SID": "HeavyExoskeleton_Varta_Armor_rad_container_Left_3_2",
+          "BaseCost": "30000",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot4",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "HeavyExoskeleton_Varta_Armor_container_Left_2_2"
+        ]
+      },
+      {
+        "Id": "FaustPsyResist_Quest_1_1",
+        "Values": {
+          "SID": "FaustPsyResist_Quest_1_1",
+          "BaseCost": "100",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Stock"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
+          "[1]": {
+            "SID": "Supressor_protectionPsiPerc",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      }
+    ]
+  },
+  {
+    "Id": "SEVA_Monolith_Armor",
+    "Values": {
+      "SID": "SEVA_Monolith_Armor",
+      "Icon": "Texture2D\u0027/Game/GameLite/FPS_Game/UIRemaster/UITextures/Inventory/Armor/T_IFI_SEVA_Monolith_Armor.T_IFI_SEVA_Monolith_Armor\u0027",
+      "weight": "8.0",
+      "Cost": "237500.0",
+      "slots": "3",
+      "thermal": "23.0",
+      "electric": "32.5",
+      "chemical": "32.5",
+      "radiation": "60.0",
+      "psi": "30.0",
+      "physical": "2.0",
+      "Fall": "0.0",
+      "DisplayName": "Wanderer Suit",
+      "Type": "full body"
+    },
+    "UpgradeList": [
+      "SEVA_Monolith_Armor_protectionPhysical_Left_1_1",
+      "SEVA_Monolith_Armor_MaxDurability_Left_2_1",
+      "SEVA_Monolith_Armor_reductionWeight_Left_2_2",
+      "SEVA_Monolith_Armor_protectionPhysical_Left_3_1",
+      "SEVA_Monolith_Armor_carryingCapacity_Left_3_2",
+      "SEVA_Monolith_Armor_protectionThermal_protectionElectrical_protectionChemical_Left_1_1",
+      "SEVA_Monolith_Armor_protectionThermal_protectionElectrical_Left_1_2",
+      "SEVA_Monolith_Armor_protectionChemical_protectionElectrical_Left_2_1",
+      "SEVA_Monolith_Armor_protectionThermal_protectionElectrical_Left_2_2",
+      "SEVA_Monolith_Armor_protectionRadiation_Left_3_1",
+      "SEVA_Monolith_Armor_protectionRadiation_Left_3_2",
+      "SEVA_Monolith_Armor_PSY_Left_1_1",
+      "SEVA_Monolith_Armor_MaxDurability_Left_2_2",
+      "SEVA_Monolith_Armor_regenerationStamina_Left_2_1",
+      "SEVA_Monolith_Armor_PSY_Left_3_1",
+      "SEVA_Monolith_Armor_container_Left_1_1",
+      "SEVA_Monolith_Armor_container_Left_1_2",
+      "SEVA_Monolith_Armor_container_radiationAbsorption_Left_2_1",
+      "SEVA_Monolith_Armor_container_radiationAbsorption_Left_2_2",
+      "FaustPsyResist_Quest_1_1"
+    ],
+    "Upgrades": [
+      {
+        "Id": "SEVA_Monolith_Armor_protectionPhysical_Left_1_1",
+        "Values": {
+          "SID": "SEVA_Monolith_Armor_protectionPhysical_Left_1_1",
+          "BaseCost": "5400",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Monolith_Armor_protectionPhysical",
+            "Type": "EEffectType::ProtectionStrike",
+            "Text": "Strike Protection",
+            "effectedStat": "physical",
+            "Max": "20.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "SEVA_Monolith_Armor_MaxDurability_Left_2_1",
+        "Values": {
+          "SID": "SEVA_Monolith_Armor_MaxDurability_Left_2_1",
+          "BaseCost": "10800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Monolith_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "SEVA_Monolith_Armor_protectionPhysical_Left_1_1"
+        ]
+      },
+      {
+        "Id": "SEVA_Monolith_Armor_reductionWeight_Left_2_2",
+        "Values": {
+          "SID": "SEVA_Monolith_Armor_reductionWeight_Left_2_2",
+          "BaseCost": "10800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Monolith_Armor_reductionWeight",
+            "Type": "EEffectType::ArmorItemWeight",
+            "Text": "Item Weight",
+            "effectedStat": "weight",
+            "Max": "-1"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "SEVA_Monolith_Armor_protectionPhysical_Left_1_1"
+        ]
+      },
+      {
+        "Id": "SEVA_Monolith_Armor_protectionPhysical_Left_3_1",
+        "Values": {
+          "SID": "SEVA_Monolith_Armor_protectionPhysical_Left_3_1",
+          "BaseCost": "21700",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Monolith_Armor_protectionPhysical1",
+            "Type": "EEffectType::ProtectionStrike",
+            "Text": "Strike Protection",
+            "effectedStat": "physical",
+            "Max": "20.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "SEVA_Monolith_Armor_carryingCapacity_Left_3_2"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "SEVA_Monolith_Armor_MaxDurability_Left_2_1"
+        ]
+      },
+      {
+        "Id": "SEVA_Monolith_Armor_carryingCapacity_Left_3_2",
+        "Values": {
+          "SID": "SEVA_Monolith_Armor_carryingCapacity_Left_3_2",
+          "BaseCost": "21700",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Monolith_Armor_carryingCapacity",
+            "Type": "EEffectType::Composite",
+            "Text": "carryingCapacity",
+            "effectedStat": "",
+            "Max": "10.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "SEVA_Monolith_Armor_protectionPhysical_Left_3_1"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "SEVA_Monolith_Armor_reductionWeight_Left_2_2"
+        ]
+      },
+      {
+        "Id": "SEVA_Monolith_Armor_protectionThermal_protectionElectrical_protectionChemical_Left_1_1",
+        "Values": {
+          "SID": "SEVA_Monolith_Armor_protectionThermal_protectionElectrical_protectionChemical_Left_1_1",
+          "BaseCost": "5400",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Monolith_Armor_protectionThermal",
+            "Type": "EEffectType::ProtectionBurn",
+            "Text": "Thermal protection",
+            "effectedStat": "thermal",
+            "Max": "15.0%"
+          },
+          "[1]": {
+            "SID": "SEVA_Monolith_Armor_protectionElectrical",
+            "Type": "EEffectType::ProtectionShock",
+            "Text": "Electro Defence",
+            "effectedStat": "electric",
+            "Max": "15.0%"
+          },
+          "[2]": {
+            "SID": "SEVA_Monolith_Armor_protectionChemical",
+            "Type": "EEffectType::ProtectionChemical",
+            "Text": "Chemical protection",
+            "effectedStat": "chemical",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "SEVA_Monolith_Armor_protectionThermal_protectionElectrical_Left_1_2"
+        ],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "SEVA_Monolith_Armor_protectionThermal_protectionElectrical_Left_1_2",
+        "Values": {
+          "SID": "SEVA_Monolith_Armor_protectionThermal_protectionElectrical_Left_1_2",
+          "BaseCost": "5400",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Monolith_Armor_protectionThermal1",
+            "Type": "EEffectType::ProtectionBurn",
+            "Text": "Thermal protection",
+            "effectedStat": "thermal",
+            "Max": "20.0%"
+          },
+          "[1]": {
+            "SID": "SEVA_Monolith_Armor_protectionElectrical1",
+            "Type": "EEffectType::ProtectionShock",
+            "Text": "Electro Defence",
+            "effectedStat": "electric",
+            "Max": "20.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "SEVA_Monolith_Armor_protectionThermal_protectionElectrical_protectionChemical_Left_1_1"
+        ],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "SEVA_Monolith_Armor_protectionChemical_protectionElectrical_Left_2_1",
+        "Values": {
+          "SID": "SEVA_Monolith_Armor_protectionChemical_protectionElectrical_Left_2_1",
+          "BaseCost": "10800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Monolith_Armor_protectionElectrical2",
+            "Type": "EEffectType::ProtectionShock",
+            "Text": "Electro Defence",
+            "effectedStat": "electric",
+            "Max": "20.0%"
+          },
+          "[1]": {
+            "SID": "SEVA_Monolith_Armor_protectionChemical2",
+            "Type": "EEffectType::ProtectionChemical",
+            "Text": "Chemical protection",
+            "effectedStat": "chemical",
+            "Max": "20.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "SEVA_Monolith_Armor_protectionThermal_protectionElectrical_protectionChemical_Left_1_1"
+        ]
+      },
+      {
+        "Id": "SEVA_Monolith_Armor_protectionThermal_protectionElectrical_Left_2_2",
+        "Values": {
+          "SID": "SEVA_Monolith_Armor_protectionThermal_protectionElectrical_Left_2_2",
+          "BaseCost": "10800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Monolith_Armor_protectionThermal2",
+            "Type": "EEffectType::ProtectionBurn",
+            "Text": "Thermal protection",
+            "effectedStat": "thermal",
+            "Max": "20.0%"
+          },
+          "[1]": {
+            "SID": "SEVA_Monolith_Armor_protectionElectrical3",
+            "Type": "EEffectType::ProtectionShock",
+            "Text": "Electro Defence",
+            "effectedStat": "electric",
+            "Max": "20.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "SEVA_Monolith_Armor_protectionThermal_protectionElectrical_Left_1_2"
+        ]
+      },
+      {
+        "Id": "SEVA_Monolith_Armor_protectionRadiation_Left_3_1",
+        "Values": {
+          "SID": "SEVA_Monolith_Armor_protectionRadiation_Left_3_1",
+          "BaseCost": "21700",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Monolith_Armor_protectionRadiation",
+            "Type": "EEffectType::ProtectionRadiation",
+            "Text": "protection Radiation",
+            "effectedStat": "radiation",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "SEVA_Monolith_Armor_protectionChemical_protectionElectrical_Left_2_1"
+        ]
+      },
+      {
+        "Id": "SEVA_Monolith_Armor_protectionRadiation_Left_3_2",
+        "Values": {
+          "SID": "SEVA_Monolith_Armor_protectionRadiation_Left_3_2",
+          "BaseCost": "21700",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Monolith_Armor_protectionRadiation1",
+            "Type": "EEffectType::ProtectionRadiation",
+            "Text": "protection Radiation",
+            "effectedStat": "radiation",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "SEVA_Monolith_Armor_protectionThermal_protectionElectrical_Left_2_2"
+        ]
+      },
+      {
+        "Id": "SEVA_Monolith_Armor_PSY_Left_1_1",
+        "Values": {
+          "SID": "SEVA_Monolith_Armor_PSY_Left_1_1",
+          "BaseCost": "5400",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Monolith_Armor_ProtectionPSY",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Protection PSY",
+            "effectedStat": "psi",
+            "Max": "10.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "SEVA_Monolith_Armor_MaxDurability_Left_2_2",
+        "Values": {
+          "SID": "SEVA_Monolith_Armor_MaxDurability_Left_2_2",
+          "BaseCost": "10800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Monolith_Armor_wearing1",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "10.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "SEVA_Monolith_Armor_regenerationStamina_Left_2_1"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "SEVA_Monolith_Armor_PSY_Left_1_1"
+        ]
+      },
+      {
+        "Id": "SEVA_Monolith_Armor_regenerationStamina_Left_2_1",
+        "Values": {
+          "SID": "SEVA_Monolith_Armor_regenerationStamina_Left_2_1",
+          "BaseCost": "10800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Monolith_Armor_regenerationStamina",
+            "Type": "EEffectType::RegenStamina",
+            "Text": "Regen Stamina",
+            "effectedStat": "",
+            "Max": "5.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "SEVA_Monolith_Armor_MaxDurability_Left_2_2"
+        ],
+        "RequiredUpgradePrototypeSIDs": [
+          "SEVA_Monolith_Armor_PSY_Left_1_1"
+        ]
+      },
+      {
+        "Id": "SEVA_Monolith_Armor_PSY_Left_3_1",
+        "Values": {
+          "SID": "SEVA_Monolith_Armor_PSY_Left_3_1",
+          "BaseCost": "21700",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Body"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Monolith_Armor_ProtectionPSY1",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Protection PSY",
+            "effectedStat": "psi",
+            "Max": "10.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "SEVA_Monolith_Armor_regenerationStamina_Left_2_1",
+          "SEVA_Monolith_Armor_MaxDurability_Left_2_2"
+        ]
+      },
+      {
+        "Id": "SEVA_Monolith_Armor_container_Left_1_1",
+        "Values": {
+          "SID": "SEVA_Monolith_Armor_container_Left_1_1",
+          "BaseCost": "21700",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Monolith_Armor_container",
+            "Type": "EEffectType::ArtifactSlots",
+            "Text": "Increase artifact slots",
+            "effectedStat": "slots",
+            "Max": "1"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "SEVA_Monolith_Armor_container_Left_1_2",
+        "Values": {
+          "SID": "SEVA_Monolith_Armor_container_Left_1_2",
+          "BaseCost": "21700",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "SEVA_Monolith_Armor_container1",
+            "Type": "EEffectType::ArtifactSlots",
+            "Text": "Increase artifact slots",
+            "effectedStat": "slots",
+            "Max": "1"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "SEVA_Monolith_Armor_container_radiationAbsorption_Left_2_1",
+        "Values": {
+          "SID": "SEVA_Monolith_Armor_container_radiationAbsorption_Left_2_1",
+          "BaseCost": "10800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot1",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "SEVA_Monolith_Armor_container_Left_1_1"
+        ]
+      },
+      {
+        "Id": "SEVA_Monolith_Armor_container_radiationAbsorption_Left_2_2",
+        "Values": {
+          "SID": "SEVA_Monolith_Armor_container_radiationAbsorption_Left_2_2",
+          "BaseCost": "10800",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "ArtifactSlotBlockEffect3_Slot2",
+            "Type": "EEffectType::ArtifactSlotBlock",
+            "Text": "Blocking radiation from artefact",
+            "effectedStat": "",
+            "Max": null
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "SEVA_Monolith_Armor_container_Left_1_2"
+        ]
+      },
+      {
+        "Id": "FaustPsyResist_Quest_1_1",
+        "Values": {
+          "SID": "FaustPsyResist_Quest_1_1",
+          "BaseCost": "100",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Stock"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "FaustPsyResist",
+            "Type": "EEffectType::FlagEffect",
+            "Text": "FaustPsyResist",
+            "effectedStat": "",
+            "Max": null
+          },
+          "[1]": {
+            "SID": "Supressor_protectionPsiPerc",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0%"
+          },
+          "[2]": {
+            "SID": "Supressor_protectionPsiVal",
+            "Type": "EEffectType::ProtectionPSY",
+            "Text": "Psy defence",
+            "effectedStat": "psi",
+            "Max": "5.0"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      }
+    ]
+  },
+  {
+    "Id": "Extra_Light_Mercenaries_Armor",
+    "Values": {
+      "SID": "Extra_Light_Mercenaries_Armor",
+      "Icon": "Texture2D\u0027/Game/GameLite/FPS_Game/UIRemaster/UITextures/Inventory/Armor/T_IFI_FOL_MER_01.T_IFI_FOL_MER_01\u0027",
+      "weight": "2.0",
+      "Cost": "20817.0",
+      "slots": "1",
+      "thermal": "8.0",
+      "electric": "10.0",
+      "chemical": "10.0",
+      "radiation": "30",
+      "psi": "0.0",
+      "physical": "2.0",
+      "Fall": "0.0",
+      "DisplayName": "Mercenary\u0027s Light Suit",
+      "Type": "chest"
+    },
+    "UpgradeList": [
+      "Extra_Light_Mercenaries_Armor_MaxDurability_Left_1_1",
+      "Extra_Light_Mercenaries_Armor_reductionWeight_Left_1_2",
+      "Extra_Light_Mercenaries_Armor_protectionPhysical_Left_2_1",
+      "Extra_Light_Mercenaries_Armor_protectionPhysical_Left_2_2",
+      "Extra_Light_Mercenaries_Armor_backpack_Left_3_1",
+      "Extra_Light_Mercenaries_Armor_protectionThermal_protectionElectrical_Left_1_1",
+      "Extra_Light_Mercenaries_Armor_protectionThermal_protectionElectrical_Left_2_1",
+      "Extra_Light_Mercenaries_Armor_protectionChemical_protectionTherma_Left_3_1",
+      "Extra_Light_Mercenaries_Armor_protectionRadiation_Left_1_2",
+      "Extra_Light_Mercenaries_Armor_container_Left_1_1",
+      "Extra_Light_Mercenaries_Armor_container_Left_2_1"
+    ],
+    "Upgrades": [
+      {
+        "Id": "Extra_Light_Mercenaries_Armor_MaxDurability_Left_1_1",
+        "Values": {
+          "SID": "Extra_Light_Mercenaries_Armor_MaxDurability_Left_1_1",
+          "BaseCost": "3600",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Extra_Light_Mercenaries_Armor_wearing",
+            "Type": "EEffectType::MaxDurability",
+            "Text": "Max Durability",
+            "effectedStat": "",
+            "Max": "25.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "Extra_Light_Mercenaries_Armor_reductionWeight_Left_1_2"
+        ],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "Extra_Light_Mercenaries_Armor_reductionWeight_Left_1_2",
+        "Values": {
+          "SID": "Extra_Light_Mercenaries_Armor_reductionWeight_Left_1_2",
+          "BaseCost": "3600",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Extra_Light_Mercenaries_Armor_reductionWeight",
+            "Type": "EEffectType::ArmorItemWeight",
+            "Text": "Item Weight",
+            "effectedStat": "weight",
+            "Max": "-0.25"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [
+          "Extra_Light_Mercenaries_Armor_MaxDurability_Left_1_1"
+        ],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "Extra_Light_Mercenaries_Armor_protectionPhysical_Left_2_1",
+        "Values": {
+          "SID": "Extra_Light_Mercenaries_Armor_protectionPhysical_Left_2_1",
+          "BaseCost": "7300",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Extra_Light_Mercenaries_Armor_protectionPhysical",
+            "Type": "EEffectType::ProtectionStrike",
+            "Text": "Strike Protection",
+            "effectedStat": "physical",
+            "Max": "30.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "Extra_Light_Mercenaries_Armor_MaxDurability_Left_1_1"
+        ]
+      },
+      {
+        "Id": "Extra_Light_Mercenaries_Armor_protectionPhysical_Left_2_2",
+        "Values": {
+          "SID": "Extra_Light_Mercenaries_Armor_protectionPhysical_Left_2_2",
+          "BaseCost": "7300",
+          "HorizontalPosition": "1",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Extra_Light_Mercenaries_Armor_protectionPhysical1",
+            "Type": "EEffectType::ProtectionStrike",
+            "Text": "Strike Protection",
+            "effectedStat": "physical",
+            "Max": "30.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "Extra_Light_Mercenaries_Armor_reductionWeight_Left_1_2"
+        ]
+      },
+      {
+        "Id": "Extra_Light_Mercenaries_Armor_backpack_Left_3_1",
+        "Values": {
+          "SID": "Extra_Light_Mercenaries_Armor_backpack_Left_3_1",
+          "BaseCost": "14600",
+          "HorizontalPosition": "2",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Barrel"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Extra_Light_Mercenaries_Armor_carryingCapacity",
+            "Type": "EEffectType::Composite",
+            "Text": "carryingCapacity",
+            "effectedStat": "",
+            "Max": "10.0%"
+          },
+          "[1]": {
+            "SID": "Extra_Light_Mercenaries_Armor_reductionWeight1",
+            "Type": "EEffectType::ArmorItemWeight",
+            "Text": "Item Weight",
+            "effectedStat": "weight",
+            "Max": "-0.5"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "Extra_Light_Mercenaries_Armor_protectionPhysical_Left_2_1",
+          "Extra_Light_Mercenaries_Armor_protectionPhysical_Left_2_2"
+        ]
+      },
+      {
+        "Id": "Extra_Light_Mercenaries_Armor_protectionThermal_protectionElectrical_Left_1_1",
+        "Values": {
+          "SID": "Extra_Light_Mercenaries_Armor_protectionThermal_protectionElectrical_Left_1_1",
+          "BaseCost": "3600",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Extra_Light_Mercenaries_Armor_protectionElectrical1",
+            "Type": "EEffectType::ProtectionShock",
+            "Text": "Electro Defence",
+            "effectedStat": "electric",
+            "Max": "15.0%"
+          },
+          "[1]": {
+            "SID": "Extra_Light_Mercenaries_Armor_protectionThermal",
+            "Type": "EEffectType::ProtectionBurn",
+            "Text": "Thermal protection",
+            "effectedStat": "thermal",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "Extra_Light_Mercenaries_Armor_protectionChemical_protectionTherma_Left_3_1",
+        "Values": {
+          "SID": "Extra_Light_Mercenaries_Armor_protectionChemical_protectionTherma_Left_3_1",
+          "BaseCost": "7300",
+          "HorizontalPosition": "2",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Extra_Light_Mercenaries_Armor_protectionChemical2",
+            "Type": "EEffectType::ProtectionChemical",
+            "Text": "Chemical protection",
+            "effectedStat": "chemical",
+            "Max": "20.0%"
+          },
+          "[1]": {
+            "SID": "Extra_Light_Mercenaries_Armor_protectionThermal1",
+            "Type": "EEffectType::ProtectionBurn",
+            "Text": "Thermal protection",
+            "effectedStat": "thermal",
+            "Max": "20.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "Extra_Light_Mercenaries_Armor_protectionThermal_protectionElectrical_Left_2_1"
+        ]
+      },
+      {
+        "Id": "Extra_Light_Mercenaries_Armor_protectionRadiation_Left_1_2",
+        "Values": {
+          "SID": "Extra_Light_Mercenaries_Armor_protectionRadiation_Left_1_2",
+          "BaseCost": "3600",
+          "VerticalPosition": "EUpgradeVerticalPosition::Down",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::Handguard"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Extra_Light_Mercenaries_Armor_protectionRadiation",
+            "Type": "EEffectType::ProtectionRadiation",
+            "Text": "protection Radiation",
+            "effectedStat": "radiation",
+            "Max": "15.0%"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "Extra_Light_Mercenaries_Armor_container_Left_1_1",
+        "Values": {
+          "SID": "Extra_Light_Mercenaries_Armor_container_Left_1_1",
+          "BaseCost": "7300",
+          "VerticalPosition": "EUpgradeVerticalPosition::Top",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Extra_Light_Mercenaries_Armor_container",
+            "Type": "EEffectType::ArtifactSlots",
+            "Text": "Increase artifact slots",
+            "effectedStat": "slots",
+            "Max": "1"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": []
+      },
+      {
+        "Id": "Extra_Light_Mercenaries_Armor_container_Left_2_1",
+        "Values": {
+          "SID": "Extra_Light_Mercenaries_Armor_container_Left_2_1",
+          "BaseCost": "14600",
+          "HorizontalPosition": "1",
+          "UpgradeTargetPart": "EUpgradeTargetPartType::PistolGrip"
+        },
+        "EffectPrototypeSIDs": [],
+        "Effects": {
+          "[0]": {
+            "SID": "Extra_Light_Mercenaries_Armor_container1",
+            "Type": "EEffectType::ArtifactSlots",
+            "Text": "Increase artifact slots",
+            "effectedStat": "slots",
+            "Max": "1"
+          }
+        },
+        "BlockingUpgradePrototypeSIDs": [],
+        "RequiredUpgradePrototypeSIDs": [
+          "Extra_Light_Mercenaries_Armor_container_Left_1_1"
+        ]
+      }
+    ]
   }
 ]

@@ -63,6 +63,37 @@ select {
     margin-top: 40px;
 }
 
+.comparison-legend {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin: 8px 0 12px;
+    font-size: 13px;
+    color: #ccc;
+}
+
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    border: 1px solid #333;
+    display: inline-block;
+}
+
+.legend-a {
+    background: #7B907C;
+}
+
+.legend-b {
+    background: #AA2E25;
+}
+
 .comparison-bar {
     margin-bottom: 10px;
 }
