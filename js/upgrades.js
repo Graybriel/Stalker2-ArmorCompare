@@ -334,7 +334,6 @@ function renderUpgradesForArmor(armor, armorCol) {
  * Render upgrades for multiple armor pieces (head + chest) into a dynamic container.
  * Called when user selects head/chest type to display both pieces with their independent upgrades.
  */
-// Render upgrades for multiple pieces (head + chest) in a single column.
 function renderUpgradesForMultiplePieces(pieces, armorCol) {
     // Clear any previous selections when rendering new armor
     window.selectedUpgrades = new Set();
@@ -413,20 +412,15 @@ function parsePositionFromId(id) {
 /**
  * Get total effects from all selected upgrades
  */
-// Aggregate all selected upgrade effects across both columns.
 function getSelectedUpgradeEffects() {
     if (!window.selectedUpgrades || window.selectedUpgrades.size === 0) {
-        console.debug('getSelectedUpgradeEffects: no selected upgrades');
         return {};
     }
-
-    console.debug('getSelectedUpgradeEffects:selectedUpgrades', Array.from(window.selectedUpgrades));
 
     const totalEffects = {};
 
     // Iterate through all selection keys of the form "<col>:<upgradeId>"
     window.selectedUpgrades.forEach(selectionKey => {
-        console.debug('checking selectionKey', selectionKey);
         const parts = String(selectionKey).split(":");
         let col = 'A';
         let upgradeId = null;
@@ -445,14 +439,12 @@ function getSelectedUpgradeEffects() {
         const cellElement = container ? container.querySelector(`[data-upgrade-id="${upgradeId}"]`) : null;
 
         if (!cellElement) {
-            console.debug('no element for selectionKey', selectionKey);
             // Clean up stale selection
             window.selectedUpgrades.delete(selectionKey);
             return;
         }
 
         if (!cellElement.dataset.upgrade) {
-            console.debug('no dataset.upgrade for', selectionKey, cellElement);
             // Clean up stale selection
             window.selectedUpgrades.delete(selectionKey);
             return;
@@ -460,19 +452,15 @@ function getSelectedUpgradeEffects() {
 
         try {
             const upgrade = JSON.parse(cellElement.dataset.upgrade);
-            console.debug('parsed upgrade', upgrade);
             if (!upgrade.effects || upgrade.effects.length === 0) {
-                console.debug('no effects on upgrade', upgrade);
                 return;
             }
 
             // Add each effect to the total (separating percent vs absolute)
             upgrade.effects.forEach(effect => {
-                console.debug('effect', effect);
                 // Only aggregate effects that target a known stat name
                 const key = effect.effectedStat;
                 if (!key) {
-                    console.debug('skipping effect without effectedStat', effect);
                     return;
                 }
 
@@ -492,7 +480,6 @@ function getSelectedUpgradeEffects() {
         }
     });
 
-    console.debug('totalEffects', totalEffects);
     return totalEffects;
 }
 
@@ -503,7 +490,6 @@ window.getSelectedUpgradeEffects = getSelectedUpgradeEffects;
  * Aggregate selected upgrade effects separately for Column A and Column B.
  * Returns an object: { A: { statKey: { total, ... } }, B: { ... } }
  */
-// Aggregate selected upgrade effects per column (A/B) separately.
 function getSelectedUpgradeEffectsByColumn() {
     const result = { A: {}, B: {} };
     if (!window.selectedUpgrades || window.selectedUpgrades.size === 0) return result;
@@ -563,7 +549,6 @@ function getSelectedUpgradeEffectsByColumn() {
 window.getSelectedUpgradeEffectsByColumn = getSelectedUpgradeEffectsByColumn;
 
 // Ensure both upgrade containers have the same min-height so stats align across columns
-// Ensure both upgrade containers have the same min-height so stats align.
 function syncUpgradeContainerHeights() {
     const a = document.getElementById('upgradeContainerA');
     const b = document.getElementById('upgradeContainerB');
@@ -584,7 +569,6 @@ function syncUpgradeContainerHeights() {
 window.syncUpgradeContainerHeights = syncUpgradeContainerHeights;
 
 // Flash helper used to briefly indicate why a cell couldn't be selected
-// Flash helper used to briefly indicate why a cell couldn't be selected.
 function flashCell(el, type) {
     if (!el) return;
     el.classList.add('flash');
@@ -602,7 +586,6 @@ function flashCell(el, type) {
 }
 
 // Helper: return a human-friendly label for an upgrade id (falls back to id)
-// Helper: return a human-friendly label for an upgrade id (falls back to id).
 function getUpgradeDisplayLabel(upgradeId) {
     if (!upgradeId) return String(upgradeId);
     // Look for any cell that has this id
@@ -624,7 +607,6 @@ function getUpgradeDisplayLabel(upgradeId) {
 }
 
 // Update availability for all upgrade cells based on currently selected upgrades (per armorCol)
-// Update availability for all upgrade cells based on currently selected upgrades (per armorCol).
 function updateUpgradeAvailability() {
     const selectedByCol = { A: new Set(), B: new Set() };
     if (window.selectedUpgrades) {
