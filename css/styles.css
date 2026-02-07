@@ -110,6 +110,15 @@ select {
     gap: 3px;
     margin-bottom: 3px;
 }
+.upgrade-cost {
+    margin: 4px 0 10px;
+    padding: 6px 8px;
+    background: #1c1c1c;
+    border: 1px solid #333;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #ddd;
+}
 
 .upgrade-cell {
     height: 40px;
