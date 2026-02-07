@@ -1,7 +1,7 @@
 /**
  * Render the stats for a single armor object into the provided container.
  * If the armor parameter is a combined object (head+chest), numeric stats
- * will already be summed by `getEffectiveArmor`.
+ * will already be summed by getEffectiveArmor().
  * If includeUpgrades is true, also adds effects from selected upgrade cells.
  */
 function renderStats(container, armor, includeUpgrades = false, col = null, orderedKeys = null) {
@@ -10,6 +10,7 @@ function renderStats(container, armor, includeUpgrades = false, col = null, orde
 
     if (!armor) return;
 
+    // Skip non-stat fields so we only render numeric protections/values
     const skipKeys = new Set(["id", "name", "type", "upgradeList", "upgrades"]);
     let statKeys;
     if (orderedKeys && Array.isArray(orderedKeys)) {
@@ -19,7 +20,7 @@ function renderStats(container, armor, includeUpgrades = false, col = null, orde
         statKeys = Object.keys(armor).filter(k => !skipKeys.has(k));
     }
 
-    // Create a copy of armor stats to potentially modify with upgrade effects
+    // Create a copy of armor stats to modify with upgrade effects (no mutation of source)
     const displayStats = { ...armor };
 
     // If we should include selected upgrades, add their effects
@@ -33,8 +34,8 @@ function renderStats(container, armor, includeUpgrades = false, col = null, orde
             selectedEffects = window.getSelectedUpgradeEffects();
         }
 
-        // Add upgrade effects to display stats
-        // The selectedEffects object uses effectedStat as the key and separates percent vs absolute
+        // Add upgrade effects to display stats.
+        // The selectedEffects object uses effectedStat as the key and separates percent vs absolute.
         for (const [statKey, effect] of Object.entries(selectedEffects)) {
             const abs = effect.absolute || 0;
             const pct = effect.percent || 0;
@@ -44,7 +45,7 @@ function renderStats(container, armor, includeUpgrades = false, col = null, orde
             // Use the armor's base numeric value for percent calculations (fallback to 0)
             const baseVal = parseFloat(String(armor[statKey] ?? displayStats[statKey] ?? 0).replace(/[^0-9.-]+/g, '')) || 0;
 
-            // percent modifiers apply to the base stat; absolute additions are additive afterwards
+            // Percent modifiers apply to the base stat; absolute additions are additive afterwards
             let newVal = baseVal;
             if (pct) newVal = baseVal * (1 + pct / 100);
             newVal = newVal + abs;
@@ -82,7 +83,7 @@ function renderStats(container, armor, includeUpgrades = false, col = null, orde
 
 /**
  * Build comparison bars for two effective armor objects (A and B).
- * Uses `window.getEffectiveArmor('A'|'B')` which returns either a single
+ * Uses window.getEffectiveArmor('A'|'B') which returns either a single
  * full-body armor or a combined head+chest object.
  */
 function updateComparison() {
@@ -94,14 +95,15 @@ function updateComparison() {
     const comparisonDiv = document.getElementById("comparisonBars");
     comparisonDiv.innerHTML = "";
 
+    // Filter out non-stat fields before building bars
     const skipKeys = new Set(["id", "name", "type", "upgradeList", "upgrades"]);
     const statsA = Object.fromEntries(Object.entries(A).filter(([k]) => !skipKeys.has(k)));
     const statsB = Object.fromEntries(Object.entries(B).filter(([k]) => !skipKeys.has(k)));
 
-    // include selected upgrade effects per-column when computing comparison bars
+    // Include selected upgrade effects per-column when computing comparison bars
     const effectsByCol = window.getSelectedUpgradeEffectsByColumn ? window.getSelectedUpgradeEffectsByColumn() : { A: {}, B: {} };
 
-    // create adjusted stats copies so we don't mutate original objects
+    // Create adjusted stats copies so we don't mutate original objects
     const statsAAdjusted = { ...statsA };
     const statsBAdjusted = { ...statsB };
 
@@ -142,7 +144,7 @@ function updateComparison() {
     renderStats(statsDivA, A, true, 'A', orderedKeys);
     renderStats(statsDivB, B, true, 'B', orderedKeys);
 
-    // compute max dynamically per-stat (handles 'weight' and 'slots' specially)
+    // Compute max dynamically per-stat (handles 'weight' and 'slots' specially)
     for (const stat of orderedKeys) {
         let max = 100.0;
         if (stat === "weight") { max = 20; }
@@ -158,7 +160,7 @@ function updateComparison() {
         const label = document.createElement("div");
         label.textContent = stat;
 
-        // helper to create a bar element with a fill and optional segment overlay
+        // Helper to create a bar element with a fill and optional segment overlay
         function makeBar(pct, color, segmented) {
             const bar = document.createElement("div");
             bar.className = "bar";

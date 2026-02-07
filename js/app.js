@@ -1,4 +1,8 @@
+// In-memory armor list (loaded from data/armor.json)
 let armorData = [];
+
+// Each armorCol (A/B) tracks its own selected upgrades independently
+let selectedUpgrades = { A: [], B: [] };
 
 /** Round number to given decimals and return a Number. */
 function roundTo(n, decimals = 1) {
@@ -11,6 +15,7 @@ function roundTo(n, decimals = 1) {
 // expose for use in other modules
 window.roundTo = roundTo;
 
+// Fetch armor data and transform it into the structure the UI expects.
 async function loadArmorData() {
     try {
         const response = await fetch("data/armor.json");
@@ -18,8 +23,10 @@ async function loadArmorData() {
 
         const rawData = await response.json();
 
+        // Normalize raw JSON into a predictable structure for rendering and calculations.
         armorData = rawData.map(item => {
             // Parse upgrades safely
+            // Parse and normalize upgrade definitions for this armor.
             const upgrades = (item.Upgrades || []).map(upg => {
                 // Convert Effects object → array
                 const effects = Object.values(upg.Effects || {})
@@ -35,6 +42,7 @@ async function loadArmorData() {
                         isPercent: /%/.test(String(e.Max))
                     }));
 
+                // Keep a compact representation to drive the upgrade grid and stat math.
                 return {
                     id: upg.Id,
                     values: upg.Values || {},
@@ -45,6 +53,7 @@ async function loadArmorData() {
                 };
             });
 
+            // Base armor stats + upgrade data used by the UI
             return {
                 // Existing fields (your UI depends on these)
                 id: item.Id,
@@ -79,7 +88,7 @@ async function loadArmorData() {
         return;
     }
 
-    // Rebuild UI
+    // Rebuild UI after data is loaded
     populateTypeSelects();
     updateColumnForType("A", document.getElementById("armorTypeA")?.value ?? "head/chest");
     updateColumnForType("B", document.getElementById("armorTypeB")?.value ?? "head/chest");
@@ -90,6 +99,7 @@ function getTypes() {
     return types;
 }
 
+// Populate the armor type dropdowns for both columns.
 function populateTypeSelects() {
     const types = getTypes();
     const ids = ["armorTypeA", "armorTypeB"];
@@ -110,17 +120,19 @@ function populateTypeSelects() {
         // ensure a default selection is present so subsequent code can read sel.value
         if (sel.options.length > 0) sel.selectedIndex = 0;
 
-        // initialize the column display for this select immediately
-        const col = id === "armorTypeA" ? "A" : "B";
-        updateColumnForType(col, sel.value);
+        // Initialize the armorCol display for this select immediately
+        const armorCol = id === "armorTypeA" ? "A" : "B";
+        updateColumnForType(armorCol, sel.value);
 
+        // Changing the type swaps which selects are visible
         sel.onchange = () => {
-            const col = id === "armorTypeA" ? "A" : "B";
-            updateColumnForType(col, sel.value);
+            const armorCol = id === "armorTypeA" ? "A" : "B";
+            updateColumnForType(armorCol, sel.value);
         };
     });
 }
 
+// Show/hide selects based on selected type for a column.
 function updateColumnForType(armorCol, type) {
     const fullId = `armorFull${armorCol}`;
     const headId = `armorHead${armorCol}`;
@@ -134,6 +146,7 @@ function updateColumnForType(armorCol, type) {
     const chestEl = document.getElementById(chestId);
 
     if (!fullEl || !headEl || !chestEl) return;
+    // Use visibility to keep layout alignment consistent between columns.
     function setDisplay(id, visible) {
         const el = document.getElementById(id);
         const lbl = document.querySelector(`label[for="${id}"]`);
@@ -187,6 +200,7 @@ function updateColumnForType(armorCol, type) {
     }
 }
 
+// Fill a select with armor items filtered by type.
 function populateArmorOptions(selectId, type = "head/chest") {
     const select = document.getElementById(selectId);
     if (!select) return;
@@ -208,6 +222,7 @@ function populateArmorOptions(selectId, type = "head/chest") {
         select.appendChild(option);
     });
 
+    // Changing an armor selection updates stats and upgrades
     select.onchange = () => updateStats(selectId);
 
     if (select.options.length > 0) {
@@ -216,11 +231,13 @@ function populateArmorOptions(selectId, type = "head/chest") {
     }
 }
 
+// Update stats display for a given select and refresh upgrade UI.
 function updateStats(selectId) {
-    // determine column by last char (A or B)
+    // determine armorCol by last char (A or B)
     const armorCol = selectId.slice(-1);
     const statsDiv = document.getElementById(armorCol === "A" ? "statsA" : "statsB");
 
+    // Effective armor includes selected upgrades
     const armor = getEffectiveArmor(armorCol);
     const pieces = getArmorPieces(armorCol);
 
@@ -236,6 +253,7 @@ function updateStats(selectId) {
         if (container) container.innerHTML = "";
     }
 
+    // Render stats and update the comparison chart
     renderStats(statsDiv, armor);
     updateComparison();
 }
@@ -243,13 +261,14 @@ function updateStats(selectId) {
 /**
  * Update stats display when upgrades are selected/deselected
  */
+// Recompute stats after upgrades are toggled
 function updateStatsWithSelectedUpgrades() {
-    // Update column A stats
+    // Update armorCol A stats
     const statsDivA = document.getElementById("statsA");
     const armorA = getEffectiveArmor("A");
     renderStats(statsDivA, armorA, true, 'A');
 
-    // Update column B stats
+    // Update armorCol B stats
     const statsDivB = document.getElementById("statsB");
     const armorB = getEffectiveArmor("B");
     renderStats(statsDivB, armorB, true, 'B');
@@ -258,11 +277,12 @@ function updateStatsWithSelectedUpgrades() {
 }
 
 /**
- * Get individual armor pieces for a column.
+ * Get individual armor pieces for an armorCol.
  * Returns an array of armor pieces based on selection type.
  * For "head/chest" type with both selected, returns [head, chest].
  * For single piece types, returns [armor].
  */
+// Get the selected armor pieces for a column (head/chest/full body).
 function getArmorPieces(armorCol) {
     const typeSel = document.getElementById(`armorType${armorCol}`);
     const selectedType = typeSel?.value ?? "head/chest";
@@ -301,8 +321,9 @@ function getArmorPieces(armorCol) {
     return pieces.length > 0 ? pieces : null;
 }
 
+// Compute a combined armor object for a column, then apply selected upgrades.
 function getEffectiveArmor(armorCol) {
-    // column: "A" or "B"
+    // armorCol: "A" or "B"
     const typeSel = document.getElementById(`armorType${armorCol}`);
     const selectedType = typeSel?.value ?? "all";
 
@@ -330,14 +351,14 @@ function getEffectiveArmor(armorCol) {
     const chest = armorData.find(a => a.id === chestId) || null;
 
     if (!head && !chest) return null;
-    if (!head) return chest;
-    if (!chest) return head;
+    if (!head) return applyUpgrades(chest, armorCol);
+    if (!chest) return applyUpgrades(head, armorCol);
 
     // merge numeric stats by summing where appropriate
-    const skip = new Set(["id", "name", "type"]);
+    const skip = new Set(["id", "name", "type", "upgrades"]);
     const keys = new Set([...Object.keys(head), ...Object.keys(chest)]);
 
-    const combined = { id: `${head.id}+${chest.id}`, name: `${head.name} + ${chest.name}`, type: 'combined' };
+    const combined = { id: `${head.id}+${chest.id}`, name: `${head.name} + ${chest.name}`, type: 'combined', upgrades: [...(head.upgrades || []), ...(chest.upgrades || [])] };
 
     keys.forEach(k => {
         if (skip.has(k)) return;
@@ -355,10 +376,61 @@ function getEffectiveArmor(armorCol) {
         }
     });
 
-    return combined;
+    // Apply upgrades from THIS armorCol ONLY - not affected by other armorCol selections
+    return applyUpgrades(combined, armorCol);
 }
 
 // expose helper for compare.js
 window.getEffectiveArmor = getEffectiveArmor;
+
+/**
+ * Check prerequisites for upgrades in a specific armorCol.
+ * This ONLY affects the specified armorCol - armorCol A upgrades are independent from armorCol B.
+ */
+// Enable/disable upgrade cells based on prerequisites within the same armorCol.
+function updatePrerequisites(armorCol) {
+    if (!['A', 'B'].includes(armorCol)) return;
+    
+    const armor = getBaseArmor(armorCol);
+    if (!armor || !armor.upgrades) return;
+
+    // Only check against THIS armorCol's selected upgrades
+    const columnSelected = selectedUpgrades[armorCol];
+
+    armor.upgrades.forEach(upgrade => {
+        const checkboxId = `upgrade-${armorCol}-${upgrade.sid}`;
+        const checkbox = document.getElementById(checkboxId);
+        if (!checkbox) return;
+
+        // Check if ALL required upgrades are selected IN THIS COLUMN
+        const hasAllRequirements = upgrade.required.every(req => columnSelected.includes(req));
+        
+        // Disable if requirements not met AND not already selected
+        checkbox.disabled = !hasAllRequirements && !columnSelected.includes(upgrade.sid);
+    });
+}
+
+/**
+ * Apply upgrades to armor stats.
+ * Only applies upgrades from the SAME armorCol.
+ */
+// Apply selected upgrades for the specified armorCol to a base armor object.
+function applyUpgrades(armor, armorCol) {
+    const upgraded = { ...armor };
+    const columnUpgrades = selectedUpgrades[armorCol] || [];
+    
+    columnUpgrades.forEach(sid => {
+        const upgrade = armor.upgrades?.find(u => u.sid === sid);
+        if (upgrade && upgrade.values) {
+            Object.keys(upgrade.values).forEach(key => {
+                if (typeof upgraded[key] === 'number') {
+                    upgraded[key] += upgrade.values[key];
+                }
+            });
+        }
+    });
+    
+    return upgraded;
+}
 
 loadArmorData();

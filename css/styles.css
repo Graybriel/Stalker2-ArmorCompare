@@ -159,6 +159,42 @@ select {
     box-shadow: 0 0 8px rgba(127, 176, 105, 0.4);
 }
 
+/* Visual indicators for constraint states */
+.upgrade-cell.blocked {
+    opacity: 0.65;
+    background: #2b1515;
+    color: #b88;
+    cursor: not-allowed;
+}
+.upgrade-cell.requires {
+    opacity: 0.85;
+    background: #2a2116;
+    color: #f4a;
+    cursor: not-allowed;
+}
+.upgrade-cell.flash {
+    outline: 2px solid rgba(255,187,0,0.9);
+    box-shadow: 0 0 10px rgba(255,187,0,0.25);
+}
+
+/* Debug overlay for upgrade availability */
+.upgrade-debug-overlay, #upgradeDebugOverlay {
+    position: fixed;
+    right: 12px;
+    top: 12px;
+    background: rgba(20,20,20,0.93);
+    color: #eee;
+    border: 1px solid #444;
+    padding: 10px 12px;
+    font-size: 12px;
+    line-height: 1.3;
+    white-space: pre-wrap;
+    z-index: 9999;
+    border-radius: 6px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.6);
+    display: none;
+}
+
 .upgrade-section {
     border: 1px solid #444;
     background: #111;

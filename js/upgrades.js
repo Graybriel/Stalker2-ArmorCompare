@@ -1,8 +1,13 @@
 /*
-put all the upgrade related javascript here;  
-*/
+ * Upgrade-related UI logic:
+ * - Build upgrade grids for each armor section
+ * - Render grids and handle selection
+ * - Enforce blocking/required rules per armor column
+ */
 
-function renderGrid(grid, container) {
+// Render a single grid (e.g., Head/Neck/Shoulder) into a container.
+// Each cell may hold an upgrade, or be blank.
+function renderGrid(grid, container, pieceId = null) {
     container.innerHTML = ""; // clear previous content
 
     grid.forEach((row, rowIdx) => {
@@ -13,21 +18,35 @@ function renderGrid(grid, container) {
             const cellDiv = document.createElement("div");
             cellDiv.className = "upgrade-cell";
             
-            // Create unique ID for this cell to track selection
+            // Create a unique ID for this cell to track selection state
             const cellId = `cell-${rowIdx}-${colIdx}`;
             cellDiv.id = cellId;
 
             if (cell) {
-                // Use the upgrade's id as a stable selection key
+                // Use the upgrade's id as a stable selection key (consistent across re-render)
                 const upgradeId = cell.id || `${cellId}-upg`;
                 cellDiv.dataset.upgradeId = upgradeId;
 
-                // Store the upgrade object data on the cell element
+                // Store the upgrade object data on the cell element for later lookup
                 cellDiv.dataset.upgrade = JSON.stringify(cell);
+
+                // Attach piece id (if rendering multi-piece grids like head + chest)
+                if (pieceId) cellDiv.dataset.pieceId = pieceId;
+
+                // Expose blocking/required lists for availability computation
+                const blockingList = cell.blocking || cell.BlockingUpgradePrototypeSIDs || [];
+                const requiredList = cell.required || cell.RequiredUpgradePrototypeSIDs || [];
+                if (blockingList && blockingList.length) cellDiv.dataset.blocking = blockingList.join(",");
+                if (requiredList && requiredList.length) cellDiv.dataset.required = requiredList.join(",");
                 
-                // If already selected (by upgrade id), mark state
-                if (window.selectedUpgrades && window.selectedUpgrades.has(upgradeId)) {
-                    cellDiv.classList.add("selected");
+                // If already selected (check across possible selection key formats), mark state
+                if (window.selectedUpgrades) {
+                    for (const key of window.selectedUpgrades) {
+                        if (String(key).endsWith(`:${upgradeId}`) || String(key) === upgradeId) {
+                            cellDiv.classList.add("selected");
+                            break;
+                        }
+                    }
                 }
 
                 // Build label from each effect: "Strike Protection 20%"
@@ -44,12 +63,26 @@ function renderGrid(grid, container) {
                 cellDiv.textContent = label;
                 cellDiv.classList.add("has-upgrade");
                 
-                // Add click handler to toggle selection (use upgradeId + column to disambiguate)
+                // Add click handler to toggle selection
+                // Use upgradeId + armorCol + optional pieceId to disambiguate
                 cellDiv.addEventListener("click", (e) => {
                     e.stopPropagation();
                     if (!window.selectedUpgrades) window.selectedUpgrades = new Set();
 
-                    // Determine which column this cell belongs to by walking up
+                    // Ensure availability state is up-to-date before acting
+                    if (window.updateUpgradeAvailability) window.updateUpgradeAvailability();
+
+                    // If this cell is blocked or requires other upgrades, show a quick hint and don't toggle
+                    if (cellDiv.classList.contains('blocked')) {
+                        flashCell(cellDiv, 'blocked');
+                        return;
+                    }
+                    if (cellDiv.classList.contains('requires')) {
+                        flashCell(cellDiv, 'requires');
+                        return;
+                    }
+
+                    // Determine which armorCol this cell belongs to by walking up DOM
                     let ancestor = cellDiv;
                     let col = null;
                     while (ancestor && ancestor !== document) {
@@ -59,7 +92,8 @@ function renderGrid(grid, container) {
                     }
                     if (!col) col = 'A'; // fallback
 
-                    const selectionKey = `${col}:${upgradeId}`;
+                    const pieceSeg = cellDiv.dataset.pieceId ? `${cellDiv.dataset.pieceId}:` : '';
+                    const selectionKey = `${col}:${pieceSeg}${upgradeId}`;
                     cellDiv.dataset.selectionKey = selectionKey;
 
                     const selectedSet = window.selectedUpgrades;
@@ -71,7 +105,8 @@ function renderGrid(grid, container) {
                         cellDiv.classList.add("selected");
                     }
 
-                    // Update stats to reflect selected upgrades
+                    // Recompute availability and update stats
+                    if (window.updateUpgradeAvailability) window.updateUpgradeAvailability();
                     updateStatsWithSelectedUpgrades();
                 });
             } else {
@@ -86,9 +121,11 @@ function renderGrid(grid, container) {
     });
 }
 
+// Build upgrade grids per section (Head/Neck/Shoulder/Chest/Hip).
 function buildUpgradeGrids(armor) {
     if (!armor || !armor.upgrades) return {};
 
+    // Mapping from raw upgrade part type to UI section label
     const bodyPartMap = {
         "EUpgradeTargetPartType::Stock": "Head",
         "EUpgradeTargetPartType::Barrel": "Neck",
@@ -97,6 +134,7 @@ function buildUpgradeGrids(armor) {
         "EUpgradeTargetPartType::PistolGrip": "Hip"
     };
 
+    // Alternate mapping for head armor types
     const helmetPartMap = {
         "EUpgradeTargetPartType::Stock": "Crown",
         "EUpgradeTargetPartType::Barrel": "Nose",
@@ -109,6 +147,7 @@ function buildUpgradeGrids(armor) {
         ? helmetPartMap
         : bodyPartMap;
 
+    // Create an empty grid skeleton based on armor type and section
     const emptyGrid = (partName) => {
         // Head armor "Crown" has only a single upgrade slot → 1x1 grid
         if (armor.type === "head") {
@@ -220,6 +259,7 @@ function buildUpgradeGrids(armor) {
     return grids;
 }
 
+// Render upgrades for a single armor selection into the column container.
 function renderUpgradesForArmor(armor, armorCol) {
     // Clear any previous selections when rendering new armor
     window.selectedUpgrades = new Set();
@@ -229,6 +269,7 @@ function renderUpgradesForArmor(armor, armorCol) {
         const container = document.getElementById(`upgradeContainer${armorCol}`);
         if (container) container.innerHTML = "";
         if (window.syncUpgradeContainerHeights) window.syncUpgradeContainerHeights();
+        if (window.updateUpgradeAvailability) window.updateUpgradeAvailability();
         return;
     }
 
@@ -240,6 +281,7 @@ function renderUpgradesForArmor(armor, armorCol) {
 
     container.innerHTML = '';
 
+    // Each section gets a title + grid
     Object.entries(grids).forEach(([section, grid]) => {
         const sectionDiv = document.createElement('div');
         sectionDiv.className = 'upgrade-section';
@@ -251,19 +293,21 @@ function renderUpgradesForArmor(armor, armorCol) {
 
         const gridDiv = document.createElement('div');
         gridDiv.className = 'upgrade-grid';
-        renderGrid(grid, gridDiv);
+        renderGrid(grid, gridDiv, armor.id, armor.id);
         sectionDiv.appendChild(gridDiv);
 
         container.appendChild(sectionDiv);
     });
 
     if (window.syncUpgradeContainerHeights) window.syncUpgradeContainerHeights();
+    if (window.updateUpgradeAvailability) window.updateUpgradeAvailability();
 }
 
 /**
  * Render upgrades for multiple armor pieces (head + chest) into a dynamic container.
  * Called when user selects head/chest type to display both pieces with their independent upgrades.
  */
+// Render upgrades for multiple pieces (head + chest) in a single column.
 function renderUpgradesForMultiplePieces(pieces, armorCol) {
     // Clear any previous selections when rendering new armor
     window.selectedUpgrades = new Set();
@@ -272,6 +316,7 @@ function renderUpgradesForMultiplePieces(pieces, armorCol) {
     if (!container || !pieces || pieces.length === 0) {
         if (container) container.innerHTML = "";
         if (window.syncUpgradeContainerHeights) window.syncUpgradeContainerHeights();
+        if (window.updateUpgradeAvailability) window.updateUpgradeAvailability();
         return;
     }
 
@@ -316,32 +361,10 @@ function renderUpgradesForMultiplePieces(pieces, armorCol) {
     });
 
     if (window.syncUpgradeContainerHeights) window.syncUpgradeContainerHeights();
+    if (window.updateUpgradeAvailability) window.updateUpgradeAvailability();
 }
-//function renderUpgradesForArmorPieces(pieces, armorCol) {
-//    const container = document.getElementById(`upgradeSections${armorCol}`);
-//    container.innerHTML = "";
-//
-//    pieces.forEach(piece => {
-//        const sectionDiv = document.createElement("div");
-//        sectionDiv.className = "upgrade-section";
-//
-//        const title = document.createElement("h3");
-//        title.textContent = piece.displayName;
-//        sectionDiv.appendChild(title);
-//
-//        const grids = buildUpgradeGrids(piece);
-//
-//        Object.entries(grids).forEach(([sectionName, grid]) => {
-//            const gridDiv = document.createElement("div");
-//            gridDiv.className = "upgrade-grid";
-//            renderGrid(grid, gridDiv, armorCol);
-//            sectionDiv.appendChild(gridDiv);
-//        });
-//
-//        container.appendChild(sectionDiv);
-//    });
-//}
 
+// Parse position suffix from upgrade id (fallback for grid placement)
 function parsePositionFromId(id) {
     // Expect pattern ..._<col>_<vert> at the end
     const match = id.match(/_(\d)_(\d)$/);
@@ -356,6 +379,7 @@ function parsePositionFromId(id) {
 /**
  * Get total effects from all selected upgrades
  */
+// Aggregate all selected upgrade effects across both columns.
 function getSelectedUpgradeEffects() {
     if (!window.selectedUpgrades || window.selectedUpgrades.size === 0) {
         console.debug('getSelectedUpgradeEffects: no selected upgrades');
@@ -370,8 +394,17 @@ function getSelectedUpgradeEffects() {
     window.selectedUpgrades.forEach(selectionKey => {
         console.debug('checking selectionKey', selectionKey);
         const parts = String(selectionKey).split(":");
-        const col = parts.length === 2 ? parts[0] : 'A';
-        const upgradeId = parts.length === 2 ? parts[1] : parts[0];
+        let col = 'A';
+        let upgradeId = null;
+        if (parts.length === 3) {
+            col = parts[0];
+            upgradeId = parts[2];
+        } else if (parts.length === 2) {
+            col = parts[0];
+            upgradeId = parts[1];
+        } else {
+            upgradeId = parts[0];
+        }
 
         // Look for the matching element inside the appropriate column container
         const container = document.getElementById(`upgradeContainer${col}`);
@@ -436,14 +469,24 @@ window.getSelectedUpgradeEffects = getSelectedUpgradeEffects;
  * Aggregate selected upgrade effects separately for Column A and Column B.
  * Returns an object: { A: { statKey: { total, ... } }, B: { ... } }
  */
+// Aggregate selected upgrade effects per column (A/B) separately.
 function getSelectedUpgradeEffectsByColumn() {
     const result = { A: {}, B: {} };
     if (!window.selectedUpgrades || window.selectedUpgrades.size === 0) return result;
 
     window.selectedUpgrades.forEach(selectionKey => {
         const parts = String(selectionKey).split(":");
-        const col = parts.length === 2 ? parts[0] : 'A';
-        const upgradeId = parts.length === 2 ? parts[1] : parts[0];
+        let col = 'A';
+        let upgradeId = null;
+        if (parts.length === 3) {
+            col = parts[0];
+            upgradeId = parts[2];
+        } else if (parts.length === 2) {
+            col = parts[0];
+            upgradeId = parts[1];
+        } else {
+            upgradeId = parts[0];
+        }
 
         const container = document.getElementById(`upgradeContainer${col}`);
         if (!container) {
@@ -486,6 +529,7 @@ function getSelectedUpgradeEffectsByColumn() {
 window.getSelectedUpgradeEffectsByColumn = getSelectedUpgradeEffectsByColumn;
 
 // Ensure both upgrade containers have the same min-height so stats align across columns
+// Ensure both upgrade containers have the same min-height so stats align.
 function syncUpgradeContainerHeights() {
     const a = document.getElementById('upgradeContainerA');
     const b = document.getElementById('upgradeContainerB');
@@ -504,3 +548,179 @@ function syncUpgradeContainerHeights() {
 }
 
 window.syncUpgradeContainerHeights = syncUpgradeContainerHeights;
+
+// Flash helper used to briefly indicate why a cell couldn't be selected
+// Flash helper used to briefly indicate why a cell couldn't be selected.
+function flashCell(el, type) {
+    if (!el) return;
+    el.classList.add('flash');
+    setTimeout(() => el.classList.remove('flash'), 700);
+
+    const originalTitle = el.getAttribute('data-original-title') || el.title || '';
+    if (!el.getAttribute('data-original-title')) el.setAttribute('data-original-title', originalTitle);
+
+    if (type === 'blocked') el.title = el.title || 'Blocked by selected upgrade(s)';
+    if (type === 'requires') el.title = el.title || 'Requires other upgrade(s)';
+
+    setTimeout(() => {
+        if (el.getAttribute('data-original-title')) el.title = el.getAttribute('data-original-title');
+    }, 1200);
+}
+
+// Helper: return a human-friendly label for an upgrade id (falls back to id)
+// Helper: return a human-friendly label for an upgrade id (falls back to id).
+function getUpgradeDisplayLabel(upgradeId) {
+    if (!upgradeId) return String(upgradeId);
+    // Look for any cell that has this id
+    const el = document.querySelector(`[data-upgrade-id="${upgradeId}"]`);
+    if (!el) return upgradeId;
+
+    try {
+        const up = JSON.parse(el.dataset.upgrade);
+        // Build label similar to renderGrid
+        const effectLabels = (up.effects || []).map(e => {
+            const max = isNaN(e.max) ? '' : ` ${e.max}%`;
+            return `${e.text}${max}`;
+        }).filter(Boolean);
+        if (effectLabels.length > 0) return effectLabels.join(' / ');
+        return up.id || up.SID || upgradeId;
+    } catch (e) {
+        return upgradeId;
+    }
+}
+
+// Update availability for all upgrade cells based on currently selected upgrades (per armorCol)
+// Update availability for all upgrade cells based on currently selected upgrades (per armorCol).
+function updateUpgradeAvailability() {
+    const selectedByCol = { A: new Set(), B: new Set() };
+    if (window.selectedUpgrades) {
+        window.selectedUpgrades.forEach(selectionKey => {
+            const parts = String(selectionKey).split(":");
+            let armorCol = 'A';
+            let upgradeId = null;
+            if (parts.length === 3) {
+                armorCol = parts[0];
+                upgradeId = parts[2];
+            } else if (parts.length === 2) {
+                armorCol = parts[0];
+                upgradeId = parts[1];
+            } else {
+                upgradeId = parts[0];
+            }
+            if (upgradeId && selectedByCol[armorCol]) selectedByCol[armorCol].add(upgradeId);
+        });
+    }
+
+    const blockedMapByCol = { A: {}, B: {} };
+    if (window.selectedUpgrades) {
+        window.selectedUpgrades.forEach(selectionKey => {
+            const parts = String(selectionKey).split(":");
+            let armorCol = 'A';
+            let upgradeId = null;
+            if (parts.length === 3) {
+                armorCol = parts[0];
+                upgradeId = parts[2];
+            } else if (parts.length === 2) {
+                armorCol = parts[0];
+                upgradeId = parts[1];
+            } else {
+                upgradeId = parts[0];
+            }
+            if (!upgradeId || !blockedMapByCol[armorCol]) return;
+
+            const container = document.getElementById(`upgradeContainer${armorCol}`);
+            if (!container) return;
+
+            container.querySelectorAll(`[data-upgrade-id="${upgradeId}"]`).forEach(selEl => {
+                const blocks = (selEl.dataset.blocking || '').split(',').filter(Boolean);
+                blocks.forEach(b => {
+                    if (!blockedMapByCol[armorCol][b]) blockedMapByCol[armorCol][b] = [];
+                    blockedMapByCol[armorCol][b].push(upgradeId);
+                });
+            });
+        });
+    }
+
+    // Apply block/require rules within each armorCol independently
+    ['A', 'B'].forEach(armorCol => {
+        const container = document.getElementById(`upgradeContainer${armorCol}`);
+        if (!container) return;
+
+        const selectedIds = selectedByCol[armorCol];
+        const blockedMap = blockedMapByCol[armorCol] || {};
+
+        container.querySelectorAll('[data-upgrade-id]').forEach(cell => {
+            const id = cell.dataset.upgradeId;
+            const requiredList = (cell.dataset.required || '').split(',').filter(Boolean);
+
+            const blockingBy = blockedMap[id] || [];
+            const isBlocked = blockingBy.length > 0;
+            // OR logic: if any required upgrade is selected, this is unlocked
+            const hasAnyRequired = requiredList.length === 0
+                ? true
+                : requiredList.some(r => selectedIds.has(r));
+
+            if (isBlocked) {
+                cell.classList.add('blocked');
+                if (cell.classList.contains('selected')) {
+                    if (window.selectedUpgrades) {
+                        for (const key of Array.from(window.selectedUpgrades)) {
+                            if (String(key).startsWith(`${armorCol}:`) && String(key).endsWith(`:${id}`)) {
+                                window.selectedUpgrades.delete(key);
+                            }
+                        }
+                    }
+                    cell.classList.remove('selected');
+                }
+                const blockerLabels = blockingBy.map(getUpgradeDisplayLabel).filter(Boolean);
+                cell.title = blockerLabels.length > 0 ? `Blocked by: ${blockerLabels.join(', ')}` : 'Blocked by selected upgrade(s)';
+            } else {
+                cell.classList.remove('blocked');
+            }
+
+            if (!hasAnyRequired) {
+                cell.classList.add('requires');
+                const requiredLabels = requiredList.map(getUpgradeDisplayLabel).filter(Boolean);
+                cell.title = requiredLabels.length > 0
+                    ? `Requires one of: ${requiredLabels.join(', ')}`
+                    : `Requires one of: ${requiredList.join(', ')}`;
+            } else {
+                cell.classList.remove('requires');
+                if (!cell.classList.contains('blocked')) cell.title = '';
+            }
+        });
+    });
+
+    if (window.DEBUG_UPGRADE_AVAILABILITY) {
+        const selectedIds = new Set([...selectedByCol.A, ...selectedByCol.B]);
+        const blockedMap = { ...blockedMapByCol.A, ...blockedMapByCol.B };
+        showAvailabilityOverlay(selectedIds, blockedMap);
+    }
+
+    // Ensure stats reflect current selections after availability changes
+    if (typeof updateStatsWithSelectedUpgrades === 'function') updateStatsWithSelectedUpgrades();
+}
+
+// Transient visual overlay for debugging availability
+function showAvailabilityOverlay(selectedIds, blockedMap) {
+    let el = document.getElementById('upgradeDebugOverlay');
+    if (!el) {
+        el = document.createElement('div');
+        el.id = 'upgradeDebugOverlay';
+        el.className = 'upgrade-debug-overlay';
+        document.body.appendChild(el);
+    }
+
+    const sel = Array.from(selectedIds).join(', ') || '(none)';
+    const blocks = Object.keys(blockedMap).length === 0 ? '(none)' : Object.entries(blockedMap)
+        .map(([k, v]) => `${k}: [${v.join(', ')}]`).join('\n');
+
+    el.textContent = `Selected: ${sel}\nBlocked: ${blocks}`;
+    el.style.display = 'block';
+
+    // auto-hide after 3000ms
+    if (el._timeout) clearTimeout(el._timeout);
+    el._timeout = setTimeout(() => { el.style.display = 'none'; }, 3000);
+}
+
+window.updateUpgradeAvailability = updateUpgradeAvailability;
