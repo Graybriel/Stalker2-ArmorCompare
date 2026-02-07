@@ -116,13 +116,13 @@ select {
     background: #1c1c1c;
     border: 1px solid #333;
     border-radius: 4px;
-    font-size: 12px;
+    font-size: 14px;
     color: #ddd;
 }
 
 .upgrade-cell {
     height: 40px;
-    font-size: 12px;
+    font-size: 13px;
     width: 300px;
     display: flex;
     align-items: center;
@@ -150,7 +150,7 @@ select {
     width: 300px;
     border-color: #888;
     font-weight: bold;
-    font-size: 0.7rem;
+    font-size: 0.85rem;
     display: flex;
     cursor: pointer;
     transition: all 0.2s ease;
