@@ -51,8 +51,11 @@ function renderGrid(grid, container, pieceId = null) {
 
                 // Build label from each effect: "Strike Protection 20%"
                 const effectLabels = cell.effects?.map(e => {
-                    const max = isNaN(e.max) ? "" : ` ${e.max}%`;
-                    return `${e.text}${max}`;
+                    if (isNaN(e.max)) return `${e.text}`;
+                    const val = Number.isFinite(e.max) ? e.max : parseFloat(e.max);
+                    const formatted = Number.isFinite(val) && Number.isInteger(val) ? val : val;
+                    const suffix = e.isPercent ? '%' : '';
+                    return `${e.text} ${formatted}${suffix}`.trim();
                 }).filter(Boolean) || [];
 
                 // Fallback if no effects exist
@@ -98,6 +101,23 @@ function renderGrid(grid, container, pieceId = null) {
 
                     const selectedSet = window.selectedUpgrades;
                     if (selectedSet.has(selectionKey)) {
+                        // Before deselecting, ensure no other selected upgrade requires this one
+                        const container = document.getElementById(`upgradeContainer${col}`);
+                        if (container) {
+                            const selectedCells = Array.from(container.querySelectorAll('.upgrade-cell.selected'));
+                            const requiredBy = selectedCells.filter(other => {
+                                if (other === cellDiv) return false;
+                                const req = (other.dataset.required || '').split(',').filter(Boolean);
+                                return req.includes(upgradeId);
+                            });
+
+                            if (requiredBy.length > 0) {
+                                // Block deselection if another selected upgrade depends on this
+                                flashCell(cellDiv, 'requires');
+                                return;
+                            }
+                        }
+
                         selectedSet.delete(selectionKey);
                         cellDiv.classList.remove("selected");
                     } else {
