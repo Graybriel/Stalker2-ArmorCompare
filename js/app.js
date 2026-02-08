@@ -43,9 +43,13 @@ async function loadArmorData() {
                     }));
 
                 // Keep a compact representation to drive the upgrade grid and stat math.
+                const values = upg.Values || {};
+
                 return {
                     id: upg.Id,
-                    values: upg.Values || {},
+                    values,
+                    image: values.Image || upg.Image || upg.image || null,
+                    icon: values.Icon || upg.Icon || upg.icon || null,
                     effectSIDs: upg.EffectPrototypeSIDs || [],
                     effects,
                     blocking: upg.BlockingUpgradePrototypeSIDs || [],
@@ -59,6 +63,7 @@ async function loadArmorData() {
                 id: item.Id,
                 name: item.Values.DisplayName,
                 type: item.Values.Type,
+                icon: item.Values.Icon || item.Icon || null,
                 thermal: parseFloat(item.Values.thermal),
                 electric: parseFloat(item.Values.electric),
                 chemical: parseFloat(item.Values.chemical),

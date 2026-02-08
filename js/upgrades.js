@@ -5,6 +5,65 @@
  * - Enforce blocking/required rules per armor column
  */
 
+const IMAGE_EXT_RE = /\.(png|jpe?g|webp|gif)$/i;
+
+function extractTextureBase(iconRef) {
+    if (!iconRef) return null;
+    const cleaned = String(iconRef)
+        .replace(/^Texture2D['"]?/i, '')
+        .replace(/['"]$/g, '')
+        .trim();
+    if (!cleaned) return null;
+    const lastSeg = cleaned.split('/').pop() || '';
+    if (!lastSeg) return null;
+    return lastSeg.split('.')[0] || null;
+}
+
+function resolveIconPath(iconRef, kind) {
+    if (!iconRef) return null;
+    const ref = String(iconRef).trim();
+    if (!ref) return null;
+    const lowerRef = ref.toLowerCase();
+    if (lowerRef.startsWith('armor/')) {
+        const trimmed = ref.replace(/^armor\//i, '');
+        if (IMAGE_EXT_RE.test(trimmed)) return `assets/armor/${trimmed}`;
+        const base = extractTextureBase(trimmed) || trimmed;
+        return `assets/armor/${base}${IMAGE_EXT_RE.test(base) ? '' : '.png'}`;
+    }
+    if (lowerRef.startsWith('upgrades/')) {
+        const trimmed = ref.replace(/^upgrades\//i, '');
+        if (IMAGE_EXT_RE.test(trimmed)) return `assets/upgrades/${trimmed}`;
+        const base = extractTextureBase(trimmed) || trimmed;
+        return `assets/upgrades/${base}${IMAGE_EXT_RE.test(base) ? '' : '.png'}`;
+    }
+
+    if (IMAGE_EXT_RE.test(ref) || ref.startsWith('assets/')) return ref;
+
+    const base = extractTextureBase(ref);
+    if (!base) return null;
+    const folder = kind === 'armor' ? 'assets/armor' : 'assets/upgrades';
+    return `${folder}/${base}.png`;
+}
+
+function getUpgradeIconRef(cell) {
+    if (!cell) return null;
+    return cell.image || cell.Image || cell.icon || cell.Icon || cell.values?.Image || cell.values?.Icon || cell.Values?.Image || cell.Values?.Icon || null;
+}
+
+function getArmorIconRef(armor) {
+    if (!armor) return null;
+    return armor.icon || armor.Icon || armor.values?.Icon || armor.Values?.Icon || null;
+}
+
+function applyArmorBackground(sectionEl, armor) {
+    if (!sectionEl || !armor) return;
+    const iconRef = getArmorIconRef(armor);
+    const bgPath = resolveIconPath(iconRef, 'armor');
+    if (!bgPath) return;
+    sectionEl.style.setProperty('--armor-image', `url("${bgPath}")`);
+    sectionEl.classList.add('has-armor-image');
+}
+
 // Render a single grid (e.g., Head/Neck/Shoulder) into a container.
 // Each cell may hold an upgrade, or be blank.
 function renderGrid(grid, container, pieceId = null) {
@@ -68,7 +127,26 @@ function renderGrid(grid, container, pieceId = null) {
                     label = 'Psy defence 5%';
                 }
 
-                cellDiv.textContent = label;
+                const iconRef = getUpgradeIconRef(cell);
+                const iconPath = resolveIconPath(iconRef, 'upgrade');
+
+                const imageDiv = document.createElement('div');
+                imageDiv.className = 'upgrade-card-image';
+                if (iconPath) {
+                    const safePath = encodeURI(iconPath);
+                    imageDiv.style.backgroundImage = `url("${safePath}")`;
+                    cellDiv.dataset.imagePath = iconPath;
+                } else {
+                    imageDiv.classList.add('no-image');
+                }
+                imageDiv.setAttribute('aria-hidden', 'true');
+
+                const labelDiv = document.createElement('div');
+                labelDiv.className = 'upgrade-card-label';
+                labelDiv.textContent = label;
+
+                cellDiv.appendChild(imageDiv);
+                cellDiv.appendChild(labelDiv);
                 cellDiv.classList.add("has-upgrade");
                 
                 // Add click handler to toggle selection
@@ -313,6 +391,16 @@ function renderUpgradesForArmor(armor, armorCol) {
     costDiv.textContent = 'Upgrade Cost: 0';
     container.appendChild(costDiv);
 
+    const pieceSection = document.createElement('div');
+    pieceSection.className = 'armor-piece-section';
+
+    const title = document.createElement('h3');
+    title.className = 'piece-title';
+    title.textContent = `${armor.name} (${armor.type})`;
+    pieceSection.appendChild(title);
+
+    applyArmorBackground(pieceSection, armor);
+
     // Each section gets a title + grid (skip empty sections)
     Object.entries(grids).forEach(([section, grid]) => {
         const hasUpgrades = grid.some(row => row.some(cell => !!cell));
@@ -327,11 +415,13 @@ function renderUpgradesForArmor(armor, armorCol) {
 
         const gridDiv = document.createElement('div');
         gridDiv.className = 'upgrade-grid';
-        renderGrid(grid, gridDiv, armor.id, armor.id);
+        renderGrid(grid, gridDiv, armor.id);
         sectionDiv.appendChild(gridDiv);
 
-        container.appendChild(sectionDiv);
+        pieceSection.appendChild(sectionDiv);
     });
+
+    container.appendChild(pieceSection);
 
     if (window.syncUpgradeContainerHeights) window.syncUpgradeContainerHeights();
     if (window.updateUpgradeAvailability) window.updateUpgradeAvailability();
@@ -376,6 +466,8 @@ function renderUpgradesForMultiplePieces(pieces, armorCol) {
         title.textContent = `${armor.name} (${armor.type})`;
         pieceSection.appendChild(title);
 
+        applyArmorBackground(pieceSection, armor);
+
         // Build upgrade grids for this piece
         const grids = buildUpgradeGrids(armor);
 
@@ -393,7 +485,7 @@ function renderUpgradesForMultiplePieces(pieces, armorCol) {
 
             const gridDiv = document.createElement("div");
             gridDiv.className = "upgrade-grid";
-            renderGrid(grid, gridDiv);
+            renderGrid(grid, gridDiv, armor.id);
             sectionDiv.appendChild(gridDiv);
 
             pieceSection.appendChild(sectionDiv);
