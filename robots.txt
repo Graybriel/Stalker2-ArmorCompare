@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://graybriel.github.io/Stalker2-ArmorCompare/sitemap.xml
