@@ -54,22 +54,31 @@ function renderStats(container, armor, includeUpgrades = false, col = null, orde
         }
     }
 
+    function formatStatValue(rawVal) {
+        if (typeof rawVal === 'number' && Number.isFinite(rawVal)) {
+            const num = window.roundTo ? window.roundTo(rawVal, 1) : roundTo(rawVal, 1);
+            return { text: num.toFixed(1), num, hasNumber: true };
+        }
+
+        const parsed = parseFloat(String(rawVal).replace(/[^0-9.-]+/g, ''));
+        if (!isNaN(parsed)) {
+            const num = window.roundTo ? window.roundTo(parsed, 1) : parsed;
+            return { text: num.toFixed(1), num, hasNumber: true };
+        }
+
+        return { text: rawVal, num: null, hasNumber: false };
+    }
+
     for (const stat of statKeys) {
         const row = document.createElement("div");
         row.className = "stat-row";
 
-        const rawVal = displayStats[stat];
-        let displayVal;
-        if (typeof rawVal === 'number' && Number.isFinite(rawVal)) {
-            displayVal = window.roundTo ? window.roundTo(rawVal, 1).toFixed(1) : roundTo(rawVal, 1).toFixed(1);
-        } else {
-            // try to parse numeric strings like "13.0 kg" -> 13.0
-            const parsed = parseFloat(String(rawVal).replace(/[^0-9.-]+/g, ''));
-            if (!isNaN(parsed)) {
-                displayVal = (window.roundTo ? window.roundTo(parsed, 1) : parsed).toFixed(1);
-            } else {
-                displayVal = rawVal;
-            }
+        const baseVal = formatStatValue(armor[stat]);
+        const upgradedVal = formatStatValue(displayStats[stat]);
+
+        let displayVal = upgradedVal.text;
+        if (includeUpgrades && baseVal.hasNumber && upgradedVal.hasNumber && baseVal.num !== upgradedVal.num) {
+            displayVal = `${baseVal.text} -> ${upgradedVal.text}`;
         }
 
         row.innerHTML = `
@@ -149,9 +158,13 @@ function updateComparison() {
         let max = 100.0;
         if (stat === "weight") { max = 20; }
         if (stat === "slots" || stat === "physical") { max = 5; }
+        const aBase = Number(statsA[stat] ?? 0) || 0;
+        const bBase = Number(statsB[stat] ?? 0) || 0;
         const aVal = Number(statsAAdjusted[stat] ?? 0) || 0;
         const bVal = Number(statsBAdjusted[stat] ?? 0) || 0;
 
+        const aBasePct = (aBase / max) * 100;
+        const bBasePct = (bBase / max) * 100;
         const aPct = (aVal / max) * 100;
         const bPct = (bVal / max) * 100;
         const row = document.createElement("div");
@@ -161,15 +174,33 @@ function updateComparison() {
         label.textContent = stat;
 
         // Helper to create a bar element with a fill and optional segment overlay
-        function makeBar(pct, color, segmented) {
+        function makeBar(basePct, pct, color, segmented) {
             const bar = document.createElement("div");
             bar.className = "bar";
 
-            const fill = document.createElement("div");
-            fill.className = "bar-fill";
-            fill.style.width = `${pct}%`;
-            fill.style.background = color;
-            bar.appendChild(fill);
+            const clampedBase = Math.max(0, Math.min(100, basePct));
+            const clamped = Math.max(0, Math.min(100, pct));
+
+            const baseFill = document.createElement("div");
+            baseFill.className = "bar-base";
+            baseFill.style.width = `${clampedBase}%`;
+            baseFill.style.background = color;
+            bar.appendChild(baseFill);
+
+            if (clamped >= clampedBase) {
+                const upgradeFill = document.createElement("div");
+                upgradeFill.className = "bar-upgrade";
+                upgradeFill.style.left = `${clampedBase}%`;
+                upgradeFill.style.width = `${clamped - clampedBase}%`;
+                upgradeFill.style.background = color;
+                bar.appendChild(upgradeFill);
+            } else {
+                const fill = document.createElement("div");
+                fill.className = "bar-fill";
+                fill.style.width = `${clamped}%`;
+                fill.style.background = color;
+                bar.appendChild(fill);
+            }
 
             if (segmented) {
                 const grid = document.createElement("div");
@@ -188,8 +219,10 @@ function updateComparison() {
 
         const isSegmented = stat !== "weight"; // only non-weight stats are 1-5
 
-        const leftBar = makeBar(aPct, '#7B907C', isSegmented);
-        const rightBar = makeBar(bPct, '#AA2E25', isSegmented);
+        const leftBar = makeBar(aBasePct, aPct, '#00bcd4', isSegmented);
+        const rightBar = makeBar(bBasePct, bPct, '#ff5722', isSegmented);
+        leftBar.title = `Base: ${aBase.toFixed(1)} -> Upgraded: ${aVal.toFixed(1)}`;
+        rightBar.title = `Base: ${bBase.toFixed(1)} -> Upgraded: ${bVal.toFixed(1)}`;
 
         row.appendChild(label);
         row.appendChild(leftBar);

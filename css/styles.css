@@ -87,11 +87,11 @@ select {
 }
 
 .legend-a {
-    background: #7B907C;
+    background: #00bcd4;
 }
 
 .legend-b {
-    background: #AA2E25;
+    background: #ff5722;
 }
 
 .comparison-bar {
@@ -108,11 +108,29 @@ select {
 
 .bar-fill {
     height: 100%;
-    background: #244626;
+    background: #00bcd4;
     position: absolute;
     left: 0;
     top: 0;
     z-index: 1;
+}
+
+.bar-base {
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    opacity: 0.60;
+    filter: saturate(0.8);
+}
+
+.bar-upgrade {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 2;
+    opacity: 0.95;
 }
 
 /* Overlay grid that draws segment boundaries on top of the bar and fill. */

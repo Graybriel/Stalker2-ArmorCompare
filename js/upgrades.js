@@ -606,8 +606,11 @@ function getUpgradeDisplayLabel(upgradeId) {
         const up = JSON.parse(el.dataset.upgrade);
         // Build label similar to renderGrid
         const effectLabels = (up.effects || []).map(e => {
-            const max = isNaN(e.max) ? '' : ` ${e.max}%`;
-            return `${e.text}${max}`;
+            if (isNaN(e.max)) return `${e.text}`;
+            const val = Number.isFinite(e.max) ? e.max : parseFloat(e.max);
+            const formatted = Number.isFinite(val) && Number.isInteger(val) ? val : val;
+            const suffix = e.isPercent ? '%' : '';
+            return `${e.text} ${formatted}${suffix}`.trim();
         }).filter(Boolean);
         if (effectLabels.length > 0) return effectLabels.join(' / ');
         return up.id || up.SID || upgradeId;
