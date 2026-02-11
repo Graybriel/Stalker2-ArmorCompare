@@ -74,7 +74,8 @@ function applyArmorBackground(el, armor) {
     const iconRef = getArmorIconRef(armor);
     const bgPath = resolveIconPath(iconRef, 'armor');
     if (!bgPath) return null;
-    el.style.setProperty('--armor-image', `url("/${encodeURI(bgPath)}")`);
+    // Use ../ prefix because CSS custom properties resolve relative to the CSS file in /css/
+    el.style.setProperty('--armor-image', `url("../${encodeURI(bgPath)}")`);
     el.classList.add('has-armor-image');
     return bgPath;
 }
@@ -218,7 +219,7 @@ function renderGrid(grid, container, pieceId = null) {
                 imageDiv.className = 'upgrade-card-image';
                 if (iconPath) {
                     const safePath = encodeURI(iconPath);
-                    imageDiv.style.backgroundImage = `url("/${safePath}")`;
+                    imageDiv.style.backgroundImage = `url("${safePath}")`;
                     cellDiv.dataset.imagePath = iconPath;
                 } else {
                     imageDiv.classList.add('no-image');
