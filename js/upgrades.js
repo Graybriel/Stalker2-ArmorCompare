@@ -23,6 +23,10 @@ function resolveIconPath(iconRef, kind) {
     if (!iconRef) return null;
     const ref = String(iconRef).trim();
     if (!ref) return null;
+
+    // Reject obviously invalid paths
+    if (ref.startsWith('/Script/') || ref.includes('/Script/')) return null;
+
     const lowerRef = ref.toLowerCase();
     if (lowerRef.startsWith('armor/')) {
         const trimmed = ref.replace(/^armor\//i, '');
@@ -38,6 +42,16 @@ function resolveIconPath(iconRef, kind) {
     }
 
     if (IMAGE_EXT_RE.test(ref) || ref.startsWith('assets/')) return ref;
+
+    // Handle old Texture2D format
+    if (lowerRef.includes('texture2d') || lowerRef.includes('/game/')) {
+        const base = extractTextureBase(ref);
+        if (!base) return null;
+        const folder = kind === 'armor' ? 'assets/armor' : 'assets/upgrades';
+        // Try with _upgrade suffix for armor
+        if (kind === 'armor') return `${folder}/${base}_upgrade.png`;
+        return `${folder}/${base}.png`;
+    }
 
     const base = extractTextureBase(ref);
     if (!base) return null;
@@ -55,14 +69,81 @@ function getArmorIconRef(armor) {
     return armor.icon || armor.Icon || armor.values?.Icon || armor.Values?.Icon || null;
 }
 
-function applyArmorBackground(sectionEl, armor) {
-    if (!sectionEl || !armor) return;
+function applyArmorBackground(el, armor) {
+    if (!el || !armor) return null;
     const iconRef = getArmorIconRef(armor);
     const bgPath = resolveIconPath(iconRef, 'armor');
-    if (!bgPath) return;
-    sectionEl.style.setProperty('--armor-image', `url("${bgPath}")`);
-    sectionEl.classList.add('has-armor-image');
+    if (!bgPath) return null;
+    el.style.setProperty('--armor-image', `url("/${encodeURI(bgPath)}")`);
+    el.classList.add('has-armor-image');
+    return bgPath;
 }
+
+function toZoneClass(sectionName) {
+    return String(sectionName || '')
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-');
+}
+
+function positionConnectors(canvas) {
+    if (!canvas) return;
+    const canvasRect = canvas.getBoundingClientRect();
+    const anchors = canvas.querySelectorAll('.upgrade-anchor');
+
+    anchors.forEach(anchor => {
+        const section = Array.from(anchor.classList)
+            .find(cls => cls.startsWith('anchor-'))
+            ?.replace('anchor-', '');
+        if (!section) return;
+
+        const zone = canvas.querySelector(`.zone-${section}`);
+        if (!zone) return;
+
+        let connector = canvas.querySelector(`.upgrade-connector[data-section="${section}"]`);
+        if (!connector) {
+            connector = document.createElement('div');
+            connector.className = 'upgrade-connector';
+            connector.dataset.section = section;
+            canvas.appendChild(connector);
+        }
+
+        const anchorRect = anchor.getBoundingClientRect();
+        const zoneRect = zone.getBoundingClientRect();
+
+        const startX = anchorRect.left + anchorRect.width / 2 - canvasRect.left;
+        const startY = anchorRect.top + anchorRect.height / 2 - canvasRect.top;
+
+        const zoneLeft = zoneRect.left - canvasRect.left;
+        const zoneTop = zoneRect.top - canvasRect.top;
+        const zoneRight = zoneLeft + zoneRect.width;
+        const zoneBottom = zoneTop + zoneRect.height;
+
+        // Nearest point on zone rectangle to anchor center
+        const endX = Math.min(Math.max(startX, zoneLeft), zoneRight);
+        const endY = Math.min(Math.max(startY, zoneTop), zoneBottom);
+
+        const dx = endX - startX;
+        const dy = endY - startY;
+        const length = Math.hypot(dx, dy);
+        const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+
+        connector.style.left = `${startX}px`;
+        connector.style.top = `${startY}px`;
+        connector.style.width = `${length}px`;
+        connector.style.transform = `rotate(${angle}deg)`;
+    });
+}
+
+function scheduleConnectors(canvas) {
+    if (!canvas) return;
+    requestAnimationFrame(() => positionConnectors(canvas));
+    setTimeout(() => positionConnectors(canvas), 100);
+}
+
+window.refreshUpgradeConnectors = () => {
+    document.querySelectorAll('.armor-upgrade-canvas').forEach(scheduleConnectors);
+};
 
 // Render a single grid (e.g., Head/Neck/Shoulder) into a container.
 // Each cell may hold an upgrade, or be blank.
@@ -130,11 +211,14 @@ function renderGrid(grid, container, pieceId = null) {
                 const iconRef = getUpgradeIconRef(cell);
                 const iconPath = resolveIconPath(iconRef, 'upgrade');
 
+                const indicatorDiv = document.createElement('div');
+                indicatorDiv.className = 'upgrade-indicator';
+
                 const imageDiv = document.createElement('div');
                 imageDiv.className = 'upgrade-card-image';
                 if (iconPath) {
                     const safePath = encodeURI(iconPath);
-                    imageDiv.style.backgroundImage = `url("${safePath}")`;
+                    imageDiv.style.backgroundImage = `url("/${safePath}")`;
                     cellDiv.dataset.imagePath = iconPath;
                 } else {
                     imageDiv.classList.add('no-image');
@@ -145,6 +229,7 @@ function renderGrid(grid, container, pieceId = null) {
                 labelDiv.className = 'upgrade-card-label';
                 labelDiv.textContent = label;
 
+                cellDiv.appendChild(indicatorDiv);
                 cellDiv.appendChild(imageDiv);
                 cellDiv.appendChild(labelDiv);
                 cellDiv.classList.add("has-upgrade");
@@ -240,9 +325,9 @@ function buildUpgradeGrids(armor) {
     // Alternate mapping for head armor types
     const helmetPartMap = {
         "EUpgradeTargetPartType::Stock": "Crown",
-        "EUpgradeTargetPartType::Barrel": "Nose",
-        "EUpgradeTargetPartType::Handguard": "Forehead",
-        "EUpgradeTargetPartType::Body": "Eyebrow",
+        "EUpgradeTargetPartType::Barrel": "Chin",
+        "EUpgradeTargetPartType::Handguard": "Eyebrow",
+        "EUpgradeTargetPartType::Body": "Nose",
         "EUpgradeTargetPartType::PistolGrip": "Cheek"
     };
 
@@ -399,14 +484,37 @@ function renderUpgradesForArmor(armor, armorCol) {
     title.textContent = `${armor.name} (${armor.type})`;
     pieceSection.appendChild(title);
 
-    applyArmorBackground(pieceSection, armor);
+    // Create armor canvas with centered image and upgrade zones
+    const canvas = document.createElement('div');
+    canvas.className = 'armor-upgrade-canvas';
+    canvas.classList.add(`armor-type-${String(armor.type || '').replace(/\s+/g, '-')}`);
 
-    // Each section gets a title + grid (skip empty sections)
-    Object.entries(grids).forEach(([section, grid]) => {
+    // Central armor image
+    const armorImgContainer = document.createElement('div');
+    armorImgContainer.className = 'armor-center-image';
+    applyArmorBackground(armorImgContainer, armor);
+    canvas.appendChild(armorImgContainer);
+
+    // Zone order for body
+    const zoneOrder = armor.type === 'head'
+        ? ['Crown', 'Nose', 'Chin', 'Eyebrow', 'Cheek']
+        : ['Head', 'Neck', 'Shoulder', 'Chest', 'Hip'];
+
+    // Each section gets an anchor + grid
+    zoneOrder.forEach(section => {
+        const grid = grids[section];
+        if (!grid) return;
         const hasUpgrades = grid.some(row => row.some(cell => !!cell));
         if (!hasUpgrades) return;
+
+        // Create anchor point on armor
+        const anchor = document.createElement('div');
+        anchor.className = `upgrade-anchor anchor-${toZoneClass(section)}`;
+        canvas.appendChild(anchor);
+
         const sectionDiv = document.createElement('div');
-        sectionDiv.className = 'upgrade-section';
+        sectionDiv.className = `upgrade-section upgrade-zone zone-${toZoneClass(section)}`;
+        sectionDiv.dataset.section = section;
         
         const titleDiv = document.createElement('div');
         titleDiv.className = 'section-title';
@@ -418,10 +526,13 @@ function renderUpgradesForArmor(armor, armorCol) {
         renderGrid(grid, gridDiv, armor.id);
         sectionDiv.appendChild(gridDiv);
 
-        pieceSection.appendChild(sectionDiv);
+        canvas.appendChild(sectionDiv);
     });
 
+    pieceSection.appendChild(canvas);
     container.appendChild(pieceSection);
+
+    scheduleConnectors(canvas);
 
     if (window.syncUpgradeContainerHeights) window.syncUpgradeContainerHeights();
     if (window.updateUpgradeAvailability) window.updateUpgradeAvailability();
@@ -466,17 +577,40 @@ function renderUpgradesForMultiplePieces(pieces, armorCol) {
         title.textContent = `${armor.name} (${armor.type})`;
         pieceSection.appendChild(title);
 
-        applyArmorBackground(pieceSection, armor);
+        // Create armor canvas with centered image and upgrade zones
+        const canvas = document.createElement('div');
+        canvas.className = 'armor-upgrade-canvas';
+        canvas.classList.add(`armor-type-${String(armor.type || '').replace(/\s+/g, '-')}`);
+
+        // Central armor image
+        const armorImgContainer = document.createElement('div');
+        armorImgContainer.className = 'armor-center-image';
+        applyArmorBackground(armorImgContainer, armor);
+        canvas.appendChild(armorImgContainer);
+
+        // Zone order
+        const zoneOrder = armor.type === 'head'
+            ? ['Crown', 'Nose', 'Chin', 'Eyebrow', 'Cheek']
+            : ['Head', 'Neck', 'Shoulder', 'Chest', 'Hip'];
 
         // Build upgrade grids for this piece
         const grids = buildUpgradeGrids(armor);
 
         // Render each upgrade section (skip empty sections)
-        Object.entries(grids).forEach(([sectionName, grid]) => {
+        zoneOrder.forEach(sectionName => {
+            const grid = grids[sectionName];
+            if (!grid) return;
             const hasUpgrades = grid.some(row => row.some(cell => !!cell));
             if (!hasUpgrades) return;
+
+            // Create anchor point on armor
+            const anchor = document.createElement('div');
+            anchor.className = `upgrade-anchor anchor-${toZoneClass(sectionName)}`;
+            canvas.appendChild(anchor);
+
             const sectionDiv = document.createElement("div");
-            sectionDiv.className = "upgrade-section";
+            sectionDiv.className = `upgrade-section upgrade-zone zone-${toZoneClass(sectionName)}`;
+            sectionDiv.dataset.section = sectionName;
 
             const sectionTitle = document.createElement("h4");
             sectionTitle.className = "section-title";
@@ -488,11 +622,21 @@ function renderUpgradesForMultiplePieces(pieces, armorCol) {
             renderGrid(grid, gridDiv, armor.id);
             sectionDiv.appendChild(gridDiv);
 
-            pieceSection.appendChild(sectionDiv);
+            canvas.appendChild(sectionDiv);
         });
 
+        pieceSection.appendChild(canvas);
         container.appendChild(pieceSection);
+
+        scheduleConnectors(canvas);
     });
+
+    if (!window._upgradeConnectorResizeBound) {
+        window._upgradeConnectorResizeBound = true;
+        window.addEventListener('resize', () => {
+            document.querySelectorAll('.armor-upgrade-canvas').forEach(scheduleConnectors);
+        });
+    }
 
     if (window.syncUpgradeContainerHeights) window.syncUpgradeContainerHeights();
     if (window.updateUpgradeAvailability) window.updateUpgradeAvailability();
@@ -808,6 +952,11 @@ function updateUpgradeAvailability() {
             } else {
                 cell.classList.remove('requires');
                 if (!cell.classList.contains('blocked')) cell.title = '';
+            }
+
+            cell.classList.remove('selectable');
+            if (!isBlocked && hasAnyRequired && !cell.classList.contains('selected')) {
+                cell.classList.add('selectable');
             }
         });
     });

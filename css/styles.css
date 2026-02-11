@@ -233,17 +233,44 @@ select {
     background-size: cover;
     background-position: center;    
     pointer-events: none;
+    filter: brightness(1.12) contrast(1.05);
 }
 
 .upgrade-card-image.no-image {
     background: linear-gradient(135deg, rgba(42,42,42,0.9), rgba(20,20,20,0.9));
 }
 
+.upgrade-indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background: #666;
+    z-index: 3;
+}
+
+.upgrade-cell.selectable .upgrade-indicator {
+    background: #c9a227;
+}
+
+.upgrade-cell.selected .upgrade-indicator {
+    background: #7fb069;
+}
+
+.upgrade-cell.blocked .upgrade-indicator {
+    background: #a33;
+}
+
+.upgrade-cell.requires .upgrade-indicator {
+    background: #777;
+}
+
 .upgrade-cell.has-upgrade::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.55) 55%, rgba(0,0,0,0.2) 100%);
+    background: linear-gradient(90deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.35) 55%, rgba(0,0,0,0.12) 100%);
     pointer-events: none;
 }
 
@@ -367,4 +394,144 @@ select {
     font-weight: normal;
     text-transform: uppercase;
     letter-spacing: 0.3px;
+}
+
+/* Armor upgrade canvas - central image with zones around it */
+.armor-upgrade-canvas {
+    position: relative;
+    min-height: 600px;
+    margin-top: 12px;
+    background: #111;
+    background-size: 40px 40px;
+}
+
+.armor-center-image {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 280px;
+    height: 500px;
+    background-image: var(--armor-image);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.armor-center-image.has-armor-image {
+    opacity: 0.85;
+}
+
+.armor-upgrade-canvas.armor-type-head .armor-center-image {
+    width: 220px;
+    height: 320px;
+}
+
+/* Anchor points (white circles) on the armor */
+.upgrade-anchor {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: rgba(255,255,255,0.9);
+    border: 2px solid #888;
+    border-radius: 50%;
+    z-index: 5;
+}
+
+.upgrade-connector {
+    position: absolute;
+    height: 2px;
+    background: linear-gradient(90deg, rgba(255,255,255,0.15), rgba(255,255,255,0.7));
+    transform-origin: 0 50%;
+    z-index: 6;
+    pointer-events: none;
+}
+
+.upgrade-connector::after {
+    content: "";
+    position: absolute;
+    right: -3px;
+    top: -2px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.85);
+}
+
+/* Anchor positions for body armor */
+.anchor-head { left: 50%; top: 20%; transform: translateX(-50%); }
+.anchor-neck { left: 50%; top: 40%;  transform: translateX(-50%);}
+.anchor-shoulder { left: 60%; top: 37%; }
+.anchor-chest { left: 50%; top: 54%; transform: translateX(-50%);}
+.anchor-hip { left:58%; top: 68%; }
+
+/* Anchor positions for head armor */
+.armor-type-head .anchor-crown { left: 50%; top: 35%; transform: translateX(-50%); }
+.armor-type-head .anchor-eyebrow { left: 52%; top: 42%; }
+.armor-type-head .anchor-nose { left: 46%; top:48%; }
+.armor-type-head .anchor-cheek { left: 75%; top: 56%; }
+.armor-type-head .anchor-chin { left: 50%; top: 57%; transform: translateX(-50%); }
+
+
+/* Upgrade zones - positioned around the armor */
+.armor-upgrade-canvas .upgrade-zone {
+    position: absolute;
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(100,100,100,0.5);
+    padding: 6px;
+    border-radius: 6px;
+    z-index: 10;
+}
+
+.armor-upgrade-canvas .upgrade-zone .section-title {
+    display: none;
+}
+
+/* Zone positions for body armor */
+.zone-head { left: 50%; top: 6%; transform: translateX(-50%); }
+.zone-neck { left: 0; top: 18%; }
+.zone-shoulder { right: 0; top: 22%; }
+.zone-chest { left: 0; top: 54%; }
+.zone-hip { right: 0; top: 60%; }
+
+/* Zone positions for head armor */
+.armor-type-head .zone-crown { left: 50%; top: 22%; transform: translateX(-50%); }
+.armor-type-head .zone-eyebrow { left: 59%; top: 34%; }
+.armor-type-head .zone-nose { left: 22%; top: 42%; transform: translateX(-50%); }
+.armor-type-head .zone-cheek { left: 70%; top: 50%; transform: translateX(-50%); }
+.armor-type-head .zone-chin { left: 50%; top: 68%; transform: translateX(-50%); }
+
+/* Smaller cards in canvas mode */
+.armor-upgrade-canvas .upgrade-cell {
+    width: 90px;
+    height: 32px;
+    font-size: 0.5rem;
+    border: none;
+}
+
+.armor-upgrade-canvas .upgrade-cell.blank {
+    width: 90px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    min-height: auto;
+}
+
+.armor-upgrade-canvas .upgrade-row {
+    gap: 2px;
+    margin-bottom: 2px;
+}
+
+.armor-upgrade-canvas .upgrade-card-label {
+    padding: 3px 4px;
+    font-size: 0.5rem;
+    line-height: 1.0;
+}
+
+.armor-upgrade-canvas .section-title {
+    font-size: 11px;
+    margin-bottom: 4px;
+    color: #999;
 }
