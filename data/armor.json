@@ -2839,7 +2839,7 @@
     "Id": "Jacket_Bandit_Armor",
     "Values": {
       "SID": "Jacket_Bandit_Armor",
-      "Icon": "/Script/Engine_upgrade.PNG",
+      "Icon": "Armor/T_IFI_FOL_BAN_10.T_IFI_FOL_BAN_10",
       "weight": "5.0",
       "Cost": "17200.0",
       "slots": "1",
