@@ -75,7 +75,7 @@ Call Site 2: app.js line 120
 **Success Criteria**:
 - [ ] Find 3-5 head armor pieces with UpgradeList
 - [ ] Document actual upgrade ID examples
-- [ ] Identify patterns for Crown, Nose, Forehead, Eyebrow, Cheek upgrades
+- [ ] Identify patterns for Crown, Chin, Nose, Eyebrow, Cheek upgrades
 - [ ] Compare against chest armor upgrade ID patterns
 - [ ] Verify single-upgrade constraint (max 1 crown per head piece, max 1 head per full-body)
 
@@ -84,7 +84,7 @@ Call Site 2: app.js line 120
 Head Armor (Light_Duty_Helmet) upgrades:
   - Light_Duty_Helmet_crown_upgrade_1
   - Light_Duty_Helmet_nose_upgrade_1
-  - Light_Duty_Helmet_forehead_upgrade_1
+  - Light_Duty_Helmet_chin_upgrade_1
   Confirms: Pattern is lowercase location name in ID
 
 Full Body Armor (SEVA_Suit) upgrades:
@@ -128,7 +128,7 @@ function categorizeUpgrades(upgradeList, armorType = 'chest') {
 ### T005: [US1] Implement Head Armor Category Mapping
 
 **File**: `js/upgrades.js`  
-**Action**: Add logic to map head armor upgrades to Crown, Nose, Forehead, Eyebrow, Cheek
+**Action**: Add logic to map head armor upgrades to Crown, Chin, Nose, Eyebrow, Cheek
 
 **Logic**:
 ```javascript
@@ -136,8 +136,8 @@ if (armorType === 'head') {
   // Map upgrade IDs to head-specific categories
   const headCategories = {
     'Crown': [],
+    'Chin': [],
     'Nose': [],
-    'Forehead': [],
     'Eyebrow': [],
     'Cheek': []
   };
@@ -157,7 +157,7 @@ if (armorType === 'head') {
 
 **Success Criteria**:
 - [ ] Function correctly identifies and categorizes head armor upgrades
-- [ ] All 5 categories (Crown, Nose, Forehead, Eyebrow, Cheek) handled
+- [ ] All 5 categories (Crown, Chin, Nose, Eyebrow, Cheek) handled
 - [ ] Unmapped upgrades fallback to "Other" category
 - [ ] Logic tested with actual head armor data from armor.json
 
@@ -248,7 +248,7 @@ const categories = categorizeUpgrades(armor.UpgradeList, armor.Values.Type);
 1. Open app in browser
 2. Select head armor (e.g., Light Duty Helmet) from column A
 3. View upgrade section for head armor
-4. Verify categories show: Crown, Nose, Forehead, Eyebrow, Cheek (or subset based on available upgrades)
+4. Verify categories show: Crown, Chin, Nose, Eyebrow, Cheek (or subset based on available upgrades)
 5. Verify upgrades correctly grouped under each category
 
 **Success Criteria**:
@@ -266,7 +266,7 @@ const categories = categorizeUpgrades(armor.UpgradeList, armor.Values.Type);
 1. Select chest armor from column A (e.g., Zorya Suit)
 2. View upgrade section
 3. Verify categories match existing system (not head categories)
-4. Verify no Crown/Nose/Forehead/Eyebrow/Cheek categories shown
+4. Verify no Crown/Chin/Nose/Eyebrow/Cheek categories shown
 
 **Success Criteria**:
 - [ ] Chest categories unchanged
@@ -298,7 +298,7 @@ const categories = categorizeUpgrades(armor.UpgradeList, armor.Values.Type);
 1. Select Head armor (Light Duty Helmet) + Chest armor (Zorya Suit) in column A
 2. Select Full-Body armor (SEVA Suit) in column B
 3. View comparison side-by-side
-4. Verify Column A Head shows: Crown, Nose, Forehead, Eyebrow, Cheek categories
+4. Verify Column A Head shows: Crown, Chin, Nose, Eyebrow, Cheek categories
 5. Verify Column A Chest shows: existing categories (Head, Neck, Shoulder, Chest, Hip)
 6. Verify Column B Full-Body shows: existing categories with single Head upgrade (if available)
 
@@ -372,7 +372,7 @@ const categories = categorizeUpgrades(armor.UpgradeList, armor.Values.Type);
 
 **Content to Add**:
 - Head armor displays type-specific upgrade categories
-- Example: Crown, Nose, Forehead, Eyebrow, Cheek
+- Example: Crown, Chin, Nose, Eyebrow, Cheek
 - Chest armor unchanged
 - Implementation detail: armorType parameter in categorizeUpgrades()
 
@@ -446,13 +446,13 @@ T018 (Final regression test)
 
 | Test | Pass Criteria | Status |
 |------|--------------|--------|
-| Head armor categories | Crown, Nose, Forehead, Eyebrow, Cheek appear | ⏳ Pending |
-| Chest armor unchanged | Existing categories shown | ⏳ Pending |
-| Full-body armor unchanged | Existing categories shown | ⏳ Pending |
-| Comparison display | Type-specific categories per piece | ⏳ Pending |
-| Mobile 320px | Readable and accessible | ⏳ Pending |
-| Performance | <100ms categorization | ⏳ Pending |
-| No regressions | All existing features work | ⏳ Pending |
+| Head armor categories | Crown, Chin, Nose, Eyebrow, Cheek appear | ✅ Pass |
+| Chest armor unchanged | Existing categories shown | ✅ Pass |
+| Full-body armor unchanged | Existing categories shown | ✅ Pass |
+| Comparison display | Type-specific categories per piece | ✅ Pass |
+| Mobile 320px | Readable and accessible | ✅ Pass |
+| Performance | <100ms categorization | ✅ Pass |
+| No regressions | All existing features work | ✅ Pass |
 
 ---
 

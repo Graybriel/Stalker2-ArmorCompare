@@ -2,22 +2,22 @@
 
 **Feature Branch**: `001-head-upgrade-categories`  
 **Created**: 2026-01-28  
-**Status**: Draft  
-**Input**: User description: "armor type of 'head' has different categories for it's upgrades. When displaying head upgrades the section headers should reflect the different names. Instead of head, neck, shoulder, chest, hip for it's upgrades, they are: crown, nose, forehead, eyebrow, cheek. The actual upgrades themselves are the same for all armor pieces, ie 10% in thermal protection"
+**Status**: Complete  
+**Input**: User description: "armor type of 'head' has different categories for it's upgrades. When displaying head upgrades the section headers should reflect the different names. Instead of head, neck, shoulder, chest, hip for it's upgrades, they are: crown, chin, nose, eyebrow, cheek. The actual upgrades themselves are the same for all armor pieces, ie 10% in thermal protection"
 
 ## User Scenarios & Testing
 
 ### User Story 1 - Display Type-Specific Upgrade Categories (Priority: P1)
 
-As a STALKER 2 player comparing head armor, I want to see upgrade section headers that reflect the specific body location being protected (crown, nose, forehead, eyebrow, cheek) instead of generic labels, so I can understand which part of my head each upgrade protects and make informed equipment decisions.
+As a STALKER 2 player comparing head armor, I want to see upgrade section headers that reflect the specific body location being protected (crown, chin, nose, eyebrow, cheek) instead of generic labels, so I can understand which part of my head each upgrade protects and make informed equipment decisions.
 
 **Why this priority**: Players comparing armor need accurate information about what each upgrade protects. Head armor has anatomically-specific upgrade categories that differ from chest/body armor. Displaying incorrect or generic labels creates confusion and reduces decision-making clarity.
 
-**Independent Test**: Load app → select head armor (e.g., Light Duty Helmet) → view upgrade section → section headers display "Crown", "Nose", "Forehead", "Eyebrow", "Cheek" instead of generic labels → each category shows the correct protection value (e.g., "10% thermal protection") → test passes without requiring chest armor comparison.
+**Independent Test**: Load app → select head armor (e.g., Light Duty Helmet) → view upgrade section → section headers display "Crown", "Chin", "Nose", "Eyebrow", "Cheek" instead of generic labels → each category shows the correct protection value (e.g., "10% thermal protection") → test passes without requiring chest armor comparison.
 
 **Acceptance Scenarios**:
 
-1. **Given** head armor is selected and displayed, **When** upgrade section renders, **Then** category headers show head-specific location names: Crown, Nose, Forehead, Eyebrow, Cheek
+1. **Given** head armor is selected and displayed, **When** upgrade section renders, **Then** category headers show head-specific location names: Crown, Chin, Nose, Eyebrow, Cheek
 2. **Given** head armor upgrade categories are displayed, **When** each category is rendered, **Then** the protection values (thermal, physical, etc.) are correctly associated with the location name
 3. **Given** head armor is compared against chest or full-body armor, **When** displayed side-by-side, **Then** head section shows head-specific headers (Crown, Nose, etc.) and chest/body section shows its own category headers (not head categories)
 4. **Given** a full-body suit is displayed, **When** its upgrade section renders, **Then** the "Head" category displays a single upgrade (or "No upgrade" if empty), not multiple head upgrades
@@ -54,7 +54,7 @@ As a STALKER 2 player comparing chest or full-body armor, I want upgrade section
 
 ### Functional Requirements
 
-- **FR-001**: System MUST categorize head armor upgrades using head-specific location names (Crown, Nose, Forehead, Eyebrow, Cheek) instead of generic body area names
+- **FR-001**: System MUST categorize head armor upgrades using head-specific location names (Crown, Chin, Nose, Eyebrow, Cheek) instead of generic body area names
 - **FR-002**: System MUST display upgrade category headers that match the armor type: head armor uses location names, full-body armor shows "Head" category with max 1 upgrade, chest armor has no head category
 - **FR-003**: System MUST display crown upgrades under the "Crown" header when head armor is shown; each head armor piece has at most one crown upgrade available
 - **FR-004**: System MUST display the single "Head" upgrade available on full-body suits under the "Head" category header
@@ -67,7 +67,7 @@ As a STALKER 2 player comparing chest or full-body armor, I want upgrade section
 
 - **Armor Piece**: Represents a single armor item with Type (head, chest, full_body), UpgradeList, and category display rules
 - **Upgrade Category**: A grouped section of upgrades based on armor type:
-  - Head armor categories: Crown, Nose, Forehead, Eyebrow, Cheek
+  - Head armor categories: Crown, Chin, Nose, Eyebrow, Cheek
   - Chest/Body armor categories: Head, Neck, Shoulder, Chest, Hip (existing system)
 - **Upgrade**: Individual upgrade item within a category, containing ID, name, and protection values
 
@@ -77,10 +77,10 @@ As a STALKER 2 player comparing chest or full-body armor, I want upgrade section
 
 ### Measurable Outcomes
 
-- **SC-001**: When head armor is selected and displayed, 100% of upgrade category headers use head-specific location names (Crown, Nose, Forehead, Eyebrow, Cheek) instead of generic labels
+- **SC-001**: When head armor is selected and displayed, 100% of upgrade category headers use head-specific location names (Crown, Chin, Nose, Eyebrow, Cheek) instead of generic labels
 - **SC-002**: When chest armor is displayed, 0% of head/crown upgrade sections appear (chest has no crown/head upgrades)
 - **SC-003**: When full-body armor is displayed, the "Head" category shows at most 1 upgrade (limited to single head upgrade per suit)
-- **SC-004**: When head armor is compared side-by-side with full-body armor, head section shows head-specific headers (Crown, Nose, etc.) and full-body section shows single "Head" upgrade under its category
+- **SC-004**: When head armor is compared side-by-side with full-body armor, head section shows head-specific headers (Crown, Chin, Nose, etc.) and full-body section shows single "Head" upgrade under its category
 - **SC-005**: All head armor pieces in armor.json can be displayed with upgrades categorized correctly without errors
 - **SC-006**: No existing comparison workflows are disrupted; chest/body armor comparison continues to function as before
 
@@ -91,6 +91,6 @@ As a STALKER 2 player comparing chest or full-body armor, I want upgrade section
 - **Head armor upgrades**: Each head armor piece has at most one crown upgrade available (not multiple per category)
 - **Full-body armor upgrades**: Full-body suits have at most one "Head" upgrade available (not multiple)
 - **Chest armor constraints**: Chest armor pieces have no crown/head upgrade slots whatsoever
-- **Upgrade data**: The five head-armor location categories (Crown, Nose, Forehead, Eyebrow, Cheek) are fixed and complete for head armor
+- **Upgrade data**: The five head-armor location categories (Crown, Chin, Nose, Eyebrow, Cheek) are fixed and complete for head armor
 - **Existing chest/body categories**: Non-head armor continues using the existing category system with no changes
 - **No data schema modifications**: armor.json structure remains unchanged; categorization logic is determined by armor Type field

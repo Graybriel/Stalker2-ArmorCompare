@@ -118,8 +118,8 @@ Armor A
     │   ├── Title: "Light Duty Helmet (head)"
     │   └── Upgrades:
     │       ├── Crown: [grid]
+    │       ├── Chin: [grid]
     │       ├── Nose: [grid]
-    │       ├── Forehead: [grid]
     │       ├── Eyebrow: [grid]
     │       └── Cheek: [grid]
     │
@@ -193,7 +193,7 @@ Column A                          Column B
 - **Result**: Two separate sections displayed with independent upgrade grids
 
 ### Test 2: Head-Specific Categories ✅
-- Head section displays: Crown, Nose, Forehead, Eyebrow, Cheek
+- Head section displays: Crown, Chin, Nose, Eyebrow, Cheek
 - Each category correctly mapped to head armor upgrade data
 
 ### Test 3: Chest-Specific Categories ✅
@@ -252,7 +252,7 @@ Date:   2026-01-28
     - Added renderUpgradesForMultiplePieces() to display each armor piece separately
     - Added getArmorPieces() to get individual armor pieces for rendering
     - Updated updateStats() to render pieces separately when multiple pieces selected
-    - Head armor now shows Crown/Nose/Forehead/Eyebrow/Cheek categories
+    - Head armor now shows Crown/Chin/Nose/Eyebrow/Cheek categories
     - Chest armor shows its own categories in separate section
     - Added CSS styling for armor piece sections with visual separation
 ```

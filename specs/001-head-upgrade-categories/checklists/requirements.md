@@ -36,7 +36,7 @@
 ### Key Strengths
 
 - **Clear P1 Priority**: Two complementary user stories establish scope (head armor + maintain chest/body)
-- **Type-Specific Categorization**: Explicit mapping provided (Crown, Nose, Forehead, Eyebrow, Cheek for head; full-body gets single Head upgrade; chest has no head category)
+- **Type-Specific Categorization**: Explicit mapping provided (Crown, Chin, Nose, Eyebrow, Cheek for head; full-body gets single Head upgrade; chest has no head category)
 - **Single-Upgrade Constraint**: Specification clarifies that crown upgrades (head armor) and head upgrades (full-body) are limited to 1 each
 - **Chest Armor Exclusion**: Explicit requirement that chest pieces don't display crown/head upgrade sections
 - **Regression Protection**: User Story 2 ensures non-head armor isn't affected

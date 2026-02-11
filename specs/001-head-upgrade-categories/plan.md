@@ -7,7 +7,7 @@
 
 ## Overview
 
-This feature adds type-specific upgrade category headers for head armor pieces. Instead of generic category names, head armor displays anatomically-specific location names (Crown, Chin, Eyebrow, Eyebrow, Cheek). Chest armor and full-body armor remain unchanged with their existing category systems.
+This feature adds type-specific upgrade category headers for head armor pieces. Instead of generic category names, head armor displays anatomically-specific location names (Crown, Chin, Nose, Eyebrow, Cheek). Chest armor and full-body armor remain unchanged with their existing category systems.
 
 **Scope**: Modify upgrade categorization and display logic to be armor-type aware  
 **Impact**: Affects `js/upgrades.js` only; no HTML or CSS changes needed  
@@ -28,7 +28,7 @@ Current system (from project code):
 New logic:
 - Accept `armorType` parameter in categorization function
 - Map upgrade IDs to armor-type-specific category names
-- Head armor: Crown, Chin, Eyebrow, Eyebrow, Cheek
+- Head armor: Crown, Chin, Nose, Eyebrow, Cheek
 - Chest/Full-Body: Keep existing categories (Head, Neck, Shoulder, Chest, Hip, etc.)
 
 ### 3. Update Display Logic
@@ -115,7 +115,7 @@ function categorizeUpgrades(upgradeList, armorType) {
 
 ### Step 2: Implement Type-Aware Categorization
 - [ ] Modify `categorizeUpgrades()` to accept `armorType` parameter
-- [ ] Implement head armor category mapping (Crown, Chin, Eyebrow, Eyebrow, Cheek)
+- [ ] Implement head armor category mapping (Crown, Chin, Nose, Eyebrow, Cheek)
 - [ ] Keep existing category logic as fallback for non-head armor
 - [ ] Test function with sample head armor data
 
@@ -127,7 +127,7 @@ function categorizeUpgrades(upgradeList, armorType) {
 ### Step 4: Test Changes
 - [ ] Load app in browser
 - [ ] Select head armor and view upgrade categories
-- [ ] Verify Crown, Chin, Eyebrow, Eyebrow, Cheek headers appear
+- [ ] Verify Crown, Chin, Nose, Eyebrow, Cheek headers appear
 - [ ] Select chest armor and verify no crown/head category appears
 - [ ] Select full-body armor and verify Head category appears (if present)
 - [ ] Verify all upgrades categorized correctly
@@ -146,7 +146,7 @@ function categorizeUpgrades(upgradeList, armorType) {
 
 ## Success Criteria
 
-✅ **SC-001**: Head armor displays with Crown, Chin, Eyebrow, Eyebrow, Cheek category headers  
+✅ **SC-001**: Head armor displays with Crown, Chin, Nose, Eyebrow, Cheek category headers  
 ✅ **SC-002**: Chest armor displays with existing category headers (no head category)  
 ✅ **SC-003**: Full-body armor displays with single Head category (if upgrade exists)  
 ✅ **SC-004**: All upgrades categorized correctly in each piece  

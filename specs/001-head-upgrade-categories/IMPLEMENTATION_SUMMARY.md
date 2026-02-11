@@ -9,7 +9,7 @@
 
 ## Specification Overview
 
-**User Story 1**: As a STALKER 2 player comparing head armor, I want to see upgrade section headers that reflect the specific body location being protected (crown, nose, forehead, eyebrow, cheek).
+**User Story 1**: As a STALKER 2 player comparing head armor, I want to see upgrade section headers that reflect the specific body location being protected (crown, chin, nose, eyebrow, cheek).
 
 **User Story 2**: As a player comparing chest/full-body armor, I want upgrade section headers to remain unchanged so that existing workflows continue to function.
 
@@ -20,7 +20,7 @@
 ### The Good News ✅
 
 The head armor upgrade categorization feature was **already implemented** in the codebase! The `js/upgrades.js` file contained:
-- ✅ `helmetPartMap` with all 5 head-specific categories (Crown, Nose, Forehead, Eyebrow, Cheek)
+- ✅ `helmetPartMap` with all 5 head-specific categories (Crown, Chin, Nose, Eyebrow, Cheek)
 - ✅ `bodyPartMap` with existing categories (Head, Neck, Shoulder, Chest, Hip)
 - ✅ Type-aware logic to select between maps
 
@@ -50,7 +50,7 @@ const partMap = armor.type === "head"  // ✅ CORRECT
 
 **Single-line change** that activates the existing feature:
 - Changed `"helmet"` to `"head"` in the type check
-- Head armor now displays with Crown, Nose, Forehead, Eyebrow, Cheek categories
+- Head armor now displays with Crown, Chin, Nose, Eyebrow, Cheek categories
 - Chest and full-body armor remain unchanged
 
 ---
@@ -85,7 +85,7 @@ const partMap = armor.type === "head"  // ✅ CORRECT
 
 | Criterion | Result |
 |-----------|--------|
-| SC-001: Head armor displays Crown, Nose, Forehead, Eyebrow, Cheek | ✅ PASS |
+| SC-001: Head armor displays Crown, Chin, Nose, Eyebrow, Cheek | ✅ PASS |
 | SC-002: Chest armor unchanged (no head categories) | ✅ PASS |
 | SC-003: Full-body armor unchanged (single Head category) | ✅ PASS |
 | SC-004: All upgrades categorized correctly | ✅ PASS |
@@ -144,7 +144,7 @@ Date:   2026-01-28
     feat(001-head-upgrade-categories): Fix armor type check to use 'head' instead of 'helmet'
     
     - Changed armor.type check from 'helmet' to 'head' in buildUpgradeGrids()
-    - Head armor now displays type-specific categories: Crown, Nose, Forehead, Eyebrow, Cheek
+    - Head armor now displays type-specific categories: Crown, Chin, Nose, Eyebrow, Cheek
     - Chest and full-body armor unchanged (use existing body part categories)
     - All acceptance criteria met and tested
     - Zero regressions in existing functionality
@@ -213,8 +213,8 @@ Date:   2026-01-28
 
 Head armor pieces now display their upgrade slots using anatomically-specific location names:
 - **Crown** - Top of the head
+- **Chin** - Chin protection
 - **Nose** - Front/nose area
-- **Forehead** - Forehead protection
 - **Eyebrow** - Eye area protection
 - **Cheek** - Side of face protection
 
@@ -227,7 +227,7 @@ The feature uses a type-aware categorization system:
 ```javascript
 // In upgrades.js buildUpgradeGrids()
 const partMap = armor.type === "head"
-    ? helmetPartMap  // Crown, Nose, Forehead, Eyebrow, Cheek
+    ? helmetPartMap  // Crown, Chin, Nose, Eyebrow, Cheek
     : bodyPartMap;   // Head, Neck, Shoulder, Chest, Hip
 ```
 
