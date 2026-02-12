@@ -2839,7 +2839,7 @@
     "Id": "Jacket_Bandit_Armor",
     "Values": {
       "SID": "Jacket_Bandit_Armor",
-      "Icon": "Armor/T_IFI_FOL_BAN_10.T_IFI_FOL_BAN_10",
+      "Icon": "Armor/T_IFI_FOL_BAN_01_upgrade.PNG",
       "weight": "5.0",
       "Cost": "17200.0",
       "slots": "1",
@@ -20462,7 +20462,7 @@
     "Id": "HeavyAnomaly_SIRCA_Armor",
     "Values": {
       "SID": "HeavyAnomaly_SIRCA_Armor",
-      "Icon": "Texture2D\u0027/Game/GameLite/FPS_Game/UIRemaster/UITextures/Inventory/Armor/T_IFI_FOL_SCI_18.T_IFI_FOL_SCI_18\u0027",
+      "Icon": "Armor/T_IFI_HeavyAnomaly_SIRCA_Armor_upgrade.PNG",
       "weight": "8.0",
       "Cost": "95300.0",
       "slots": "3",
@@ -20902,7 +20902,7 @@
     "Id": "HeavyExoskeleton_Varta_Armor",
     "Values": {
       "SID": "HeavyExoskeleton_Varta_Armor",
-      "Icon": "Texture2D\u0027/Game/GameLite/FPS_Game/UIRemaster/UITextures/Inventory/Armor/T_IFI_HeavyExoskeleton_Varta_Armor.T_IFI_HeavyExoskeleton_Varta_Armor\u0027",
+      "Icon": "Armor/T_IFI_HeavyExoskeleton_Varta_Armor_upgrade.PNG",
       "weight": "14.0",
       "Cost": "131500.0",
       "slots": "4",
@@ -21531,7 +21531,7 @@
     "Id": "SEVA_Monolith_Armor",
     "Values": {
       "SID": "SEVA_Monolith_Armor",
-      "Icon": "Texture2D\u0027/Game/GameLite/FPS_Game/UIRemaster/UITextures/Inventory/Armor/T_IFI_SEVA_Monolith_Armor.T_IFI_SEVA_Monolith_Armor\u0027",
+      "Icon": "Armor/T_IFI_SEVA_Monolith_Armor_upgrade.PNG",
       "weight": "8.0",
       "Cost": "237500.0",
       "slots": "3",
@@ -22095,7 +22095,7 @@
     "Id": "UltraLight_Mercenaries_Armor",
     "Values": {
       "SID": "UltraLight_Mercenaries_Armor",
-      "Icon": "Texture2D\u0027/Game/GameLite/FPS_Game/UIRemaster/UITextures/Inventory/Armor/T_IFI_FOL_MER_01.T_IFI_FOL_MER_01\u0027",
+      "Icon": "Armor/T_IFI_UltraLight_Mercenaries_Armor_upgrade.PNG",
       "weight": "2.0",
       "Cost": "20817.0",
       "slots": "1",
