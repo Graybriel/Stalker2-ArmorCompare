@@ -20449,16 +20449,6 @@
     ]
   },
   {
-    "Id": "Anomaly_Scientific_Armor_PSY_preinstalled",
-    "Values": {
-      "SID": "Anomaly_Scientific_Armor_PSY_preinstalled",
-      "DisplayName": "SSP-99 Ecologist Upgraded",
-      "Type": "full body"
-    },
-    "UpgradeList": [],
-    "Upgrades": []
-  },
-  {
     "Id": "HeavyAnomaly_SIRCA_Armor",
     "Values": {
       "SID": "HeavyAnomaly_SIRCA_Armor",

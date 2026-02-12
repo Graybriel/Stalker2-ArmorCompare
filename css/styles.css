@@ -505,33 +505,33 @@ select {
 
 /* Smaller cards in canvas mode */
 .armor-upgrade-canvas .upgrade-cell {
-    width: 90px;
-    height: 32px;
-    font-size: 0.5rem;
+    width: 108px;
+    height: 38px;
+    font-size: 0.6rem;
     border: none;
 }
 
 .armor-upgrade-canvas .upgrade-cell.blank {
-    width: 90px;
-    height: 32px;
+    width: 108px;
+    height: 38px;
     background: transparent;
     border: none;
     min-height: auto;
 }
 
 .armor-upgrade-canvas .upgrade-row {
-    gap: 2px;
-    margin-bottom: 2px;
+    gap: 3px;
+    margin-bottom: 3px;
 }
 
 .armor-upgrade-canvas .upgrade-card-label {
-    padding: 3px 4px;
-    font-size: 0.5rem;
+    padding: 4px 5px;
+    font-size: 0.6rem;
     line-height: 1.0;
 }
 
 .armor-upgrade-canvas .section-title {
-    font-size: 11px;
+    font-size: 13px;
     margin-bottom: 4px;
     color: #999;
 }
