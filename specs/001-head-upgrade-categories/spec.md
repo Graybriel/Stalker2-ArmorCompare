@@ -71,6 +71,28 @@ As a STALKER 2 player comparing chest or full-body armor, I want upgrade section
   - Chest/Body armor categories: Head, Neck, Shoulder, Chest, Hip (existing system)
 - **Upgrade**: Individual upgrade item within a category, containing ID, name, and protection values
 
+### Non-Functional Requirements
+
+- **NFR-001** – Performance: Upgrade categorization logic must complete in <100ms on recent browsers (Chrome, Firefox, Edge)
+- **NFR-002** – Browser Compatibility: Feature must work on Chrome (latest), Firefox (latest), and Edge (latest) with no regressions
+- **NFR-003** – Accessibility: Category headers remain accessible; no semantic HTML changes
+
+---
+
+## Data Contract
+
+**Armor Object** from `armor.json`:
+- `Values.Type`: Enum ["head", "chest", "full_body"] — determines category display system
+- `UpgradeList`: Array of upgrade ID strings (must exist even if empty)
+- `Upgrades`: Array of upgrade objects with ID, name, and protection properties
+
+**Upgrade ID Format & Matching**:
+- Format: Lowercase with underscores, e.g., "Light_Duty_Helmet_crown_upgrade_1"
+- Matching (case-insensitive):
+  - Head armor: Contains one of: crown, chin, nose, eyebrow, cheek (first match wins)
+  - Non-head armor: Use existing patterns: head, neck, shoulder, chest, hip
+  - Unmapped: Fall back to "Other" or skip with error log
+
 ---
 
 ## Success Criteria
@@ -83,6 +105,8 @@ As a STALKER 2 player comparing chest or full-body armor, I want upgrade section
 - **SC-004**: When head armor is compared side-by-side with full-body armor, head section shows head-specific headers (Crown, Chin, Nose, etc.) and full-body section shows single "Head" upgrade under its category
 - **SC-005**: All head armor pieces in armor.json can be displayed with upgrades categorized correctly without errors
 - **SC-006**: No existing comparison workflows are disrupted; chest/body armor comparison continues to function as before
+- **SC-007**: Categorization completes in <100ms on Chrome, Firefox, and Edge with common armor/upgrade datasets
+- **SC-008**: Feature tested on Chrome (latest), Firefox (latest), and Edge (latest); no regressions detected
 
 ---
 
@@ -94,3 +118,5 @@ As a STALKER 2 player comparing chest or full-body armor, I want upgrade section
 - **Upgrade data**: The five head-armor location categories (Crown, Chin, Nose, Eyebrow, Cheek) are fixed and complete for head armor
 - **Existing chest/body categories**: Non-head armor continues using the existing category system with no changes
 - **No data schema modifications**: armor.json structure remains unchanged; categorization logic is determined by armor Type field
+- **Default behavior**: If armorType is null/undefined/unrecognized, system defaults to "chest" category mapping
+- **Data validation**: Constraints enforced at data level or validated gracefully in code with error logging

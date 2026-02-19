@@ -51,11 +51,11 @@ Verify:
 ### HEAD ARMOR
 | Upgrade ID Pattern | Category Name |
 |-------------------|---------------|
-| *Crown* | Crown |
-| *Chin* | Chin |
-| *Eyebrow* | Eyebrow |
-| *Nose* | Nose |
-| *Cheek* | Cheek |
+| *crown* | Crown |
+| *chin* | Chin |
+| *eyebrow* | Eyebrow |
+| *nose* | Nose |
+| *cheek* | Cheek |
 
 ### CHEST/FULL BODY ARMOR
 | Upgrade ID Pattern | Category Name |
@@ -66,6 +66,27 @@ Verify:
 | *chest* | Chest |
 | *hip* | Hip |
 | (existing patterns) | (existing categories) |
+
+## Matching Algorithm Specification
+
+**Case-Insensitive Substring Matching**:
+
+1. For head armor (`armor.Type === "head"`):
+   - Check if upgrade ID contains: crown, chin, nose, eyebrow, cheek (case-insensitive)
+   - Evaluation order: Crown → Chin → Nose → Eyebrow → Cheek (first match wins)
+   - Example: "Light_Duty_Helmet_CROWN_upgrade_1" matches "Crown" category
+
+2. For chest/full-body armor:
+   - Use existing body part pattern matching: head, neck, shoulder, chest, hip
+   - Preserve existing matching logic unchanged
+
+3. Fallback behavior:
+   - Upgrades that don't match any pattern → assigned to "Other" or skipped with error log
+   - Null/undefined armorType → default to chest/body matching logic
+
+4. No precedence conflicts:
+   - Head patterns (crown, chin, etc.) do not overlap with body patterns (head, neck, etc.)
+   - Head upgrades never appear on chest pieces (data-enforced)
 
 ## File Changes
 
@@ -101,10 +122,17 @@ function categorizeUpgrades(upgradeList, armorType) {
 2. Update call sites to pass armor piece's `Type` field
 3. Example: `categorizeUpgrades(upgrades, armor.Values.Type)`
 
+### armor.json Validation Status
+- **No Code Changes** required to the data file itself
+- Existing armor.json structure already supports the feature:
+  - `Type` field contains "head", "chest", or "full_body" values as needed
+  - `UpgradeList` array already populated correctly
+- **Defensive Validation** in code: js/upgrades.js should handle edge cases gracefully (missing fields, null values) with error logging
+- Future data additions: If new armor types are added, update categorization logic accordingly
+
 ### No Changes Required
 - `index.html` (DOM structure unchanged)
 - `css/styles.css` (styling unchanged)
-- `data/armor.json` (data unchanged)
 
 ## Implementation Steps
 
