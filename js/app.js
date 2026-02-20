@@ -72,6 +72,7 @@ async function loadArmorData() {
                 physical: parseFloat(item.Values.physical),
                 weight: parseFloat(item.Values.weight),
                 slots: parseInt(item.Values.slots),
+                cost: parseFloat(item.Values.Cost),
 
                 // NEW: upgrade data
                 upgradeList: item.UpgradeList || [],
@@ -240,18 +241,15 @@ function populateArmorOptions(selectId, type = "head/chest") {
 function updateStats(selectId) {
     // determine armorCol by last char (A or B)
     const armorCol = selectId.slice(-1);
-    const statsDiv = document.getElementById(armorCol === "A" ? "statsA" : "statsB");
-
-    // Effective armor includes selected upgrades
-    const armor = getEffectiveArmor(armorCol);
-    const pieces = getArmorPieces(armorCol);
+    const pieceMap = getArmorPieceMap(armorCol);
+    const pieces = pieceMap?.pieces || [];
 
     // If we have multiple pieces (head + chest), render them separately
     // Otherwise render a single piece
-    if (pieces && pieces.length > 1) {
+    if (pieces.length > 1) {
         renderUpgradesForMultiplePieces(pieces, armorCol);
-    } else if (armor) {
-        renderUpgradesForArmor(armor, armorCol);
+    } else if (pieces.length === 1) {
+        renderUpgradesForArmor(pieces[0], armorCol);
     } else {
         // No armor selected, clear upgrades
         const container = document.getElementById(`upgradeContainer${armorCol}`);
@@ -259,7 +257,6 @@ function updateStats(selectId) {
     }
 
     // Render stats and update the comparison chart
-    renderStats(statsDiv, armor);
     updateComparison();
 }
 
@@ -268,16 +265,6 @@ function updateStats(selectId) {
  */
 // Recompute stats after upgrades are toggled
 function updateStatsWithSelectedUpgrades() {
-    // Update armorCol A stats
-    const statsDivA = document.getElementById("statsA");
-    const armorA = getEffectiveArmor("A");
-    renderStats(statsDivA, armorA, true, 'A');
-
-    // Update armorCol B stats
-    const statsDivB = document.getElementById("statsB");
-    const armorB = getEffectiveArmor("B");
-    renderStats(statsDivB, armorB, true, 'B');
-
     updateComparison();
 }
 
@@ -324,6 +311,37 @@ function getArmorPieces(armorCol) {
     if (chest) pieces.push(chest);
     
     return pieces.length > 0 ? pieces : null;
+}
+
+// Map selected pieces into head/body slots for stat rendering.
+function getArmorPieceMap(armorCol) {
+    const typeSel = document.getElementById(`armorType${armorCol}`);
+    const selectedType = typeSel?.value ?? "head/chest";
+
+    const fullId = document.getElementById(`armorFull${armorCol}`)?.value;
+    const headId = document.getElementById(`armorHead${armorCol}`)?.value;
+    const chestId = document.getElementById(`armorChest${armorCol}`)?.value;
+
+    const full = armorData.find(a => a.id === fullId) || null;
+    const head = armorData.find(a => a.id === headId) || null;
+    const chest = armorData.find(a => a.id === chestId) || null;
+
+    if (selectedType === "full body") {
+        return { head: full, body: full, pieces: full ? [full] : [], type: selectedType };
+    }
+
+    if (selectedType === "head") {
+        return { head, body: null, pieces: head ? [head] : [], type: selectedType };
+    }
+
+    if (selectedType === "chest") {
+        return { head: null, body: chest, pieces: chest ? [chest] : [], type: selectedType };
+    }
+
+    const pieces = [];
+    if (head) pieces.push(head);
+    if (chest) pieces.push(chest);
+    return { head, body: chest, pieces, type: selectedType };
 }
 
 // Compute a combined armor object for a column, then apply selected upgrades.
@@ -387,6 +405,7 @@ function getEffectiveArmor(armorCol) {
 
 // expose helper for compare.js
 window.getEffectiveArmor = getEffectiveArmor;
+window.getArmorPieceMap = getArmorPieceMap;
 
 /**
  * Check prerequisites for upgrades in a specific armorCol.

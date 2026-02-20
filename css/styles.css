@@ -84,9 +84,28 @@ select {
 }
 
 .stat-row {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(120px, 1.2fr) minmax(120px, 1fr) minmax(120px, 1fr);
+    gap: 10px;
+    align-items: center;
     padding: 4px 0;
+}
+
+.stat-row.stat-header {
+    font-weight: bold;
+    color: #ccc;
+    border-bottom: 1px solid #333;
+    padding-bottom: 6px;
+    margin-bottom: 6px;
+}
+
+.stat-label {
+    text-transform: capitalize;
+}
+
+.stat-value {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
 }
 
 #comparison {
@@ -116,16 +135,44 @@ select {
     display: inline-block;
 }
 
-.legend-a {
-    background: #00bcd4;
+.legend-a-head {
+    background: #4dd0e1;
 }
 
-.legend-b {
-    background: #ff5722;
+.legend-a-chest {
+    background: #00acc1;
+}
+
+.legend-b-head {
+    background: #ff8a65;
+}
+
+.legend-b-chest {
+    background: #f4511e;
 }
 
 .comparison-bar {
     margin-bottom: 10px;
+}
+
+.comparison-bar-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 6px;
+}
+
+.comparison-bar-item {
+    display: grid;
+    grid-template-columns: minmax(110px, 140px) 1fr;
+    align-items: center;
+    gap: 8px;
+}
+
+.comparison-bar-item-label {
+    font-size: 12px;
+    color: #ccc;
+    text-align: right;
 }
 
 .bar {

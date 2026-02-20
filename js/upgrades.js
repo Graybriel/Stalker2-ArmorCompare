@@ -794,6 +794,74 @@ function getSelectedUpgradeEffectsByColumn() {
 
 window.getSelectedUpgradeEffectsByColumn = getSelectedUpgradeEffectsByColumn;
 
+/**
+ * Aggregate selected upgrade effects by column and piece id.
+ * Returns an object: { A: { <pieceId>: { statKey: { ... } } }, B: { ... } }
+ */
+function getSelectedUpgradeEffectsByColumnAndPiece() {
+    const result = { A: {}, B: {} };
+    if (!window.selectedUpgrades || window.selectedUpgrades.size === 0) return result;
+
+    window.selectedUpgrades.forEach(selectionKey => {
+        const parts = String(selectionKey).split(":");
+        let col = 'A';
+        let pieceId = null;
+        let upgradeId = null;
+
+        if (parts.length === 3) {
+            col = parts[0];
+            pieceId = parts[1];
+            upgradeId = parts[2];
+        } else if (parts.length === 2) {
+            col = parts[0];
+            upgradeId = parts[1];
+        } else {
+            upgradeId = parts[0];
+        }
+
+        const container = document.getElementById(`upgradeContainer${col}`);
+        if (!container) {
+            window.selectedUpgrades.delete(selectionKey);
+            return;
+        }
+
+        const el = container.querySelector(`[data-upgrade-id="${upgradeId}"]`);
+        if (!el || !el.dataset.upgrade) {
+            window.selectedUpgrades.delete(selectionKey);
+            return;
+        }
+
+        if (!pieceId) pieceId = el.dataset.pieceId || 'unknown';
+
+        try {
+            const upgrade = JSON.parse(el.dataset.upgrade);
+            if (!upgrade.effects) return;
+            if (!result[col][pieceId]) result[col][pieceId] = {};
+
+            upgrade.effects.forEach(effect => {
+                const key = effect.effectedStat;
+                if (!key) return;
+
+                const value = isNaN(effect.max) ? 0 : parseFloat(effect.max);
+                if (!result[col][pieceId][key]) {
+                    result[col][pieceId][key] = { text: effect.text, id: effect.id, percent: 0, absolute: 0, max: effect.max };
+                }
+                if (effect.isPercent) {
+                    result[col][pieceId][key].percent += value;
+                } else {
+                    result[col][pieceId][key].absolute += value;
+                }
+            });
+        } catch (e) {
+            console.error('Failed to parse upgrade for piece aggregation', e);
+        }
+    });
+
+    return result;
+}
+
+window.getSelectedUpgradeEffectsByColumnAndPiece = getSelectedUpgradeEffectsByColumnAndPiece;
+
 // Ensure both upgrade containers have the same min-height so stats align across columns
 function syncUpgradeContainerHeights() {
     const a = document.getElementById('upgradeContainerA');
