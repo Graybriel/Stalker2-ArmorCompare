@@ -36,14 +36,14 @@ function applyEffectsToStats(baseStats, selectedEffects) {
 
 function formatStatValue(rawVal) {
     if (typeof rawVal === 'number' && Number.isFinite(rawVal)) {
-        const num = window.roundTo ? window.roundTo(rawVal, 1) : roundTo(rawVal, 1);
-        return { text: num.toFixed(1), num, hasNumber: true };
+        const num = Math.ceil(rawVal);
+        return { text: num.toFixed(0), num, hasNumber: true };
     }
 
     const parsed = parseFloat(String(rawVal).replace(/[^0-9.-]+/g, ''));
     if (!isNaN(parsed)) {
-        const num = window.roundTo ? window.roundTo(parsed, 1) : parsed;
-        return { text: num.toFixed(1), num, hasNumber: true };
+        const num = Math.ceil(parsed);
+        return { text: num.toFixed(0), num, hasNumber: true };
     }
 
     return { text: rawVal, num: null, hasNumber: false };
@@ -59,44 +59,109 @@ function renderSplitStats(container, headArmor, bodyArmor, headEffects, bodyEffe
     const headDisplay = includeUpgrades ? applyEffectsToStats(headStats, headEffects) : headStats;
     const bodyDisplay = includeUpgrades ? applyEffectsToStats(bodyStats, bodyEffects) : bodyStats;
 
+    // Determine if this is a split view (head/chest with DIFFERENT pieces) or single view
+    // Full body pieces have both head and body but they're the same piece, so treat as single
+    const isSplitView = !!(headArmor && bodyArmor && headArmor.id !== bodyArmor.id);
+
+    // Create header based on view type
     const headerRow = document.createElement("div");
-    headerRow.className = "stat-row stat-header";
-    headerRow.innerHTML = `
-        <span class="stat-label"></span>
-        <span class="stat-value">Head</span>
-        <span class="stat-value">Body</span>
-    `;
+    headerRow.className = isSplitView ? "stat-row stat-header stat-row-split" : "stat-row stat-header stat-row-single";
+    if (isSplitView) {
+        headerRow.innerHTML = `
+            <span class="stat-label"></span>
+            <span class="stat-value">Head</span>
+            <span class="stat-value">Body</span>
+            <span class="stat-value">Combined</span>
+        `;
+    } else {
+        headerRow.innerHTML = `
+            <span class="stat-label"></span>
+            <span class="stat-value">Value</span>
+        `;
+    }
     container.appendChild(headerRow);
 
     orderedKeys.forEach(stat => {
         const row = document.createElement("div");
-        row.className = "stat-row";
+        row.className = isSplitView ? "stat-row stat-row-split" : "stat-row stat-row-single";
 
         const headBase = formatStatValue(headStats[stat]);
         const headUpgraded = formatStatValue(headDisplay[stat]);
         const bodyBase = formatStatValue(bodyStats[stat]);
         const bodyUpgraded = formatStatValue(bodyDisplay[stat]);
 
-        const headText = headBase.hasNumber || headUpgraded.hasNumber
-            ? (includeUpgrades && headBase.hasNumber && headUpgraded.hasNumber && headBase.num !== headUpgraded.num
-                ? `${headBase.text} -> ${headUpgraded.text}`
-                : headUpgraded.text)
-            : "-";
+        if (isSplitView) {
+            // Show head, body, and combined
+            const headText = headBase.hasNumber || headUpgraded.hasNumber
+                ? (includeUpgrades && headBase.hasNumber && headUpgraded.hasNumber && headBase.num !== headUpgraded.num
+                    ? `${headBase.text} -> ${headUpgraded.text}`
+                    : headUpgraded.text)
+                : "-";
 
-        const bodyText = bodyBase.hasNumber || bodyUpgraded.hasNumber
-            ? (includeUpgrades && bodyBase.hasNumber && bodyUpgraded.hasNumber && bodyBase.num !== bodyUpgraded.num
-                ? `${bodyBase.text} -> ${bodyUpgraded.text}`
-                : bodyUpgraded.text)
-            : "-";
+            const bodyText = bodyBase.hasNumber || bodyUpgraded.hasNumber
+                ? (includeUpgrades && bodyBase.hasNumber && bodyUpgraded.hasNumber && bodyBase.num !== bodyUpgraded.num
+                    ? `${bodyBase.text} -> ${bodyUpgraded.text}`
+                    : bodyUpgraded.text)
+                : "-";
 
-        row.innerHTML = `
-            <span class="stat-label">${stat}</span>
-            <span class="stat-value">${headText}</span>
-            <span class="stat-value">${bodyText}</span>
-        `;
+            // Combined (head + body), but exclude physical
+            let combinedText = "-";
+            if (stat !== "physical") {
+                const totalBase = (headBase.num ?? 0) + (bodyBase.num ?? 0);
+                const totalUpgraded = (headUpgraded.num ?? 0) + (bodyUpgraded.num ?? 0);
+                const hasNumbers = headBase.hasNumber || bodyBase.hasNumber || headUpgraded.hasNumber || bodyUpgraded.hasNumber;
+                if (hasNumbers) {
+                    if (includeUpgrades && (headBase.num !== headUpgraded.num || bodyBase.num !== bodyUpgraded.num)) {
+                        combinedText = `${Math.ceil(totalBase)} -> ${Math.ceil(totalUpgraded)}`;
+                    } else {
+                        combinedText = Math.ceil(totalUpgraded).toFixed(0);
+                    }
+                }
+            } else {
+                // For physical, show only asterisk
+                row.innerHTML = `
+                    <span class="stat-label">${stat}</span>
+                    <span class="stat-value">${headText}</span>
+                    <span class="stat-value">${bodyText}</span>
+                    <span class="stat-value">*</span>
+                `;
+                container.appendChild(row);
+                return;
+            }
+
+            row.innerHTML = `
+                <span class="stat-label">${stat}</span>
+                <span class="stat-value">${headText}</span>
+                <span class="stat-value">${bodyText}</span>
+                <span class="stat-value">${combinedText}</span>
+            `;
+        } else {
+            // Show only one value (head or body, whichever is available)
+            const base = headArmor ? headBase : bodyBase;
+            const upgraded = headArmor ? headUpgraded : bodyUpgraded;
+
+            const valueText = base.hasNumber || upgraded.hasNumber
+                ? (includeUpgrades && base.hasNumber && upgraded.hasNumber && base.num !== upgraded.num
+                    ? `${base.text} -> ${upgraded.text}`
+                    : upgraded.text)
+                : "-";
+
+            row.innerHTML = `
+                <span class="stat-label">${stat}</span>
+                <span class="stat-value">${valueText}</span>
+            `;
+        }
 
         container.appendChild(row);
     });
+
+    // Add footnote for split view
+    if (isSplitView) {
+        const footnote = document.createElement("div");
+        footnote.className = "stat-footnote";
+        footnote.innerHTML = `* Physical protection is per-location and doesn't stack between head and body.`;
+        container.appendChild(footnote);
+    }
 }
 
 /**
@@ -215,6 +280,48 @@ function updateComparison() {
     const typeB = pieceMapB?.type || null;
     const typesMatch = typeA && typeB && typeA === typeB;
 
+    // Determine if we're in split view (head/chest comparison) for each column
+    const isSplitViewA = !!(headA && bodyA && headA.id !== bodyA.id);
+    const isSplitViewB = !!(headB && bodyB && headB.id !== bodyB.id);
+    const isSplitView = isSplitViewA || isSplitViewB;
+
+    // Update legend based on what's actually displayed
+    const legendDiv = document.querySelector('.comparison-legend');
+    if (legendDiv) {
+        const legendItems = [];
+        
+        if (isSplitViewA) {
+            legendItems.push({ color: '#4dd0e1', label: 'Armor A Head' });
+            legendItems.push({ color: '#00acc1', label: 'Armor A Body' });
+        } else if (headA && !bodyA) {
+            legendItems.push({ color: '#4dd0e1', label: 'Armor A Head' });
+        } else if (bodyA && !headA) {
+            legendItems.push({ color: '#00acc1', label: 'Armor A Body' });
+        } else if (headA && bodyA && headA.id === bodyA.id) {
+            // Full body - non-physical stats use combined color, physical still shows separately
+            legendItems.push({ color: '#26a69a', label: 'Armor A (Full Body)' });
+        }
+        
+        if (isSplitViewB) {
+            legendItems.push({ color: '#ff8a65', label: 'Armor B Head' });
+            legendItems.push({ color: '#f4511e', label: 'Armor B Body' });
+        } else if (headB && !bodyB) {
+            legendItems.push({ color: '#ff8a65', label: 'Armor B Head' });
+        } else if (bodyB && !headB) {
+            legendItems.push({ color: '#f4511e', label: 'Armor B Body' });
+        } else if (headB && bodyB && headB.id === bodyB.id) {
+            // Full body
+            legendItems.push({ color: '#e64a19', label: 'Armor B (Full Body)' });
+        }
+        
+        legendDiv.innerHTML = legendItems.map(item => `
+            <span class="legend-item">
+                <span class="legend-swatch" style="background: ${item.color}"></span>
+                ${item.label}
+            </span>
+        `).join('');
+    }
+
     let showHeadBars = !!(headA || headB);
     let showBodyBars = !!(bodyA || bodyB);
 
@@ -233,24 +340,81 @@ function updateComparison() {
         label.textContent = stat;
         row.appendChild(label);
 
-        const group = document.createElement("div");
-        group.className = "comparison-bar-group";
+        // Create separate groups for each armor to keep them on same line
+        const groupA = document.createElement("div");
+        groupA.className = "comparison-bar-group";
+        
+        const groupB = document.createElement("div");
+        groupB.className = "comparison-bar-group";
 
-        const entries = [];
-        if (showHeadBars) {
-            entries.push(
-                { label: 'Armor A Head', base: getNumeric(headAStats[stat]), val: getNumeric(headAAdjusted[stat]), color: '#4dd0e1' },
-                { label: 'Armor B Head', base: getNumeric(headBStats[stat]), val: getNumeric(headBAdjusted[stat]), color: '#ff8a65' }
-            );
-        }
-        if (showBodyBars) {
-            entries.push(
-                { label: 'Armor A Chest', base: getNumeric(bodyAStats[stat]), val: getNumeric(bodyAAdjusted[stat]), color: '#00acc1' },
-                { label: 'Armor B Chest', base: getNumeric(bodyBStats[stat]), val: getNumeric(bodyBAdjusted[stat]), color: '#f4511e' }
-            );
-        }
+        const headABase = getNumeric(headAStats[stat]);
+        const headAVal = getNumeric(headAAdjusted[stat]);
+        const bodyABase = getNumeric(bodyAStats[stat]);
+        const bodyAVal = getNumeric(bodyAAdjusted[stat]);
+        const headBBase = getNumeric(headBStats[stat]);
+        const headBVal = getNumeric(headBAdjusted[stat]);
+        const bodyBBase = getNumeric(bodyBStats[stat]);
+        const bodyBVal = getNumeric(bodyBAdjusted[stat]);
 
-        entries.forEach(entry => {
+        const isPhysical = stat === "physical";
+        
+        // Build entries based on stat type
+        const itemsA = [];
+        const itemsB = [];
+        
+        if (isPhysical) {
+            // Physical: always show Head and Body separately (doesn't stack)
+            if (headA) {
+                itemsA.push({ label: 'Head', base: headABase, val: headAVal, color: '#4dd0e1' });
+            }
+            if (bodyA) {
+                itemsA.push({ label: 'Body', base: bodyABase, val: bodyAVal, color: '#00acc1' });
+            }
+            if (headB) {
+                itemsB.push({ label: 'Head', base: headBBase, val: headBVal, color: '#ff8a65' });
+            }
+            if (bodyB) {
+                itemsB.push({ label: 'Body', base: bodyBBase, val: bodyBVal, color: '#f4511e' });
+            }
+        } else {
+            // Non-physical: show as a single value for each armor (matching stats display)
+            if (isSplitViewA) {
+                // Split view for A: sum head + body
+                const combinedABase = headABase + bodyABase;
+                const combinedAVal = headAVal + bodyAVal;
+                itemsA.push({ base: combinedABase, val: combinedAVal, color: '#26a69a' });
+            } else {
+                // Single view for A: show single piece (whether head or body or full body)
+                if (headA && bodyA && headA.id === bodyA.id) {
+                    // Full body piece - show only once
+                    itemsA.push({ base: headABase, val: headAVal, color: '#26a69a' });
+                } else if (headA) {
+                    itemsA.push({ base: headABase, val: headAVal, color: '#4dd0e1' });
+                } else if (bodyA) {
+                    itemsA.push({ base: bodyABase, val: bodyAVal, color: '#00acc1' });
+                }
+            }
+            
+            if (isSplitViewB) {
+                // Split view for B: sum head + body
+                const combinedBBase = headBBase + bodyBBase;
+                const combinedBVal = headBVal + bodyBVal;
+                itemsB.push({ base: combinedBBase, val: combinedBVal, color: '#e64a19' });
+            } else {
+                // Single view for B: show single piece (whether head or body or full body)
+                if (headB && bodyB && headB.id === bodyB.id) {
+                    // Full body piece - show only once
+                    itemsB.push({ base: headBBase, val: headBVal, color: '#e64a19' });
+                } else if (headB) {
+                    itemsB.push({ base: headBBase, val: headBVal, color: '#ff8a65' });
+                } else if (bodyB) {
+                    itemsB.push({ base: bodyBBase, val: bodyBVal, color: '#f4511e' });
+                }
+            }
+        }
+        
+        // Render items
+        itemsA.forEach(entry => {
             let max = 100.0;
             if (stat === "weight") { max = 20; }
             if (stat === "slots" || stat === "physical") { max = 5; }
@@ -261,19 +425,55 @@ function updateComparison() {
             const item = document.createElement('div');
             item.className = 'comparison-bar-item';
 
-            const itemLabel = document.createElement('div');
-            itemLabel.className = 'comparison-bar-item-label';
-            itemLabel.textContent = entry.label;
+            if (entry.label) {
+                const itemLabel = document.createElement('div');
+                itemLabel.className = 'comparison-bar-item-label';
+                itemLabel.textContent = entry.label;
+                item.appendChild(itemLabel);
+            } else {
+                // Add empty spacer to maintain grid layout
+                const spacer = document.createElement('div');
+                item.appendChild(spacer);
+            }
 
             const bar = makeBar(basePct, pct, entry.color, stat !== "weight");
-            bar.title = `Base: ${entry.base.toFixed(1)} -> Upgraded: ${entry.val.toFixed(1)}`;
+            bar.title = `Base: ${Math.ceil(entry.base)} -> Upgraded: ${Math.ceil(entry.val)}`;
 
-            item.appendChild(itemLabel);
             item.appendChild(bar);
-            group.appendChild(item);
+            groupA.appendChild(item);
         });
 
-        row.appendChild(group);
+        itemsB.forEach(entry => {
+            let max = 100.0;
+            if (stat === "weight") { max = 20; }
+            if (stat === "slots" || stat === "physical") { max = 5; }
+
+            const basePct = (entry.base / max) * 100;
+            const pct = (entry.val / max) * 100;
+
+            const item = document.createElement('div');
+            item.className = 'comparison-bar-item';
+
+            if (entry.label) {
+                const itemLabel = document.createElement('div');
+                itemLabel.className = 'comparison-bar-item-label';
+                itemLabel.textContent = entry.label;
+                item.appendChild(itemLabel);
+            } else {
+                // Add empty spacer to maintain grid layout
+                const spacer = document.createElement('div');
+                item.appendChild(spacer);
+            }
+
+            const bar = makeBar(basePct, pct, entry.color, stat !== "weight");
+            bar.title = `Base: ${Math.ceil(entry.base)} -> Upgraded: ${Math.ceil(entry.val)}`;
+
+            item.appendChild(bar);
+            groupB.appendChild(item);
+        });
+
+        row.appendChild(groupA);
+        row.appendChild(groupB);
         comparisonDiv.appendChild(row);
     }
 }

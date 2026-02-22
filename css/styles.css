@@ -85,10 +85,18 @@ select {
 
 .stat-row {
     display: grid;
-    grid-template-columns: minmax(120px, 1.2fr) minmax(120px, 1fr) minmax(120px, 1fr);
-    gap: 10px;
     align-items: center;
     padding: 4px 0;
+}
+
+.stat-row.stat-row-split {
+    grid-template-columns: minmax(70px, 0.84fr) minmax(56px, 0.63fr) minmax(56px, 0.63fr) minmax(56px, 0.63fr);
+    gap: 4px;
+}
+
+.stat-row.stat-row-single {
+    grid-template-columns: minmax(70px, 1fr) minmax(80px, 1fr);
+    gap: 10px;
 }
 
 .stat-row.stat-header {
@@ -106,6 +114,15 @@ select {
 .stat-value {
     text-align: right;
     font-variant-numeric: tabular-nums;
+}
+
+.stat-footnote {
+    margin-top: 8px;
+    padding-top: 6px;
+    border-top: 1px solid #555;
+    font-size: 0.85em;
+    color: #999;
+    line-height: 1.3;
 }
 
 #comparison {
