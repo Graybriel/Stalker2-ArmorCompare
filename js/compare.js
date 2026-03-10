@@ -49,7 +49,22 @@ function formatStatValue(rawVal) {
     return { text: rawVal, num: null, hasNumber: false };
 }
 
-function renderSplitStats(container, headArmor, bodyArmor, headEffects, bodyEffects, orderedKeys, includeUpgrades = false) {
+function getStatLabel(stat) {
+    if (stat === 'cost') return 'Purchase Price';
+    return stat;
+}
+
+function getUpgradeCostsByColumnAndPiece() {
+    if (typeof window.getSelectedUpgradeCostByColumnAndPiece === 'function') {
+        return window.getSelectedUpgradeCostByColumnAndPiece();
+    }
+    return {
+        A: { total: 0, byPiece: {} },
+        B: { total: 0, byPiece: {} }
+    };
+}
+
+function renderSplitStats(container, headArmor, bodyArmor, headEffects, bodyEffects, orderedKeys, includeUpgrades = false, upgradeCosts = { total: 0, byPiece: {} }) {
     if (!container) return;
     container.innerHTML = "";
 
@@ -81,7 +96,11 @@ function renderSplitStats(container, headArmor, bodyArmor, headEffects, bodyEffe
     }
     container.appendChild(headerRow);
 
-    orderedKeys.forEach(stat => {
+    const orderedStats = Array.isArray(orderedKeys)
+        ? [...orderedKeys.filter(k => k !== 'cost'), ...orderedKeys.filter(k => k === 'cost')]
+        : [];
+
+    orderedStats.forEach(stat => {
         const row = document.createElement("div");
         row.className = isSplitView ? "stat-row stat-row-split" : "stat-row stat-row-single";
 
@@ -120,7 +139,7 @@ function renderSplitStats(container, headArmor, bodyArmor, headEffects, bodyEffe
             } else {
                 // For physical, show only asterisk
                 row.innerHTML = `
-                    <span class="stat-label">${stat}</span>
+                    <span class="stat-label">${getStatLabel(stat)}</span>
                     <span class="stat-value">${headText}</span>
                     <span class="stat-value">${bodyText}</span>
                     <span class="stat-value">*</span>
@@ -130,7 +149,7 @@ function renderSplitStats(container, headArmor, bodyArmor, headEffects, bodyEffe
             }
 
             row.innerHTML = `
-                <span class="stat-label">${stat}</span>
+                <span class="stat-label">${getStatLabel(stat)}</span>
                 <span class="stat-value">${headText}</span>
                 <span class="stat-value">${bodyText}</span>
                 <span class="stat-value">${combinedText}</span>
@@ -147,13 +166,36 @@ function renderSplitStats(container, headArmor, bodyArmor, headEffects, bodyEffe
                 : "-";
 
             row.innerHTML = `
-                <span class="stat-label">${stat}</span>
+                <span class="stat-label">${getStatLabel(stat)}</span>
                 <span class="stat-value">${valueText}</span>
             `;
         }
 
         container.appendChild(row);
     });
+
+    const upgradeRow = document.createElement("div");
+    upgradeRow.className = isSplitView ? "stat-row stat-row-split" : "stat-row stat-row-single";
+
+    const totalUpgradeCost = Math.round(upgradeCosts.total || 0);
+    if (isSplitView) {
+        const byPiece = upgradeCosts.byPiece || {};
+        const headUpgradeCost = Math.round(byPiece[headArmor?.id] || 0);
+        const bodyUpgradeCost = Math.round(byPiece[bodyArmor?.id] || 0);
+
+        upgradeRow.innerHTML = `
+            <span class="stat-label">Upgrade Cost</span>
+            <span class="stat-value">${headUpgradeCost}</span>
+            <span class="stat-value">${bodyUpgradeCost}</span>
+            <span class="stat-value">${totalUpgradeCost}</span>
+        `;
+    } else {
+        upgradeRow.innerHTML = `
+            <span class="stat-label">Upgrade Cost</span>
+            <span class="stat-value">${totalUpgradeCost}</span>
+        `;
+    }
+    container.appendChild(upgradeRow);
 
     // Add footnote for split view
     if (isSplitView) {
@@ -181,6 +223,7 @@ function updateComparison() {
     const effectsByPiece = window.getSelectedUpgradeEffectsByColumnAndPiece
         ? window.getSelectedUpgradeEffectsByColumnAndPiece()
         : { A: {}, B: {} };
+    const upgradeCosts = getUpgradeCostsByColumnAndPiece();
 
     function getPieceEffects(col, piece) {
         if (!piece || !effectsByPiece[col]) return {};
@@ -214,10 +257,28 @@ function updateComparison() {
     const statsDivA = document.getElementById('statsA');
     const statsDivB = document.getElementById('statsB');
     if (statsDivA) {
-        renderSplitStats(statsDivA, headA, bodyA, getPieceEffects('A', headA), getPieceEffects('A', bodyA), orderedKeys, true);
+        renderSplitStats(
+            statsDivA,
+            headA,
+            bodyA,
+            getPieceEffects('A', headA),
+            getPieceEffects('A', bodyA),
+            orderedKeys,
+            true,
+            upgradeCosts.A || { total: 0, byPiece: {} }
+        );
     }
     if (statsDivB) {
-        renderSplitStats(statsDivB, headB, bodyB, getPieceEffects('B', headB), getPieceEffects('B', bodyB), orderedKeys, true);
+        renderSplitStats(
+            statsDivB,
+            headB,
+            bodyB,
+            getPieceEffects('B', headB),
+            getPieceEffects('B', bodyB),
+            orderedKeys,
+            true,
+            upgradeCosts.B || { total: 0, byPiece: {} }
+        );
     }
 
     if (!hasA || !hasB || !comparisonDiv) return;
@@ -337,7 +398,7 @@ function updateComparison() {
         row.className = "comparison-bar";
 
         const label = document.createElement("div");
-        label.textContent = stat;
+        label.textContent = getStatLabel(stat);
         row.appendChild(label);
 
         // Create separate groups for each armor to keep them on same line

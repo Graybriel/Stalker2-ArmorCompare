@@ -470,13 +470,6 @@ function renderUpgradesForArmor(armor, armorCol) {
 
     container.innerHTML = '';
 
-    // Insert upgrade cost summary at the top of the container
-    const costDiv = document.createElement('div');
-    costDiv.className = 'upgrade-cost';
-    costDiv.id = `upgradeCost${armorCol}`;
-    costDiv.textContent = 'Upgrade Cost: 0';
-    container.appendChild(costDiv);
-
     const pieceSection = document.createElement('div');
     pieceSection.className = 'armor-piece-section';
 
@@ -556,13 +549,6 @@ function renderUpgradesForMultiplePieces(pieces, armorCol) {
     }
 
     container.innerHTML = "";
-
-    // Insert upgrade cost summary at the top of the container
-    const costDiv = document.createElement('div');
-    costDiv.className = 'upgrade-cost';
-    costDiv.id = `upgradeCost${armorCol}`;
-    costDiv.textContent = 'Upgrade Cost: 0';
-    container.appendChild(costDiv);
 
     // For each armor piece (head, chest, full-body), create a section
     pieces.forEach(armor => {
@@ -1066,19 +1052,23 @@ function showAvailabilityOverlay(selectedIds, blockedMap) {
 
 window.updateUpgradeAvailability = updateUpgradeAvailability;
 
-// Compute and display total upgrade cost per column.
-function updateUpgradeCost(armorCol) {
-    const costEl = document.getElementById(`upgradeCost${armorCol}`);
-    if (!costEl || !window.selectedUpgrades) return;
+function getSelectedUpgradeCostByColumnAndPiece() {
+    const result = {
+        A: { total: 0, byPiece: {} },
+        B: { total: 0, byPiece: {} }
+    };
 
-    let total = 0;
+    if (!window.selectedUpgrades || window.selectedUpgrades.size === 0) return result;
+
     window.selectedUpgrades.forEach(selectionKey => {
         const parts = String(selectionKey).split(':');
-        const keyCol = parts.length >= 2 ? parts[0] : 'A';
-        const upgradeId = parts.length === 3 ? parts[2] : (parts.length === 2 ? parts[1] : parts[0]);
-        if (keyCol !== armorCol) return;
+        const col = parts.length >= 2 ? parts[0] : 'A';
+        const hasPiece = parts.length === 3;
+        const pieceId = hasPiece ? parts[1] : null;
+        const upgradeId = hasPiece ? parts[2] : (parts.length === 2 ? parts[1] : parts[0]);
+        if (!result[col]) return;
 
-        const container = document.getElementById(`upgradeContainer${armorCol}`);
+        const container = document.getElementById(`upgradeContainer${col}`);
         const el = container ? container.querySelector(`[data-upgrade-id="${upgradeId}"]`) : null;
         if (!el || !el.dataset.upgrade) return;
 
@@ -1087,11 +1077,25 @@ function updateUpgradeCost(armorCol) {
             const vals = upgrade.values || upgrade.Values || {};
             const rawCost = vals.BaseCost ?? vals.baseCost ?? vals.Cost ?? vals.cost ?? 0;
             const cost = parseFloat(String(rawCost).replace(/[^0-9.-]+/g, '')) || 0;
-            total += cost;
+
+            result[col].total += cost;
+            const effectivePieceId = pieceId || el.dataset.pieceId || '__single__';
+            result[col].byPiece[effectivePieceId] = (result[col].byPiece[effectivePieceId] || 0) + cost;
         } catch (e) {
             // ignore parse errors
         }
     });
 
-    costEl.textContent = `Upgrade Cost: ${Math.round(total)}`;
+    return result;
+}
+
+window.getSelectedUpgradeCostByColumnAndPiece = getSelectedUpgradeCostByColumnAndPiece;
+
+// Compute and display total upgrade cost per column.
+function updateUpgradeCost(armorCol) {
+    const costEl = document.getElementById(`upgradeCost${armorCol}`);
+    if (!costEl) return;
+
+    const costs = getSelectedUpgradeCostByColumnAndPiece();
+    costEl.textContent = `Upgrade Cost: ${Math.round(costs[armorCol]?.total || 0)}`;
 }
