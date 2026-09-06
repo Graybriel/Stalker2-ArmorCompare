@@ -449,9 +449,22 @@ function buildUpgradeGrids(armor) {
 }
 
 // Render upgrades for a single armor selection into the column container.
+function clearSelectedUpgradesForColumn(armorCol) {
+    if (!window.selectedUpgrades) {
+        window.selectedUpgrades = new Set();
+        return;
+    }
+
+    for (const selectionKey of window.selectedUpgrades) {
+        if (String(selectionKey).startsWith(`${armorCol}:`)) {
+            window.selectedUpgrades.delete(selectionKey);
+        }
+    }
+}
+
 function renderUpgradesForArmor(armor, armorCol) {
-    // Clear any previous selections when rendering new armor
-    window.selectedUpgrades = new Set();
+    // Clear only this column so the other comparison column keeps its upgrades.
+    clearSelectedUpgradesForColumn(armorCol);
     
     // Clear grids if no armor selected
     if (!armor) {
@@ -537,8 +550,8 @@ function renderUpgradesForArmor(armor, armorCol) {
  * Called when user selects head/chest type to display both pieces with their independent upgrades.
  */
 function renderUpgradesForMultiplePieces(pieces, armorCol) {
-    // Clear any previous selections when rendering new armor
-    window.selectedUpgrades = new Set();
+    // Clear only this column so the other comparison column keeps its upgrades.
+    clearSelectedUpgradesForColumn(armorCol);
     
     const container = document.getElementById(`upgradeContainer${armorCol}`);
     if (!container || !pieces || pieces.length === 0) {

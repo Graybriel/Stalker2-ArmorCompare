@@ -352,27 +352,27 @@ function updateComparison() {
         const legendItems = [];
         
         if (isSplitViewA) {
-            legendItems.push({ color: '#4dd0e1', label: 'Armor A Head' });
-            legendItems.push({ color: '#00acc1', label: 'Armor A Body' });
+            legendItems.push({ color: '#4dd0e1', label: headA.name || 'Armor A Head' });
+            legendItems.push({ color: '#00acc1', label: bodyA.name || 'Armor A Body' });
         } else if (headA && !bodyA) {
-            legendItems.push({ color: '#4dd0e1', label: 'Armor A Head' });
+            legendItems.push({ color: '#4dd0e1', label: headA.name || 'Armor A Head' });
         } else if (bodyA && !headA) {
-            legendItems.push({ color: '#00acc1', label: 'Armor A Body' });
+            legendItems.push({ color: '#00acc1', label: bodyA.name || 'Armor A Body' });
         } else if (headA && bodyA && headA.id === bodyA.id) {
             // Full body - non-physical stats use combined color, physical still shows separately
-            legendItems.push({ color: '#26a69a', label: 'Armor A (Full Body)' });
+            legendItems.push({ color: '#26a69a', label: headA.name || 'Armor A' });
         }
         
         if (isSplitViewB) {
-            legendItems.push({ color: '#ff8a65', label: 'Armor B Head' });
-            legendItems.push({ color: '#f4511e', label: 'Armor B Body' });
+            legendItems.push({ color: '#ff8a65', label: headB.name || 'Armor B Head' });
+            legendItems.push({ color: '#f4511e', label: bodyB.name || 'Armor B Body' });
         } else if (headB && !bodyB) {
-            legendItems.push({ color: '#ff8a65', label: 'Armor B Head' });
+            legendItems.push({ color: '#ff8a65', label: headB.name || 'Armor B Head' });
         } else if (bodyB && !headB) {
-            legendItems.push({ color: '#f4511e', label: 'Armor B Body' });
+            legendItems.push({ color: '#f4511e', label: bodyB.name || 'Armor B Body' });
         } else if (headB && bodyB && headB.id === bodyB.id) {
             // Full body
-            legendItems.push({ color: '#e64a19', label: 'Armor B (Full Body)' });
+            legendItems.push({ color: '#e64a19', label: headB.name || 'Armor B' });
         }
         
         legendDiv.innerHTML = legendItems.map(item => `
